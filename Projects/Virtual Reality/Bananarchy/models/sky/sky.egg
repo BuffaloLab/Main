@@ -1,0 +1,1500 @@
+<CoordinateSystem> { Y-Up }
+
+<Comment> {
+  "maya2egg sky.mb"
+}
+<Texture> initialShadingGroup {
+  "textures/sky.jpg"
+  <Scalar> wrapu { repeat }
+  <Scalar> wrapv { repeat }
+  <Scalar> minfilter { linear_mipmap_linear }
+  <Scalar> magfilter { linear }
+}
+<Group> groundPlane_transform {
+}
+<Group> pSphere1 {
+  <VertexPool> pSphereShape1.verts {
+    <Vertex> 0 {
+      82.0837 0 -26.6706
+      <UV> { 0 0.00130195 }
+      <Normal> { -0.948125 -0.0784591 0.308064 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 1 {
+      81.0731 13.5015 -26.3422
+      <UV> { 0 0.167761 }
+      <Normal> { -0.939344 -0.156457 0.30521 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 2 {
+      68.9649 13.5015 -50.1059
+      <UV> { 0.05 0.167761 }
+      <Normal> { -0.799054 -0.156458 0.580547 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 3 {
+      69.8246 0 -50.7305
+      <UV> { 0.05 0.00130195 }
+      <Normal> { -0.806523 -0.0784592 0.585973 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 4 {
+      50.1059 13.5015 -68.9649
+      <UV> { 0.1 0.167761 }
+      <Normal> { -0.580546 -0.156457 0.799054 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 5 {
+      50.7305 0 -69.8246
+      <UV> { 0.1 0.00130195 }
+      <Normal> { -0.585973 -0.0784592 0.806523 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 6 {
+      26.3422 13.5015 -81.0731
+      <UV> { 0.15 0.167761 }
+      <Normal> { -0.305211 -0.156457 0.939344 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 7 {
+      26.6706 0 -82.0837
+      <UV> { 0.15 0.00130195 }
+      <Normal> { -0.308064 -0.0784592 0.948125 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 8 {
+      1.26939e-06 13.5015 -85.2453
+      <UV> { 0.2 0.167761 }
+      <Normal> { 1.89099e-07 -0.156457 0.987685 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 9 {
+      1.28522e-06 0 -86.3079
+      <UV> { 0.2 0.00130195 }
+      <Normal> { 1.58401e-07 -0.0784591 0.996917 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 10 {
+      -26.3422 13.5015 -81.0731
+      <UV> { 0.25 0.167761 }
+      <Normal> { 0.305212 -0.156457 0.939344 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 11 {
+      -26.6706 0 -82.0837
+      <UV> { 0.25 0.00130195 }
+      <Normal> { 0.308065 -0.0784592 0.948125 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 12 {
+      -50.1059 13.5015 -68.9649
+      <UV> { 0.3 0.167761 }
+      <Normal> { 0.580547 -0.156457 0.799054 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 13 {
+      -50.7305 0 -69.8245
+      <UV> { 0.3 0.00130195 }
+      <Normal> { 0.585973 -0.0784591 0.806523 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 14 {
+      -68.9649 13.5015 -50.1059
+      <UV> { 0.35 0.167761 }
+      <Normal> { 0.799054 -0.156457 0.580546 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 15 {
+      -69.8245 0 -50.7305
+      <UV> { 0.35 0.00130195 }
+      <Normal> { 0.806523 -0.0784592 0.585973 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 16 {
+      -81.0731 13.5015 -26.3422
+      <UV> { 0.4 0.167761 }
+      <Normal> { 0.939344 -0.156457 0.305211 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 17 {
+      -82.0837 0 -26.6706
+      <UV> { 0.4 0.00130195 }
+      <Normal> { 0.948125 -0.0784593 0.308064 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 18 {
+      -85.2453 13.5015 -3.03095e-07
+      <UV> { 0.45 0.167761 }
+      <Normal> { 0.987685 -0.156457 -7.56397e-09 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 19 {
+      -86.3079 0 -3.06873e-07
+      <UV> { 0.45 0.00130195 }
+      <Normal> { 0.996917 -0.0784588 0 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 20 {
+      -81.0731 13.5015 26.3422
+      <UV> { 0.5 0.167761 }
+      <Normal> { 0.939344 -0.156457 -0.305211 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 21 {
+      -82.0837 0 26.6706
+      <UV> { 0.5 0.00130195 }
+      <Normal> { 0.948125 -0.0784588 -0.308064 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 22 {
+      -68.9649 13.5015 50.1059
+      <UV> { 0.55 0.167761 }
+      <Normal> { 0.799054 -0.156457 -0.580547 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 23 {
+      -69.8245 0 50.7305
+      <UV> { 0.55 0.00130195 }
+      <Normal> { 0.806523 -0.078459 -0.585973 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 24 {
+      -50.1059 13.5015 68.9649
+      <UV> { 0.6 0.167761 }
+      <Normal> { 0.580546 -0.156457 -0.799054 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 25 {
+      -50.7305 0 69.8245
+      <UV> { 0.6 0.00130195 }
+      <Normal> { 0.585973 -0.0784592 -0.806523 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 26 {
+      -26.3422 13.5015 81.0731
+      <UV> { 0.65 0.167761 }
+      <Normal> { 0.305211 -0.156457 -0.939344 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 27 {
+      -26.6706 0 82.0836
+      <UV> { 0.65 0.00130195 }
+      <Normal> { 0.308064 -0.0784592 -0.948125 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 28 {
+      -1.02071e-06 13.5015 85.2453
+      <UV> { 0.7 0.167761 }
+      <Normal> { 2.64739e-08 -0.156457 -0.987685 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 29 {
+      -1.03343e-06 0 86.3079
+      <UV> { 0.7 0.00130195 }
+      <Normal> { 1.20686e-07 -0.0784591 -0.996917 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 30 {
+      26.3422 13.5015 81.0731
+      <UV> { 0.75 0.167761 }
+      <Normal> { -0.305211 -0.156457 -0.939344 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 31 {
+      26.6706 0 82.0836
+      <UV> { 0.75 0.00130195 }
+      <Normal> { -0.308064 -0.0784591 -0.948125 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 32 {
+      50.1059 13.5015 68.9649
+      <UV> { 0.8 0.167761 }
+      <Normal> { -0.580547 -0.156457 -0.799054 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 33 {
+      50.7305 0 69.8245
+      <UV> { 0.8 0.00130195 }
+      <Normal> { -0.585973 -0.0784591 -0.806523 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 34 {
+      68.9649 13.5015 50.1059
+      <UV> { 0.85 0.167761 }
+      <Normal> { -0.799054 -0.156457 -0.580546 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 35 {
+      69.8245 0 50.7305
+      <UV> { 0.85 0.00130195 }
+      <Normal> { -0.806523 -0.078459 -0.585973 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 36 {
+      81.0731 13.5015 26.3422
+      <UV> { 0.9 0.167761 }
+      <Normal> { -0.939344 -0.156457 -0.305211 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 37 {
+      82.0836 0 26.6706
+      <UV> { 0.9 0.00130195 }
+      <Normal> { -0.948125 -0.0784589 -0.308064 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 38 {
+      85.2452 13.5015 0
+      <UV> { 0.95 0.167761 }
+      <Normal> { -0.987685 -0.156457 -8.47164e-07 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 39 {
+      86.3078 0 0
+      <UV> { 0.95 0.00130195 }
+      <Normal> { -0.996917 -0.0784589 -8.52346e-07 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 40 {
+      81.0731 13.5015 -26.3422
+      <UV> { 1 0.167761 }
+      <Normal> { -0.939344 -0.156457 0.30521 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 41 {
+      82.0837 0 -26.6706
+      <UV> { 1 0.00130195 }
+      <Normal> { -0.948125 -0.0784591 0.308064 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 42 {
+      78.0662 26.6706 -25.3653
+      <UV> { 0 0.33422 }
+      <Normal> { -0.904496 -0.309059 0.293888 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 43 {
+      66.4071 26.6706 -48.2476
+      <UV> { 0.05 0.33422 }
+      <Normal> { -0.76941 -0.309059 0.559009 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 44 {
+      48.2476 26.6706 -66.4071
+      <UV> { 0.1 0.33422 }
+      <Normal> { -0.559009 -0.309059 0.76941 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 45 {
+      25.3653 26.6706 -78.0662
+      <UV> { 0.15 0.33422 }
+      <Normal> { -0.293888 -0.309059 0.904495 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 46 {
+      1.22231e-06 26.6706 -82.0837
+      <UV> { 0.2 0.33422 }
+      <Normal> { 1.36034e-07 -0.309059 0.951043 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 47 {
+      -25.3652 26.6706 -78.0662
+      <UV> { 0.25 0.33422 }
+      <Normal> { 0.293889 -0.309059 0.904495 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 48 {
+      -48.2476 26.6706 -66.4071
+      <UV> { 0.3 0.33422 }
+      <Normal> { 0.559009 -0.309059 0.76941 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 49 {
+      -66.4071 26.6706 -48.2476
+      <UV> { 0.35 0.33422 }
+      <Normal> { 0.76941 -0.309059 0.559009 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 50 {
+      -78.0662 26.6706 -25.3652
+      <UV> { 0.4 0.33422 }
+      <Normal> { 0.904496 -0.309059 0.293888 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 51 {
+      -82.0837 26.6706 -2.91853e-07
+      <UV> { 0.45 0.33422 }
+      <Normal> { 0.951043 -0.309059 -1.13362e-08 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 52 {
+      -78.0662 26.6706 25.3652
+      <UV> { 0.5 0.33422 }
+      <Normal> { 0.904495 -0.309059 -0.293888 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 53 {
+      -66.4071 26.6706 48.2476
+      <UV> { 0.55 0.33422 }
+      <Normal> { 0.76941 -0.309059 -0.559009 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 54 {
+      -48.2476 26.6706 66.4071
+      <UV> { 0.6 0.33422 }
+      <Normal> { 0.559009 -0.309059 -0.76941 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 55 {
+      -25.3652 26.6706 78.0662
+      <UV> { 0.65 0.33422 }
+      <Normal> { 0.293888 -0.309059 -0.904495 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 56 {
+      -9.82855e-07 26.6706 82.0836
+      <UV> { 0.7 0.33422 }
+      <Normal> { 1.13362e-08 -0.309059 -0.951043 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 57 {
+      25.3652 26.6706 78.0662
+      <UV> { 0.75 0.33422 }
+      <Normal> { -0.293888 -0.309059 -0.904495 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 58 {
+      48.2476 26.6706 66.4071
+      <UV> { 0.8 0.33422 }
+      <Normal> { -0.559009 -0.309059 -0.76941 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 59 {
+      66.4071 26.6706 48.2476
+      <UV> { 0.85 0.33422 }
+      <Normal> { -0.76941 -0.309059 -0.559009 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 60 {
+      78.0662 26.6706 25.3652
+      <UV> { 0.9 0.33422 }
+      <Normal> { -0.904495 -0.309059 -0.293888 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 61 {
+      82.0836 26.6706 0
+      <UV> { 0.95 0.33422 }
+      <Normal> { -0.951043 -0.309059 -8.38879e-07 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 62 {
+      78.0662 26.6706 -25.3653
+      <UV> { 1 0.33422 }
+      <Normal> { -0.904496 -0.309059 0.293888 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 63 {
+      73.1371 39.1829 -23.7637
+      <UV> { 0 0.500679 }
+      <Normal> { -0.847371 -0.454045 0.275327 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 64 {
+      62.2141 39.1829 -45.2012
+      <UV> { 0.05 0.500679 }
+      <Normal> { -0.720817 -0.454045 0.523704 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 65 {
+      45.2012 39.1829 -62.2141
+      <UV> { 0.1 0.500679 }
+      <Normal> { -0.523704 -0.454045 0.720817 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 66 {
+      23.7637 39.1829 -73.1371
+      <UV> { 0.15 0.500679 }
+      <Normal> { -0.275327 -0.454045 0.847371 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 67 {
+      1.14514e-06 39.1829 -76.9009
+      <UV> { 0.2 0.500679 }
+      <Normal> { 6.03786e-08 -0.454045 0.890979 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 68 {
+      -23.7637 39.1829 -73.1371
+      <UV> { 0.25 0.500679 }
+      <Normal> { 0.275328 -0.454045 0.847371 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 69 {
+      -45.2012 39.1829 -62.2141
+      <UV> { 0.3 0.500679 }
+      <Normal> { 0.523704 -0.454045 0.720817 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 70 {
+      -62.2141 39.1829 -45.2012
+      <UV> { 0.35 0.500679 }
+      <Normal> { 0.720817 -0.454045 0.523704 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 71 {
+      -73.1371 39.1829 -23.7637
+      <UV> { 0.4 0.500679 }
+      <Normal> { 0.847371 -0.454045 0.275328 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 72 {
+      -76.9009 39.1829 -2.73426e-07
+      <UV> { 0.45 0.500679 }
+      <Normal> { 0.890979 -0.454045 -3.77366e-09 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 73 {
+      -73.1371 39.1829 23.7637
+      <UV> { 0.5 0.500679 }
+      <Normal> { 0.847371 -0.454045 -0.275328 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 74 {
+      -62.2141 39.1829 45.2012
+      <UV> { 0.55 0.500679 }
+      <Normal> { 0.720817 -0.454045 -0.523704 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 75 {
+      -45.2012 39.1829 62.2141
+      <UV> { 0.6 0.500679 }
+      <Normal> { 0.523704 -0.454045 -0.720817 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 76 {
+      -23.7637 39.1829 73.1371
+      <UV> { 0.65 0.500679 }
+      <Normal> { 0.275328 -0.454045 -0.847371 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 77 {
+      -9.20797e-07 39.1829 76.9009
+      <UV> { 0.7 0.500679 }
+      <Normal> { 3.3963e-08 -0.454045 -0.890979 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 78 {
+      23.7637 39.1829 73.1371
+      <UV> { 0.75 0.500679 }
+      <Normal> { -0.275328 -0.454045 -0.847371 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 79 {
+      45.2012 39.1829 62.2141
+      <UV> { 0.8 0.500679 }
+      <Normal> { -0.523704 -0.454045 -0.720817 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 80 {
+      62.2141 39.1829 45.2012
+      <UV> { 0.85 0.500679 }
+      <Normal> { -0.720817 -0.454045 -0.523704 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 81 {
+      73.1371 39.1829 23.7637
+      <UV> { 0.9 0.500679 }
+      <Normal> { -0.847371 -0.454045 -0.275327 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 82 {
+      76.9008 39.1829 0
+      <UV> { 0.95 0.500679 }
+      <Normal> { -0.890979 -0.454045 -7.96243e-07 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 83 {
+      73.1371 39.1829 -23.7637
+      <UV> { 1 0.500679 }
+      <Normal> { -0.847371 -0.454045 0.275327 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 84 {
+      66.4071 50.7305 -21.577
+      <UV> { 0 0.667138 }
+      <Normal> { -0.769381 -0.587844 0.249986 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 85 {
+      56.4892 50.7305 -41.0418
+      <UV> { 0.05 0.667138 }
+      <Normal> { -0.654474 -0.587844 0.475503 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 86 {
+      41.0418 50.7305 -56.4892
+      <UV> { 0.1 0.667138 }
+      <Normal> { -0.475503 -0.587844 0.654474 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 87 {
+      21.577 50.7305 -66.4071
+      <UV> { 0.15 0.667138 }
+      <Normal> { -0.249987 -0.587844 0.76938 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 88 {
+      1.03976e-06 50.7305 -69.8245
+      <UV> { 0.2 0.667138 }
+      <Normal> { 4.33236e-08 -0.587844 0.808974 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 89 {
+      -21.577 50.7305 -66.4071
+      <UV> { 0.25 0.667138 }
+      <Normal> { 0.249987 -0.587844 0.76938 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 90 {
+      -41.0418 50.7305 -56.4892
+      <UV> { 0.3 0.667138 }
+      <Normal> { 0.475503 -0.587844 0.654474 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 91 {
+      -56.4892 50.7305 -41.0418
+      <UV> { 0.35 0.667138 }
+      <Normal> { 0.654474 -0.587844 0.475503 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 92 {
+      -66.4071 50.7305 -21.577
+      <UV> { 0.4 0.667138 }
+      <Normal> { 0.76938 -0.587844 0.249987 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 93 {
+      -69.8245 50.7305 -2.48265e-07
+      <UV> { 0.45 0.667138 }
+      <Normal> { 0.808974 -0.587844 3.76727e-09 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 94 {
+      -66.4071 50.7305 21.577
+      <UV> { 0.5 0.667138 }
+      <Normal> { 0.76938 -0.587844 -0.249987 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 95 {
+      -56.4892 50.7305 41.0418
+      <UV> { 0.55 0.667138 }
+      <Normal> { 0.654474 -0.587844 -0.475503 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 96 {
+      -41.0418 50.7305 56.4892
+      <UV> { 0.6 0.667138 }
+      <Normal> { 0.475503 -0.587844 -0.654474 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 97 {
+      -21.577 50.7305 66.4071
+      <UV> { 0.65 0.667138 }
+      <Normal> { 0.249987 -0.587844 -0.76938 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 98 {
+      -8.36066e-07 50.7305 69.8245
+      <UV> { 0.7 0.667138 }
+      <Normal> { -2.26036e-08 -0.587844 -0.808974 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 99 {
+      21.577 50.7305 66.4071
+      <UV> { 0.75 0.667138 }
+      <Normal> { -0.249987 -0.587844 -0.76938 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 100 {
+      41.0418 50.7305 56.4892
+      <UV> { 0.8 0.667138 }
+      <Normal> { -0.475503 -0.587844 -0.654474 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 101 {
+      56.4892 50.7305 41.0418
+      <UV> { 0.85 0.667138 }
+      <Normal> { -0.654474 -0.587844 -0.475503 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 102 {
+      66.4071 50.7305 21.577
+      <UV> { 0.9 0.667138 }
+      <Normal> { -0.76938 -0.587844 -0.249987 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 103 {
+      69.8245 50.7305 0
+      <UV> { 0.95 0.667138 }
+      <Normal> { -0.808974 -0.587844 -7.27083e-07 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 104 {
+      66.4071 50.7305 -21.577
+      <UV> { 1 0.667138 }
+      <Normal> { -0.769381 -0.587844 0.249986 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 105 {
+      58.0419 61.0289 -18.859
+      <UV> { 0 0.833597 }
+      <Normal> { -0.672447 -0.707161 0.218491 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 106 {
+      49.3734 61.0289 -35.8719
+      <UV> { 0.05 0.833597 }
+      <Normal> { -0.572018 -0.707161 0.415595 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 107 {
+      35.8719 61.0289 -49.3734
+      <UV> { 0.1 0.833597 }
+      <Normal> { -0.415595 -0.707161 0.572018 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 108 {
+      18.859 61.0289 -58.0419
+      <UV> { 0.15 0.833597 }
+      <Normal> { -0.218491 -0.707161 0.672447 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 109 {
+      9.08785e-07 61.0289 -61.0289
+      <UV> { 0.2 0.833597 }
+      <Normal> { 1.18445e-07 -0.707161 0.707053 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 110 {
+      -18.859 61.0289 -58.0419
+      <UV> { 0.25 0.833597 }
+      <Normal> { 0.218491 -0.707161 0.672447 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 111 {
+      -35.8719 61.0289 -49.3734
+      <UV> { 0.3 0.833597 }
+      <Normal> { 0.415595 -0.707161 0.572018 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 112 {
+      -49.3734 61.0289 -35.8719
+      <UV> { 0.35 0.833597 }
+      <Normal> { 0.572018 -0.707161 0.415595 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 113 {
+      -58.0419 61.0289 -18.859
+      <UV> { 0.4 0.833597 }
+      <Normal> { 0.672447 -0.707161 0.218491 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 114 {
+      -61.0289 61.0289 -2.16992e-07
+      <UV> { 0.45 0.833597 }
+      <Normal> { 0.707053 -0.707161 -3.76017e-08 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 115 {
+      -58.0419 61.0289 18.859
+      <UV> { 0.5 0.833597 }
+      <Normal> { 0.672447 -0.707161 -0.218491 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 116 {
+      -49.3734 61.0289 35.8719
+      <UV> { 0.55 0.833597 }
+      <Normal> { 0.572018 -0.707161 -0.415595 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 117 {
+      -35.8719 61.0289 49.3734
+      <UV> { 0.6 0.833597 }
+      <Normal> { 0.415595 -0.707161 -0.572018 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 118 {
+      -18.859 61.0289 58.0419
+      <UV> { 0.65 0.833597 }
+      <Normal> { 0.218491 -0.707161 -0.672447 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 119 {
+      -7.30749e-07 61.0289 61.0289
+      <UV> { 0.7 0.833597 }
+      <Normal> { 5.64025e-09 -0.707161 -0.707053 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 120 {
+      18.859 61.0289 58.0419
+      <UV> { 0.75 0.833597 }
+      <Normal> { -0.218491 -0.707161 -0.672447 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 121 {
+      35.8719 61.0289 49.3734
+      <UV> { 0.8 0.833597 }
+      <Normal> { -0.415595 -0.707161 -0.572018 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 122 {
+      49.3734 61.0289 35.8719
+      <UV> { 0.85 0.833597 }
+      <Normal> { -0.572018 -0.707161 -0.415595 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 123 {
+      58.0419 61.0289 18.859
+      <UV> { 0.9 0.833597 }
+      <Normal> { -0.672447 -0.707161 -0.218491 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 124 {
+      61.0289 61.0289 0
+      <UV> { 0.95 0.833597 }
+      <Normal> { -0.707053 -0.707161 -6.01627e-07 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 125 {
+      58.0419 61.0289 -18.859
+      <UV> { 1 0.833597 }
+      <Normal> { -0.672447 -0.707161 0.218491 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 126 {
+      48.2476 69.8245 -15.6766
+      <UV> { 0 1.00006 }
+      <Normal> { -0.617662 -0.760406 0.20069 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 127 {
+      41.0418 69.8245 -29.8186
+      <UV> { 0.05 1.00006 }
+      <Normal> { -0.525414 -0.760406 0.381736 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 128 {
+      29.8186 69.8245 -41.0418
+      <UV> { 0.1 1.00006 }
+      <Normal> { -0.381736 -0.760406 0.525414 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 129 {
+      15.6766 69.8245 -48.2476
+      <UV> { 0.15 1.00006 }
+      <Normal> { -0.20069 -0.760406 0.617662 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 130 {
+      7.55431e-07 69.8245 -50.7305
+      <UV> { 0.2 1.00006 }
+      <Normal> { 2.17207e-07 -0.760406 0.649448 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 131 {
+      -15.6766 69.8245 -48.2476
+      <UV> { 0.25 1.00006 }
+      <Normal> { 0.200691 -0.760406 0.617662 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 132 {
+      -29.8186 69.8245 -41.0418
+      <UV> { 0.3 1.00006 }
+      <Normal> { 0.381736 -0.760406 0.525415 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 133 {
+      -41.0418 69.8245 -29.8186
+      <UV> { 0.35 1.00006 }
+      <Normal> { 0.525415 -0.760406 0.381736 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 134 {
+      -48.2476 69.8245 -15.6766
+      <UV> { 0.4 1.00006 }
+      <Normal> { 0.617662 -0.760406 0.20069 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 135 {
+      -50.7305 69.8245 -1.80375e-07
+      <UV> { 0.45 1.00006 }
+      <Normal> { 0.649448 -0.760406 -8.23888e-08 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 136 {
+      -48.2476 69.8245 15.6766
+      <UV> { 0.5 1.00006 }
+      <Normal> { 0.617662 -0.760406 -0.20069 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 137 {
+      -41.0418 69.8245 29.8186
+      <UV> { 0.55 1.00006 }
+      <Normal> { 0.525414 -0.760406 -0.381736 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 138 {
+      -29.8186 69.8245 41.0418
+      <UV> { 0.6 1.00006 }
+      <Normal> { 0.381736 -0.760406 -0.525415 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 139 {
+      -15.6766 69.8245 48.2476
+      <UV> { 0.65 1.00006 }
+      <Normal> { 0.20069 -0.760406 -0.617662 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 140 {
+      -6.07438e-07 69.8245 50.7305
+      <UV> { 0.7 1.00006 }
+      <Normal> { 3.37045e-08 -0.760406 -0.649448 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 141 {
+      15.6766 69.8245 48.2476
+      <UV> { 0.75 1.00006 }
+      <Normal> { -0.20069 -0.760406 -0.617662 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 142 {
+      29.8186 69.8245 41.0418
+      <UV> { 0.8 1.00006 }
+      <Normal> { -0.381736 -0.760406 -0.525415 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 143 {
+      41.0418 69.8245 29.8186
+      <UV> { 0.85 1.00006 }
+      <Normal> { -0.525415 -0.760406 -0.381736 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 144 {
+      48.2476 69.8245 15.6766
+      <UV> { 0.9 1.00006 }
+      <Normal> { -0.617662 -0.760406 -0.20069 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 145 {
+      50.7305 69.8245 0
+      <UV> { 0.95 1.00006 }
+      <Normal> { -0.649448 -0.760406 -5.01823e-07 }
+      <RGBA> { 1 1 1 1 }
+    }
+    <Vertex> 146 {
+      48.2476 69.8245 -15.6766
+      <UV> { 1 1.00006 }
+      <Normal> { -0.617662 -0.760406 0.20069 }
+      <RGBA> { 1 1 1 1 }
+    }
+  }
+  <Polygon> {
+    <Normal> { -0.888327 -0.0774991 0.452625 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 0 1 2 3 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.70498 -0.0774989 0.70498 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 3 2 4 5 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.452625 -0.0774991 0.888327 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 5 4 6 7 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.155964 -0.077499 0.984718 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 7 6 8 9 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.155964 -0.077499 0.984718 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 9 8 10 11 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.452625 -0.0774991 0.888327 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 11 10 12 13 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.70498 -0.0774989 0.70498 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 13 12 14 15 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.888327 -0.0774993 0.452625 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 15 14 16 17 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.984718 -0.077499 0.155964 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 17 16 18 19 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.984718 -0.0774984 -0.155964 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 19 18 20 21 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.888327 -0.0774989 -0.452625 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 21 20 22 23 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.70498 -0.077499 -0.70498 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 23 22 24 25 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.452625 -0.0774991 -0.888327 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 25 24 26 27 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.155964 -0.077499 -0.984718 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 27 26 28 29 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.155964 -0.077499 -0.984718 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 29 28 30 31 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.452625 -0.077499 -0.888327 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 31 30 32 33 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.70498 -0.077499 -0.70498 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 33 32 34 35 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.888327 -0.0774988 -0.452625 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 35 34 36 37 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.984718 -0.0774988 -0.155964 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 37 36 38 39 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.984718 -0.0774987 0.155962 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 39 38 40 41 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.866966 -0.230725 0.441741 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 1 42 43 2 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.688028 -0.230725 0.688029 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 2 43 44 4 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.441741 -0.230725 0.866966 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 4 44 45 6 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.152214 -0.230725 0.96104 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 6 45 46 8 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.152214 -0.230725 0.961039 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 8 46 47 10 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.441742 -0.230725 0.866966 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 10 47 48 12 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.688028 -0.230725 0.688028 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 12 48 49 14 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.866966 -0.230725 0.441741 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 14 49 50 16 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.96104 -0.230725 0.152214 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 16 50 51 18 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.96104 -0.230725 -0.152214 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 18 51 52 20 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.866966 -0.230725 -0.441741 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 20 52 53 22 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.688028 -0.230725 -0.688029 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 22 53 54 24 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.441741 -0.230725 -0.866966 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 24 54 55 26 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.152214 -0.230725 -0.96104 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 26 55 56 28 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.152214 -0.230725 -0.96104 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 28 56 57 30 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.441742 -0.230725 -0.866966 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 30 57 58 32 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.688028 -0.230725 -0.688028 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 32 58 59 34 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.866966 -0.230725 -0.441741 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 34 59 60 36 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.961039 -0.230725 -0.152214 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 36 60 61 38 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.96104 -0.230725 0.152212 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 38 61 62 40 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.824662 -0.378651 0.420186 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 42 63 64 43 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.654455 -0.378651 0.654455 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 43 64 65 44 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.420186 -0.378651 0.824662 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 44 65 66 45 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.144786 -0.378651 0.914144 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 45 66 67 46 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.144786 -0.378651 0.914144 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 46 67 68 47 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.420186 -0.378651 0.824661 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 47 68 69 48 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.654455 -0.378652 0.654455 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 48 69 70 49 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.824662 -0.378651 0.420186 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 49 70 71 50 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.914144 -0.378651 0.144786 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 50 71 72 51 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.914144 -0.378651 -0.144786 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 51 72 73 52 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.824662 -0.378651 -0.420186 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 52 73 74 53 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.654455 -0.378651 -0.654455 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 53 74 75 54 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.420186 -0.378651 -0.824662 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 54 75 76 55 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.144786 -0.378651 -0.914145 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 55 76 77 56 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.144786 -0.378651 -0.914145 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 56 77 78 57 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.420186 -0.378651 -0.824662 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 57 78 79 58 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.654455 -0.378651 -0.654455 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 58 79 80 59 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.824662 -0.378651 -0.420186 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 59 80 81 60 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.914144 -0.378651 -0.144786 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 60 81 82 61 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.914145 -0.378651 0.144785 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 61 82 83 62 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.762258 -0.517799 0.38839 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 63 84 85 64 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.604932 -0.517799 0.604931 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 64 85 86 65 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.38839 -0.517799 0.762259 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 65 86 87 66 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.13383 -0.517799 0.84497 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 66 87 88 67 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.13383 -0.517799 0.84497 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 67 88 89 68 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.38839 -0.517798 0.762258 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 68 89 90 69 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.604932 -0.517798 0.604932 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 69 90 91 70 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.762259 -0.517798 0.38839 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 70 91 92 71 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.84497 -0.517799 0.13383 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 71 92 93 72 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.84497 -0.517799 -0.13383 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 72 93 94 73 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.762258 -0.517799 -0.38839 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 73 94 95 74 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.604932 -0.517799 -0.604932 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 74 95 96 75 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.38839 -0.517799 -0.762258 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 75 96 97 76 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.13383 -0.517798 -0.84497 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 76 97 98 77 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.13383 -0.517799 -0.84497 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 77 98 99 78 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.38839 -0.517799 -0.762258 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 78 99 100 79 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.604932 -0.517799 -0.604932 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 79 100 101 80 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.762258 -0.517798 -0.38839 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 80 101 102 81 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.84497 -0.517798 -0.13383 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 81 102 103 82 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.84497 -0.517799 0.133829 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 82 103 104 83 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.68105 -0.644789 0.347013 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 84 105 106 85 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.540485 -0.644789 0.540485 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 85 106 107 86 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.347012 -0.644789 0.681051 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 86 107 108 87 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.119572 -0.644789 0.75495 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 87 108 109 88 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.119572 -0.644789 0.75495 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 88 109 110 89 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.347013 -0.644789 0.68105 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 89 110 111 90 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.540485 -0.644789 0.540485 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 90 111 112 91 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.68105 -0.644789 0.347012 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 91 112 113 92 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.75495 -0.644789 0.119572 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 92 113 114 93 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.75495 -0.644789 -0.119572 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 93 114 115 94 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.681051 -0.644789 -0.347013 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 94 115 116 95 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.540485 -0.644789 -0.540485 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 95 116 117 96 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.347012 -0.644789 -0.681051 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 96 117 118 97 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.119572 -0.644789 -0.75495 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 97 118 119 98 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.119573 -0.644789 -0.75495 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 98 119 120 99 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.347013 -0.644789 -0.68105 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 99 120 121 100 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.540485 -0.644789 -0.540485 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 100 121 122 101 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.681051 -0.644789 -0.347012 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 101 122 123 102 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.75495 -0.644789 -0.119572 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 102 123 124 103 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.754951 -0.644789 0.119571 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 103 124 125 104 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.5828 -0.756415 0.296952 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 105 126 127 106 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.462513 -0.756415 0.462513 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 106 127 128 107 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.296952 -0.756415 0.5828 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 107 128 129 108 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.102323 -0.756415 0.646039 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 108 129 130 109 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.102323 -0.756415 0.646039 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 109 130 131 110 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.296952 -0.756415 0.5828 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 110 131 132 111 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.462513 -0.756415 0.462513 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 111 132 133 112 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.5828 -0.756415 0.296951 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 112 133 134 113 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.646039 -0.756415 0.102322 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 113 134 135 114 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.646039 -0.756415 -0.102323 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 114 135 136 115 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.5828 -0.756415 -0.296952 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 115 136 137 116 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.462513 -0.756415 -0.462514 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 116 137 138 117 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.296952 -0.756415 -0.5828 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 117 138 139 118 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { 0.102322 -0.756415 -0.64604 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 118 139 140 119 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.102322 -0.756415 -0.646039 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 119 140 141 120 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.296952 -0.756415 -0.582801 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 120 141 142 121 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.462513 -0.756415 -0.462513 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 121 142 143 122 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.582801 -0.756415 -0.296952 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 122 143 144 123 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.646039 -0.756415 -0.102323 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 123 144 145 124 <Ref> { pSphereShape1.verts } }
+  }
+  <Polygon> {
+    <Normal> { -0.646039 -0.756415 0.102322 }
+    <TRef> { initialShadingGroup }
+    <VertexRef> { 124 145 146 125 <Ref> { pSphereShape1.verts } }
+  }
+}
