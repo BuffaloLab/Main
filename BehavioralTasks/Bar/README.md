@@ -1,4 +1,4 @@
-###[[Files](https://github.com/BuffaloLab/BehavioralTasks/tree/master/Bar)]
+##Bar
 
 This task teaches the animal to simply touch, hold, and release the bar for reward. Big, random-colored squares appear on the screen, but the animal isn't forced to meaningfully interact with them.  The purpose of the colorful squares is merely to get the animal used to the idea of flashing things on the screen and that they might signify something.  In this case, they merely signify that the bar is being held.
 
