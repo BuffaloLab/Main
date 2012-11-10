@@ -31,9 +31,9 @@ We train the monkey in the basics of daily work in our lab by teaching it Bar, C
 ### Infancy / New Projects
 * [Salience / Viewing Behavior](https://github.com/BuffaloLab/Projects/tree/master/Salience%20and%20Viewing%20Behavior)
 * [Looking Time Heatmaps and Statistics](https://github.com/BuffaloLab/Projects/tree/master/Looking%20Time%20Heatmaps%20and%20Statistics)
-* [Trial-Unique Vs. Regular DMS] (https://github.com/BuffaloLab/Projects/tree/master/Trial-Unique%20Vs.%20Regular%20DMS)
-* [Virtual Reality] (https://github.com/BuffaloLab/Projects/tree/master/Virtual%20Reality)
-* [T's & L's] (https://github.com/BuffaloLab/Projects/tree/master/T%27s%20&%20L%27s)
+* [Trial-Unique Vs. Regular DMS](https://github.com/BuffaloLab/Projects/tree/master/Trial-Unique%20Vs.%20Regular%20DMS)
+* [Virtual Reality](https://github.com/BuffaloLab/Projects/tree/master/Virtual%20Reality)
+* [T's & L's](https://github.com/BuffaloLab/Projects/tree/master/T%27s%20&%20L%27s)
 
 ### Maturity / Developed Projects (But still in process because nothing is ever really complete)
 
