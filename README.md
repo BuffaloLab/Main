@@ -1,4 +1,4 @@
-## Tasks [[Files](https://github.com/BuffaloLab/BehavioralTasks)]
+## Tasks [[Files](https://github.com/BuffaloLab/Main/tree/master/Behavioral Tasks)]
 ### First: Training a New Animal
 When we have a brand new monkey, it must be trained to know the basics before it can really do any of our main experimental tasks.  Mainly, the monkey must realize that the touchbar is an important and meaningful tool for it.  It can receive reward by holding and releasing the touchbar when appropriate.
 
@@ -19,8 +19,8 @@ We train the monkey in the basics of daily work in our lab by teaching it Bar, C
 ## General Tools and Methods [[Files](https://github.com/BuffaloLab/Main/tree/master/General Tools)]
 
 ### Essential Tools 
-* [get_ALLdata](https://github.com/BuffaloLab/Main/tree/master/General-Tools/Useful%20Functions/get_data) - This function extracts EOG and EPP data from the CORTEX data file.
-* [Blackrock Matlab](https://github.com/BuffaloLab/Main/tree/master/General-Tools/Blackrock Matlab) - Files for pulling raw Blackrock data into MATLAB
+* [get_ALLdata](https://github.com/BuffaloLab/Main/tree/master/General Tools/Useful Functions/get_data) - This function extracts EOG and EPP data from the CORTEX data file.
+* [Blackrock Matlab](https://github.com/BuffaloLab/Main/tree/master/General Tools/Blackrock Matlab) - Files for pulling raw Blackrock data into MATLAB
 
 ### Other Tools
 
@@ -29,11 +29,11 @@ We train the monkey in the basics of daily work in our lab by teaching it Bar, C
 
 ## Projects [[Files](https://github.com/BuffaloLab/Main/tree/master/Projects)]
 ### Infancy / New Projects
-* [Salience / Viewing Behavior](https://github.com/BuffaloLab/Main/tree/master/Projects/Salience%20and%20Viewing%20Behavior)
-* [Looking Time Heatmaps and Statistics](https://github.com/BuffaloLab/Main/tree/master/Projects/Looking%20Time%20Heatmaps%20and%20Statistics)
-* [Trial-Unique Vs. Regular DMS](https://github.com/BuffaloLab/Main/tree/master/Projects/Trial-Unique%20Vs.%20Regular%20DMS)
-* [Virtual Reality](https://github.com/BuffaloLab/Main/tree/master/Projects/Virtual%20Reality)
-* [T's & L's](https://github.com/BuffaloLab/Main/tree/master/Projects/T%27s%20&%20L%27s)
+* [Salience / Viewing Behavior](https://github.com/BuffaloLab/Main/tree/master/Projects/Salience and Viewing Behavior)
+* [Looking Time Heatmaps and Statistics](https://github.com/BuffaloLab/Main/tree/master/Projects/Looking Time Heatmaps and Statistics)
+* [Trial-Unique Vs. Regular DMS](https://github.com/BuffaloLab/Main/tree/master/Projects/Trial-Unique Vs. Regular DMS)
+* [Virtual Reality](https://github.com/BuffaloLab/Main/tree/master/Projects/Virtual Reality)
+* [T's & L's](https://github.com/BuffaloLab/Main/tree/master/Projects/T's & L's)
 
 ### Maturity / Developed Projects (But still in process because nothing is ever really complete)
 
