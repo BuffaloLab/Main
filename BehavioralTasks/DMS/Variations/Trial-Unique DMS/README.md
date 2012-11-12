@@ -1,5 +1,0 @@
-### Stimuli [[BMP Stimuli](http://research.yerkes.emory.edu/Buffalo/Repository/Stimuli/Trial-Unique%20DMS%20BMP%20sets.zip)]
-### Create More Sets
-Images can be gathered using the script [getflickr.m](https://github.com/BuffaloLab/General-Tools/blob/master/Various%20Scripts/getflickr.m), which pulls in images from flickr.  Afterwards, the function [MakeDMSUTrials](https://github.com/BuffaloLab/Functions/blob/master/makeDMSUTrials.m) can be used to transform the images into proper sizes and sets, and create a corresponding .ITM file. 
-### Analysis
-There is currently only one analysis script that can be used for this task.  You can find it and related info on the [Trial-Unique vs. Regular DMS project page](https://github.com/BuffaloLab/Projects/blob/master/Trial-Unique%20Vs.%20Regular%20DMS/README.md).  It would have to be altered if the user did not wish to compare data from this task to regular DMS. The analysis scripts for regular DMS are not going to be compatible with this version of the task, without significant alteration of the sort done in the comparison script linked above. 

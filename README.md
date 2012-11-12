@@ -4,9 +4,9 @@ When we have a brand new monkey, it must be trained to know the basics before it
 
 We train the monkey in the basics of daily work in our lab by teaching it Bar, ClrChng, and DMS (the three tasks enumerated below), in that order.  Click on each task to learn more about it, get the necessary files, training instructions, and analysis scripts.
 
-1. [Bar](https://github.com/BuffaloLab/Main/tree/master/BehavioralTasks/Bar) - This task teaches the animal to simply touch, hold, and release the bar for reward.
-2. [ClrChng](https://github.com/BuffaloLab/Main/tree/master/BehavioralTasks/ClrChng) - The animal is asked to hold the touchbar for a small gray square to appear and then release whenever the square turns yellow.  A simple task that is later used for eyetracking calibration when the animal is headposted.  
-3. [Delayed Match-to-Sample (DMS)](https://github.com/BuffaloLab/Main/tree/master/BehavioralTasks/DMS) - For this task, the monkey must remember a stimulus until it is presented again after several distractor images.
+1. [Bar](https://github.com/BuffaloLab/Main/tree/master/Behavioral Tasks/Bar) - This task teaches the animal to simply touch, hold, and release the bar for reward.
+2. [ClrChng](https://github.com/BuffaloLab/Main/tree/master/Behavioral Tasks/ClrChng) - The animal is asked to hold the touchbar for a small gray square to appear and then release whenever the square turns yellow.  A simple task that is later used for eyetracking calibration when the animal is headposted.  
+3. [Delayed Match-to-Sample (DMS)](https://github.com/BuffaloLab/Main/tree/master/Behavioral Tasks/DMS) - For this task, the monkey must remember a stimulus until it is presented again after several distractor images.
 
 ### Advanced Behavioral Tasks
 
@@ -16,7 +16,7 @@ We train the monkey in the basics of daily work in our lab by teaching it Bar, C
 * Scene Manipulation (SCM)
 * Orientation Task
 
-## General Tools and Methods [[Files](https://github.com/BuffaloLab/Main/tree/master/General-Tools)]
+## General Tools and Methods [[Files](https://github.com/BuffaloLab/Main/tree/master/General Tools)]
 
 ### Essential Tools 
 * [get_ALLdata](https://github.com/BuffaloLab/Main/tree/master/General-Tools/Useful%20Functions/get_data) - This function extracts EOG and EPP data from the CORTEX data file.
@@ -25,7 +25,7 @@ We train the monkey in the basics of daily work in our lab by teaching it Bar, C
 ### Other Tools
 
 ### Methods
-* [Saccade Detection](https://github.com/BuffaloLab/Main/wiki/Saccade-Detection)
+* [Saccade Detection](https://github.com/BuffaloLab/Main/General Tools/Methods/Saccade-Detection)
 
 ## Projects [[Files](https://github.com/BuffaloLab/Main/tree/master/Projects)]
 ### Infancy / New Projects

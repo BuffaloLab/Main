@@ -1,0 +1,44 @@
+#include <css_inc.h>
+
+
+#define ititim                         1000                 
+#define waibar                       100000
+
+main() {
+
+  clear_eog();
+
+  iti:  {
+    set_timer(ititim);
+    while (timer_expired() == 0);    
+    goto wait_bar;
+  }
+
+
+  wait_bar: {
+    int   i;
+    int   n;
+    set_timer(waibar);
+    while(timer_expired() == 0){
+    if(get_bar_state() == 1) {
+      Mprintf(2,"Bar = 1");
+      Mprintf(3,"BAR: Down"); 
+	Gon_off(TEST0, ON);
+	Gflush(1);
+      response_correct(0);
+      n=3;
+      for (i=0;i<n;i++){
+	reward();
+	set_timer(200);
+	while(timer_expired() == 0);
+      }
+	Gon_off(TEST0, OFF);
+	Gflush(1);
+
+    end_trial();
+  }
+  }
+  }
+  return;
+}
+
