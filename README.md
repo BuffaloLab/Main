@@ -28,16 +28,16 @@ We train the monkey in the basics of daily work in our lab by teaching it Bar, C
 * [Saccade Detection](https://github.com/BuffaloLab/Main/tree/master/General Tools/Methods/Saccade-Detection.md)
 
 ## Projects [[Files](https://github.com/BuffaloLab/Main/tree/master/Projects)]
-### Infancy / New Projects
+### Infancy
 * [Salience / Viewing Behavior](https://github.com/BuffaloLab/Main/tree/master/Projects/Salience and Viewing Behavior)
 * [Looking Time Heatmaps and Statistics](https://github.com/BuffaloLab/Main/tree/master/Projects/Looking Time Heatmaps and Statistics)
 * [Trial-Unique Vs. Regular DMS](https://github.com/BuffaloLab/Main/tree/master/Projects/Trial-Unique Vs. Regular DMS)
 * [Virtual Reality](https://github.com/BuffaloLab/Main/tree/master/Projects/Virtual Reality)
 * [T's & L's](https://github.com/BuffaloLab/Main/tree/master/Projects/T's & L's)
 
-### Maturity / Developed Projects (But still in process because nothing is ever really complete)
+### Maturity
 
-### Dead / Abandoned / Failed Projects
+### Death
 * Ranganath Task
 * GazeCue
 
