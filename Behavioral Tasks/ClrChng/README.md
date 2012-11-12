@@ -1,7 +1,7 @@
 ##ClrChng
 This task requires the animal to hold the bar for a little gray square to appear.  It must continue to hold the bar until the gray square turns yellow, at which point it must release the bar to get a reward.  This task is used to do eyetracking calibration once the animal is headposted, but it is also a very simple task that all animals learn in early training.
 
-### Training [[Files](Training/)]
+### Training [[Files](/BuffaloLab/Main/ClrChng/Training/)]
 Check the README in the training files for detailed instructions on training the animal.
 
 ### Final Task [[Files](Final Task)]
