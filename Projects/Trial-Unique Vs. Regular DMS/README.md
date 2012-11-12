@@ -23,7 +23,7 @@ Performance broken down by number of distractors:
 Performance over time (days):
 ![](XTime-Days.jpg)
 Peroformance over time (days) broken down by number of distractors:
-![](XDistractorsXTimeDays.jpg)
+[](XDistractorsXTimeDays.jpg)
 
 ### Future Development
 * Increase the delay times.
