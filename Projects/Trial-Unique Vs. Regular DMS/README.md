@@ -17,13 +17,13 @@ The monkeys without a hippocampal lesion (Peepers, Giuseppe, Wilbur) all had a s
 Download the data and run the analysis script for more details and figures.  Here are how some of the main ones should look.
 
 Total Performance:
-![](https://github.com/downloads/BuffaloLab/Projects/Total.jpg)
+![](Total.jpg)
 Performance broken down by number of distractors:
-![](https://github.com/downloads/BuffaloLab/Projects/XNumDistractors.jpg)
+![](XNumDistractors.jpg)
 Performance over time (days):
-![](https://github.com/downloads/BuffaloLab/Projects/XTime-Days.jpg)
+![](XTime-Days.jpg)
 Peroformance over time (days) broken down by number of distractors:
-![](https://github.com/downloads/BuffaloLab/Projects/XDistractorsXTimeDays.jpg)
+![](XDistractorsXTimeDays.jpg)
 
 ### Future Development
 * Increase the delay times.
