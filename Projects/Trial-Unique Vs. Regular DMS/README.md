@@ -21,6 +21,9 @@ Total Performance:
 Performance broken down by number of distractors:
 ![](XNumDistractors.jpg)
 Performance over time (days):
+![another test][logo]
+
+[logo]: ./XNumDistractors.jpg "Logo Title Text 2"
 ![](XTime-Days.jpg)
 Peroformance over time (days) broken down by number of distractors:
 [test](XDistractorsXTimeDays.jpg)
