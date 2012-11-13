@@ -19,7 +19,7 @@ Download the data and run the analysis script for more details and figures.  Her
 Total Performance:
 [this](Total.png)
 Performance broken down by number of distractors:
-![](XNumDistractors.jpg)
+![x](https://github.com/BuffaloLab/Main/blob/master/Projects/Trial-Unique%20Vs.%20Regular%20DMS/XNumDistractors.jpg?raw=true)
 Performance over time (days):
 ![another test][logo]
 
