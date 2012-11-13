@@ -18,19 +18,8 @@ Download the data and run the analysis script for more details and figures.  Her
 
 * ![Total Performance](Total.jpg)
 * ![Performance broken down by number of distractors](XNumDistractors.jpg)
-![x](XNumDistractors.jpg?raw=true)
-Performance over time (days):
-![another test][logo]
-
-[logo]: ./XNumDistractors.jpg "Logo Title Text 2"
-
-
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
-
-
-![](XTime-Days.jpg)
-Peroformance over time (days) broken down by number of distractors:
-[test](XDistractorsXTimeDays.jpg)
+* ![Performance over time (days)](XTime-Days.jpg)
+* ![Peroformance over time (days) broken down by number of distractors](XDistractorsXTimeDays.jpg)
 
 ### Future Development
 * Increase the delay times.
