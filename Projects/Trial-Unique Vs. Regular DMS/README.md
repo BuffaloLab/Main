@@ -25,7 +25,9 @@ Performance over time (days):
 
 [logo]: ./XNumDistractors.jpg "Logo Title Text 2"
 
-![and another](./XNumDistractors.jpg)
+
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
 
 ![](XTime-Days.jpg)
 Peroformance over time (days) broken down by number of distractors:
