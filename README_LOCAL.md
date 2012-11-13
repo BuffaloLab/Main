@@ -12,7 +12,7 @@ We train the monkey in the basics of daily work in our lab by teaching it Bar, C
 
 * Visual Preferential Looking Task (VPLT)
 * Visual Paired Comparison(VPC)
-* T's and L's
+* [T's and L's](./Projects/T's & L's)
 * Scene Manipulation (SCM)
 * Orientation Task
 
