@@ -6,7 +6,7 @@ As they are, the files give you the very first training step, with these initial
 
 Once the animal has mastered these settings, change each variable gradually, waiting with each change for the animal has mastered it, until finally the monkey can successfully do these final settings:
 * ITI = 1000ms
-* Grey = 500-150ms
+* Grey = 500-1500ms
 * Yellow / Response Time = 500ms
 * Square = .3 height and width
 

@@ -1,0 +1,9 @@
+Don't run from the S Drive or save anything to the S drive
+	-it is too slow
+1. edit the cortex timing files with the lines of code given in saveMovieTriggered.m
+2. edit the save location, monkey name, and arduino com port if you have unplugged/replugged the arduino for any reason (find the com port in device manager)
+3. run saveMovieTriggered.m from the C drive
+4. if saving .mat files, run the code at the end to convert the .mat files to .wmv files
+
+
+see the saveMovieTriggered.m comments for instructions to setup on a new computer 
