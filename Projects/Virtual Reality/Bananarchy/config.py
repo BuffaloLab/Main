@@ -30,7 +30,8 @@ movementType = 'walking' # car | walking
 
 # Instructions.
 instructSize    = 0.075
-instructFont    = '/usr/share/fonts/truetype/freefont/FreeSans.ttf';
+#instructFont    = '/usr/share/fonts/truetype/freefont/FreeSans.ttf';  #Linux
+instructFont    = '/c/Windows/Fonts/times.ttf';                      # Windows
 instructBgColor = Point4(0, 0, 0, 1)
 instructFgColor = Point4(1, 1, 1, 1)
 instructMargin  = 0.06
@@ -43,7 +44,7 @@ instructSeeAll  = False
 # Bananas.
 bananaDir  = './models/bananas/'
 bananaZ    = 1
-bananaScale = 1
+bananaScale = .5
 bananaLocs = []
 numBananas = 100
 for i in range(0, numBananas):
@@ -67,7 +68,7 @@ skyScale      = 1.6
 scorePos   = Point3(0.83,0,1)
 scoreSize  = 0.1
 scoreColor = Point4(1,0,0,1)
-scoreDecrementInterval = 750 # in ms
+scoreDecrementInterval = 150 # in ms
 
 assignmentPos   = Point3(-1,0,1)
 assignmentSize  = 0.1
