@@ -23,6 +23,7 @@ We train the monkey in the basics of daily work in our lab by teaching it Bar, C
 * [Blackrock Matlab](https://github.com/BuffaloLab/Main/tree/master/General Tools/Blackrock Matlab) - Files for pulling raw Blackrock data into MATLAB
 
 ### Other Tools
+* [Generating CORTEX ITM and CND files](https://github.com/BuffaloLab/Main/tree/master/General Tools/Useful Functions/Making Cortex Files) - These functions automatically generate ITM and CND files upon being fed arrays of values each column of settings.
 
 ### Methods
 * [Saccade Detection](https://github.com/BuffaloLab/Main/tree/master/General Tools/Methods/Saccade-Detection.md)
