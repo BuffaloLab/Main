@@ -7,8 +7,8 @@ cndFile = 's:\kiril\eyecal\cchFS.cnd';
 
 % Units here are degrees of visual angle
 spacing = 3;
-gridWidth = 33;  % Full Screen = 33
-gridHeight = 24; % Full screen = 24
+gridWidth = 33;  % Full Screen = ~33
+gridHeight = 24; % Full screen = ~24
 
 gridX = zeros((gridHeight / spacing) + 1, (gridWidth / spacing) + 1);
 gridY = zeros((gridHeight / spacing) + 1, (gridWidth / spacing) + 1);
