@@ -2,24 +2,23 @@
 % 12/19/2012
 clear all; close all; pack all; clc;
 
-itemFile = 's:\kiril\eyecal\cchFS.itm';
-cndFile = 's:\kiril\eyecal\cchFS.cnd';
+itemFile = 's:\kiril\eyecal\cchMiriam.itm';
+cndFile = 's:\kiril\eyecal\cchMiriam.cnd';
 
 % Units here are degrees of visual angle
-spacingWidth = 3;
-spacingHeight = 3;
-gridWidth = 33;  % Full Screen = 33
-gridHeight = 24; % Full screen = 24
+spacing = 2.5;
+gridWidth = 40;  % Full Screen = ~33
+gridHeight = 15; % Full screen = ~24
 
-gridX = zeros((gridHeight / spacingHeight) + 1, (gridWidth / spacingWidth) + 1);
-gridY = zeros((gridHeight / spacingHeight) + 1, (gridWidth / spacingWidth) + 1);
+gridX = zeros((gridHeight / spacing) + 1, (gridWidth / spacing) + 1);
+gridY = zeros((gridHeight / spacing) + 1, (gridWidth / spacing) + 1);
 
 for i = 1:size(gridX, 2)
-    gridX(:, i) = (gridWidth / 2) - (spacingWidth * (i - 1));
+    gridX(:, i) = (gridWidth / 2) - (spacing * (i - 1));
 end
 
 for i = 1:size(gridY, 1)
-    gridY(i, :) = (gridHeight / 2) - (spacingHeight * (i - 1));
+    gridY(i, :) = (gridHeight / 2) - (spacing * (i - 1));
 end
 
 % Make ITM file
@@ -70,7 +69,7 @@ end
 
 writeITM(itemFile, item, type, height, width, angle, inner, outer, bitpan, filled, centerx, centery, int1, R, G, B, C, A, filename)
 
-stimLocs = readITM(itemFile);
+stimLocs = readCCHitm(itemFile);
 stimX = stimLocs(:, 1);
 stimY = stimLocs(:, 2);
 
