@@ -53,6 +53,7 @@
 #7) Training steps < 4.0 are broken now due to the collision rays.  Line 485 is where the problem
 #   happens here.  Probably there is more to it.
 #8) Training 3.1 fixed.
+#9) Added system beep bell character as non-nidaq alternative reward.
 #============================================================================================================
 #
 #Training Steps? 
