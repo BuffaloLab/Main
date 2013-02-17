@@ -410,6 +410,7 @@ class bananarchy:
                 nidaq.DAQmxStopTask( self.taskHandle )
             else:
                 print('Beep: ' + str(self.beeps + 1))
+                print('\a')
             self.beeps = self.beeps + 1
             if self.beeps == 6:
                 self.deliveredInitReward = 1
