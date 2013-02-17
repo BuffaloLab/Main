@@ -27,7 +27,6 @@
 #---  Setup to use the rays as much as possible and maybe avoid having to do the whole clunky trig
 #     calculations for the training steps < 4.0
 #---  Make a GUI!
-#---  Print a bell character to get a computer beep on non-nidaq reward instead of printing the string "beep"
 #
 #============================================================================================================
 #Version 0.3.2 Changelog
