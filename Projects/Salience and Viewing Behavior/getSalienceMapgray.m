@@ -1,12 +1,12 @@
-function getSalienceMap(imagefile)
-%Final version of salience map creator. Updated 9/27/12
+function getSalienceMapgray(imagefile)
+%Final version of salience map creator for gray scale images. Updated 9/27/12
 
 %Written by Seth Koenig 6/1/12; Questions, comments, or known bugs email
 %skoenig@gatech.edu. Based on "Visual Attention for Rapid Scene
 %Analysis" by Itti, Koch, and Niebur. 1998(20):11. Their toolbox is available
 %@ http://www.saliencytoolbox.net/doc/mdoc/mfiles/makeSaliencyMap.html.
 
-%Input: image file
+%Input: gray scale image file
 
 %Output: Save file with saliency map normalized with values ranging from 0
 %to 1, where 1 is the maximum salience. Variables 'fullmap' and 'SALIENCEMAP'
@@ -70,51 +70,6 @@ for pyramids = 1:length(filtimg)
     globalI = 256*globalI/max(max(globalI));
     globalI = globalI*(256-mean(mean(globalI)))^2;
     
-    %---------Hue Layers and Color Contrast---------%
-    Inorm = filtimg {pyramids}/max(max(filtimg {pyramids})); %normalize who's to intensity
-    Inorm(Inorm<0.1) = 1;
-    rgb = rgbfimg{pyramids};
-    r = double(rgb(:,:,1)); g = double(rgb(:,:,2)); b = double(rgb(:,:,3));
-    
-    R = (r - (g+b)/2)./Inorm;
-    G = (g - (r+b)/2)./Inorm;
-    B = (b - (r+g)/2)./Inorm;
-    Y = ((r+g)/2 - abs((r-g))/2  - b)./Inorm;
-    
-    %---------Red/Green and Blue/Yellow contrast---------
-    RGBY = {};
-    for i = 1:2
-        if i == 1;
-            layer = R-G;
-        else
-            layer = B-Y;
-        end
-        for ii = 1:length(map);
-            temp =imfilter(layer,map{i},'replicate');
-            for blah = 1:pyramids-1;
-                temp = impyramid(temp,'expand');
-            end
-            RGBY{i}{ii} = imresize(temp,[size(intensity,1) size(intensity,2)]);
-        end
-    end
-    
-    globalclr = zeros(size(RGBY{i}{1},1),size(RGBY{i}{1},2));
-    titles = [{'Red Green Contrast'} {'Blue Yellow Contrast'}];
-    for i = 1:2;
-        cont = zeros(size(RGBY{i}{1},1),size(RGBY{i}{1},2));
-        for ii = 1:length(RGBY{i});
-            clr = RGBY{i}{ii};
-            clr = clr-min(min(clr));
-            clr = 256/max(max(clr))*clr;
-            clr = clr*(256-mean(mean(clr)))^2;
-            cont = cont+clr;
-        end
-    end
-    globalclr = globalclr + cont;
-    globalclr = globalclr - min(min(globalclr));
-    globalclr = 256/max(max(globalclr))*globalclr;
-    globalclr = globalclr*(256-mean(mean(globalclr)))^2;
-    
     %---------orientation Contrast---------%
     c = 2:4;
     delta = 3:4;
@@ -166,9 +121,8 @@ for pyramids = 1:length(filtimg)
     globalO = globalO*(256-mean(mean(globalO)))^2;
     
     %---------Salience Map---------%
-    % SALIENCEMAP{pyramids} = 1/3*(globalI + globalclr + globalO);
     SALIENCEMAP{pyramids,1} = globalI;
-    SALIENCEMAP{pyramids,2} = globalclr;
+    SALIENCEMAP{pyramids,2} = zeros(size(globalI));
     SALIENCEMAP{pyramids,3} = globalO;
 end
 
@@ -192,21 +146,10 @@ fullmap = fullmap/max(max(fullmap));
 fullmap = fullmap*(1-mean(mean(fullmap)))^2;
 fullmap = fullmap/max(max(fullmap));
 
-invfullmap = Imap+(1-Cmap)+Omap;
-invfullmap = invfullmap - min(min(invfullmap));
-invfullmap = invfullmap/max(max(invfullmap));
-invfullmap = invfullmap*(1-mean(mean(invfullmap)))^2;
-invfullmap = invfullmap/max(max(invfullmap));
-
 Imap = Imap - min(min(Imap));
 Imap = Imap/max(max(Imap));
 Imap = Imap*(1-mean(mean(Imap)))^2;
 Imap = Imap/max(max(Imap));
-
-Cmap = Cmap - min(min(Cmap));
-Cmap = Cmap/max(max(Cmap));
-Cmap = Cmap*(1-mean(mean(Cmap)))^2;
-Cmap = Cmap/max(max(Cmap));
 
 Omap = Omap - min(min(Omap));
 Omap = Omap/max(max(Omap));
@@ -219,7 +162,6 @@ Omap = Omap/max(max(Omap));
 % saveas(gcf,[imagefile(1:end-4) '-saliencemap'], 'jpg') %saves output image
 % close
 %---Save Saliency Map and Layers---%
-period = strfind(imagefile,'.');
-savefile = [imagefile(1:period-1) '-saliencemap'];
-save([savefile],'fullmap','invfullmap','Imap','Cmap','Omap')
+savefile = [imagefile(1:end-4) '-saliencemap'];
+save([savefile],'fullmap','Imap','Cmap','Omap')
 end
