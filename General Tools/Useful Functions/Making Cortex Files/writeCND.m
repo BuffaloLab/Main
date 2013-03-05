@@ -5,9 +5,9 @@
 % for longer paths.  I haven't used this field yet for anything so I
 % haven't really tested it. 
 
-function [] = writeCND(cndFile, cond, test0, test1, test2, test3, test4, test5, test6, test7, test8, test9, bckgnd, timing, trial_type, fix_id, color_palette)  
+function [] = writeCND(cndFile, cond, test0, test1, test2, test3, test4, test5, test6, test7, test8, test9, test10, test11, bckgnd, timing, trial_type, fix_id, color_palette)  
     fid = fopen(cndFile, 'wt');
-    headers = 'COND# TEST0 TEST1 TEST2 TEST3 TEST4 TEST5 TEST6 TEST7 TEST8 TEST9 BCKGND TIMING TRIAL_TYPE FIX_ID ---COLOR-PALETTE---';
+    headers = 'COND# TEST0 TEST1 TEST2 TEST3 TEST4 TEST5 TEST6 TEST7 TEST8 TEST9 TEST10 TEST11 BCKGND TIMING TRIAL_TYPE FIX_ID ---COLOR-PALETTE---';
     fprintf(fid, '%s', headers);
 
     for i = 1:length(cond)
@@ -42,6 +42,12 @@ function [] = writeCND(cndFile, cond, test0, test1, test2, test3, test4, test5, 
         if isempty(test9) || isnan(test9(i))
             fprintf(fid, '%6s', '');
         else fprintf(fid, '%6.0f', test9(i)); end
+        if isempty(test10) || isnan(test10(i))
+            fprintf(fid, '%7s', '');
+        else fprintf(fid, '%7.0f', test10(i)); end
+        if isempty(test11) || isnan(test11(i))
+            fprintf(fid, '%7s', '');
+        else fprintf(fid, '%7.0f', test11(i)); end
         if isempty(bckgnd) || isnan(bckgnd(i))
             fprintf(fid, '%7s', '');
         else fprintf(fid, '%7.0f', bckgnd(i)); end

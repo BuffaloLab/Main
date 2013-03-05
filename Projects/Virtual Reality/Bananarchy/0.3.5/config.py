@@ -122,7 +122,7 @@
 
 training = 5.1
 
-nidaq = 0
+nidaq = 1
 
 
 from random import uniform
@@ -136,7 +136,7 @@ FOV = 60
 # Movement.
 linearAcceleration  = 30
 if int(training) >= 3:
-        fullForwardSpeed = 4
+        fullForwardSpeed = 2.2
 else:
         fullForwardSpeed    = 0
 fullBackwardSpeed   = 0 
@@ -144,7 +144,7 @@ turningAcceleration = 50
 if training == 3.1:
         fullTurningSpeed = 0
 elif training >= 2:
-        fullTurningSpeed    = 27
+        fullTurningSpeed    = 32.6
 else:
         fullTurningSpeed = 200
 turningLinearSpeed  = 2 # Factor
@@ -163,8 +163,8 @@ movementType = 'walking' # car | walking
 # Instructions.
 instructSize    = 0.3
 #instructFont    = '/usr/share/fonts/truetype/freefont/FreeSans.ttf';  #Linux
-#instructFont    = '/c/Windows/Fonts/times.ttf';                      # Windows 7
-instructFont    = '/c/WINDOWS/Fonts/times.ttf';                 #Windows XP
+instructFont    = '/c/Windows/Fonts/times.ttf';                      # Windows 7
+#instructFont    = '/c/WINDOWS/Fonts/times.ttf';                 #Windows XP
 instructBgColor = Point4(0, 0, 0, 1)
 instructFgColor = Point4(1, 1, 1, 1)
 instructMargin  = 0.06
@@ -175,7 +175,7 @@ instructSeeAll  = False
 ################################
 
 # Crosshair
-xHairAlpha = .5
+xHairAlpha = 0
 
 # Bananas.
 bananaDir  = './models/bananas/'
@@ -183,12 +183,14 @@ bananaZ    = 1
 bananaScale = .5
 bananaRotation = 1 # Rotation speed in degrees/frame.
 bananaLocs = []
-numBananas = 10
+numBananas = 2
 
-minDistance = -5
-maxDistance = 5
-minFwDistance = -5
-maxFwDistance = 5
+########## Position ################
+
+minDistance = -1.5
+maxDistance = 1.5
+minFwDistance = 3
+maxFwDistance = 7
 fwDistanceIncrement = .1
 
 for i in range(0, numBananas):
@@ -202,8 +204,8 @@ if (training > 0) and (training < 5):
 	bananaLocs[0] = [initialPos[0] - distance, initialPos[1] + 2, 90]
 
 
-targetRayWindow = .4
-fovRayVecX = 45
+targetRayWindow = .65
+fovRayVecX = 30
 
 # Target header window, to the left and right
 if (training > 2) & (training < 2.5):
@@ -223,12 +225,12 @@ treeLoc       = Point3(15, 18, 0)
 treeScale     = .0175
 
 # Some reward pump parameters.
-alignmentReward = 1 # Reward for initial alignment? Yes(1) or No(0)
+alignmentReward = 0 # Reward for initial alignment? Yes(1) or No(0)
 pulseInterval = 200 # in ms
 if int(training) == 2:
         numBeeps = 40 # Number of pulses/beeps in typical reward sequence
 else:
-        numBeeps = 20
+        numBeeps = 5
 
 # (Non-default) command keys.
 keyboard = Keyboard.getInstance()

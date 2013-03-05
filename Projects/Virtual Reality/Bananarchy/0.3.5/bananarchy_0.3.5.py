@@ -16,7 +16,7 @@ import smtplib
 from pandaepl.MovingModel import MovingModel
 from pandac.PandaModules import *
 
-#nidaq = ctypes.windll.nicaiu
+nidaq = ctypes.windll.nicaiu
 
 class bananarchy:
 
@@ -196,7 +196,7 @@ class bananarchy:
 
             #Set some basic variables that control the reward pulses.
             self.Rate = 115
-            self.samps = 3
+            self.samps = 15
             self.data = numpy.zeros( ( self.samps, ), dtype=numpy.float64 )
 
             #Setup NI-DAQ task
@@ -205,7 +205,7 @@ class bananarchy:
             nidaq.DAQmxCreateAOVoltageChan( self.taskHandle,
                                                "Dev1/ao0",
                                                "",
-                                               self.float64(3.0),
+                                               self.float64(9.0),
                                                self.float64(10.0),
                                                self.DAQmx_Val_Volts,
                                                None)
@@ -469,19 +469,21 @@ class bananarchy:
         
         # ID of the banana the participant collided with.
         banana = collisionInfoList[0].getInto().getIdentifier()
+        self.collided = collisionInfoList[0].getInto()
 
         # Log collision.
         VLQ.getInstance().writeLine("YUMMY", [banana])
             
         # Upon touching banana, repel movement.  Banana disappears.
-        MovingObject.handleRepelCollision(collisionInfoList)
+        
 	
-        self.collided = collisionInfoList[0].getInto()
+        
 
         # Reward
 
 	#self.reward = 1
-        if (self.cross.getColor()[2] == 1) and (self.collided.retrNodePath().getName() == self.targetRayColQueue.getEntry(3).getIntoNodePath().getName()):
+        if (self.cross.getColor()[0] != 1) and (self.collided.retrNodePath().getName() == self.targetRayColQueue.getEntry(3).getIntoNodePath().getName()):
+            MovingObject.handleRepelCollision(collisionInfoList)
             if config['training'] < 3.1:
                 self.targetHeader = float('nan')
             Avatar.getInstance().setMaxTurningSpeed(0)
