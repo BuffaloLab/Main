@@ -63,6 +63,7 @@
 #6) Change crosshair transparency/alpha on the fly and in config file.
 #7) Added no beeps option!
 #8) Other little things probably.  Possible some past things are broken.
+#9) Fine-tuned pump output settings to pump more food per pulse, etc.
 #============================================================================================================
 #
 #Training Steps? 
