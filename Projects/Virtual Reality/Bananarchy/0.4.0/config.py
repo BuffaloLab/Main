@@ -197,7 +197,7 @@ FOV = 60
 # Movement.
 linearAcceleration  = 30
 if int(training) >= 3:
-        fullForwardSpeed = 2.2
+        fullForwardSpeed = 2.7
 else:
         fullForwardSpeed    = 0
 fullBackwardSpeed   = 0 
@@ -205,7 +205,7 @@ turningAcceleration = 50
 if training == 3.1:
         fullTurningSpeed = 0
 elif training >= 2:
-        fullTurningSpeed    = 32.6
+        fullTurningSpeed    = 35
 else:
         fullTurningSpeed = 200
 turningLinearSpeed  = 2 # Factor
@@ -247,14 +247,14 @@ bananaLocs = []
 numBananas = 10
 bananaReplenishment = 0 #Bananas replenish after eating
                         #this many bananas.
-lastBananaBonus = 1 #Double the reward for the last banana in trial.
+lastBananaBonus = 1 #Double the reward for the last banana in trial. 1=Yes; 0 = No.
 
 ########## Position ################
 
-minDistance = -10
-maxDistance = 10
-minFwDistance = -10
-maxFwDistance = 10
+minDistance = -5
+maxDistance = 5
+minFwDistance = -5
+maxFwDistance = 5
 fwDistanceIncrement = .1
 
 for i in range(0, numBananas):
@@ -294,7 +294,7 @@ pulseInterval = 200 # in ms
 if int(training) == 2:
         numBeeps = 40 # Number of pulses/beeps in typical reward sequence
 else:
-        numBeeps = 5
+        numBeeps = 6
 
 # (Non-default) command keys.
 keyboard = Keyboard.getInstance()
@@ -331,7 +331,7 @@ joystick.bind("toggleDebug", "joy_button0")
 initialFogScheme  = 0
 expFogColor       = Point3(0.4,0.4,0.4)
 expFogDensity     = 1
-eotEffect = 1 #Signify the End of Trial with fog effect?
+eotEffect = 1 #Signify the End of Trial with fog effect? 1= yes; 0=no.
 eotEffectSpeed = 17 #ms per 1/70th fog density change.
 
 # Email Info
@@ -342,17 +342,3 @@ emailPassword = 'MonkeyLabGiz'
 emailFrom = 'Giuseppe Buffalo <monkeyjn9@gmail.com>'
 emailTo = ['kstaikov@gmail.com', 'drewsolyst@gmail.com']
 subject = 'Giz Log'
-
-# Lighting.
-initialLightingScheme   = 0
-darkAmbientLightColor   = Point3(0.2,0.2,0.2)
-brightAmbientLightColor = Point3(0.8,0.8,0.8)
-directionalLightColor   = Point3(1,1,1)
-directionalLightOrient  = Point3(270,0,0)
-pointLightColor         = Point3(0.8,0.0,0.0)
-pointLightPos           = initialPos
-pointLightAttenuation   = Point3(0,0,0.01)
-spotlightColor          = Point3(0.8,0.0,0.0)
-spotlightPos            = initialPos
-spotlightFallof         = 0.01 
-spotlightHorzFov        = 50
