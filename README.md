@@ -24,6 +24,7 @@ We train the monkey in the basics of daily work in our lab by teaching it Bar, C
 
 ### Other Tools
 * [Generating CORTEX ITM and CND files](https://github.com/BuffaloLab/Main/tree/master/General Tools/Useful Functions/Making Cortex Files) - These functions automatically generate ITM and CND files upon being fed arrays of values each column of settings.
+* [Cluster Fixation Detector](https://github.com/BuffaloLab/Main/tree/master/General Tools/Useful Functions/ClusterFixationDetector) - Function, written by Seth, to detect fixations using k-means clustering.
 
 ### Methods
 * [Saccade Detection](https://github.com/BuffaloLab/Main/tree/master/General Tools/Methods/Saccade-Detection.md)
