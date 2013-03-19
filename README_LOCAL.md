@@ -46,4 +46,5 @@ We train the monkey in the basics of daily work in our lab by teaching it Bar, C
 ## Publications [[Files](./Publications)]
 Here we will link to wiki documentation for each paper's packaged code.
 
-## Other / Temp
+## Other / Temp [[Files](./Other)]
+* [The PRIMATE Primer](./Other/The PRIMATE Primer/) - A collection of viewing behavior statistics during free viewing of natural scenes.

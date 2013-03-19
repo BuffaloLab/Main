@@ -46,4 +46,5 @@ We train the monkey in the basics of daily work in our lab by teaching it Bar, C
 ## Publications [[Files](https://github.com/BuffaloLab/Main/tree/master/Publications)]
 Here we will link to wiki documentation for each paper's packaged code.
 
-## Other / Temp
+## Other / Temp [[Files](https://github.com/BuffaloLab/Main/tree/master/Other)]
+* [The PRIMATE Primer](https://github.com/BuffaloLab/Main/tree/master/Other/The PRIMATE Primer/) - A collection of viewing behavior statistics during free viewing of natural scenes.
