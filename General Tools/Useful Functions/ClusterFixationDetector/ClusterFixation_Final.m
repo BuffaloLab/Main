@@ -16,7 +16,7 @@ function [fixationstats] = ClusterFixation_Final(eyedat,samprate)
 %
 % INPUTS:
 %       eyedat: cell array aranged by trial containing [x;y] eye position.
-%       samprate: sampling rate in seconds of eyedat
+%       samprate: sampling rate in seconds of eyedat e.g. 1/(200 Hz)
 %
 % OUTPUTS:
 %       savefile containing extracted periods fixation and saccades...
@@ -280,7 +280,7 @@ end
         end
     end
 
-    function [behaviortime behaviormean] = BehavioralIndexXY(behavind,x,y)
+    function [behaviortime, behaviormean] = BehavioralIndexXY(behavind,x,y)
         %function is the same as above but also calculates mean fixation position
         dind = diff(behavind);
         gaps =find(dind > 1);
@@ -305,8 +305,8 @@ end
             rowfixind = behaveind(index,:);
             rowfixind(rowfixind == 0) = [];
             behaviortime(:,index) = [rowfixind(1);rowfixind(end)];
-            behaviormean(:,index) = [mean(x(rowfixind(1):rowfixind(end)));...
-                mean(y(rowfixind(1):rowfixind(end)))];
+            behaviormean(:,index) = [mean(x(rowfixind+200));...
+                mean(y(rowfixind+200))];
         end
     end
 

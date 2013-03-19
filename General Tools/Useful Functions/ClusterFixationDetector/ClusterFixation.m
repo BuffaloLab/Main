@@ -16,7 +16,7 @@ function [fixationstats] = ClusterFixation(datafile,samprate)
 %
 % INPUTS:
 %       DataFile: data file containing eye trace data e.g. MP120601.2.
-%       sampling rate in seconds of eyedat e.g. 0.005 secs (5 ms)
+%       samprate: sampling rate in seconds of eyedat e.g. 1/(200 Hz)
 %
 % OUTPUTS:
 %       savefile containing extracted periods fixation and saccades...
@@ -202,7 +202,7 @@ for cndlop = 1:length(eyedat)
     saccadeindexes = 1:size(points,1);
     [~ , ~, ib] = intersect(fixationindexes,saccadeindexes);
     saccadeindexes(ib) = [];
-    [saccadetimes, saccades] = BehavioralIndexXY(saccadeindexes,x,y);
+    [saccadetimes, ~] = BehavioralIndexXY(saccadeindexes,x,y);
     
     %---Return indexes to previous sampling rate & Calculate mean fixation position---%
     fixationtimes = fixationtimes + 200;
@@ -282,7 +282,7 @@ end
         end
     end
 
-    function [behaviortime behaviormean] = BehavioralIndexXY(behavind,x,y)
+    function [behaviortime, behaviormean] = BehavioralIndexXY(behavind,x,y)
         %function is the same as above but also calculates mean fixation position
         dind = diff(behavind);
         gaps =find(dind > 1);
@@ -307,8 +307,8 @@ end
             rowfixind = behaveind(index,:);
             rowfixind(rowfixind == 0) = [];
             behaviortime(:,index) = [rowfixind(1);rowfixind(end)];
-            behaviormean(:,index) = [mean(x(rowfixind(1):rowfixind(end)));...
-                mean(y(rowfixind(1):rowfixind(end)))];
+            behaviormean(:,index) = [mean(x(rowfixind+200));...
+                mean(y(rowfixind+200))];
         end
     end
 
