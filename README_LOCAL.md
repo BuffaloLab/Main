@@ -36,6 +36,7 @@ We train the monkey in the basics of daily work in our lab by teaching it Bar, C
 * [Trial-Unique Vs. Regular DMS](./Projects/Trial-Unique Vs. Regular DMS)
 * [Virtual Reality](./Projects/Virtual Reality)
 * [T's & L's](./Projects/T's & L's)
+* [Movies](./Projects/Movies)
 
 ### Maturity
 
