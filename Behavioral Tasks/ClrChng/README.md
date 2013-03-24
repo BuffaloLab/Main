@@ -9,7 +9,8 @@ There are three variations of the final task:
 
 * [ClrChng](Final Task/ClrChng) - In this version, the square appears at a random different location on the screen every trial.
 * [ClrCalTL](Final Task/ClrCalTL) - Allows you to use the numerical keypad to control the location of where the next stimulus will appear on the screen.  This is very useful for calibrating a headposted monkey's eyetracking, and is used daily for that purpose.
-* [ClrCal](Final Task/ClrCal) - the same as ClrCalTL, but the stimuli don't go out as far.  We only use this on Cortex Computer #2 for calibrating because it has some issues with the regular ClrCalTL.
+* [ClrCal](Final Task/ClrCal) - The same as ClrCalTL, but the stimuli don't go out as far.  We only use this on Cortex Computer #2 for calibrating because it has some issues with the regular ClrCalTL.
+* [CChGrid](Final Task/CChGrid) - Different from ClrChng in that it a) requires fixation on the stimuli and b) displays stimuli in a grid formation based on whatever specifications you desire.  This is a useful task for post-hoc eye-trace callibration and analysis.
 
 ### Analysis [[Files](Analysis)]
 The following are analysis scripts run on raw behavioral data from ClrChng:
