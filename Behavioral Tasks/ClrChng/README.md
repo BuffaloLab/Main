@@ -5,7 +5,7 @@ This task requires the animal to hold the bar for a little gray square to appear
 Check the README in the training files for detailed instructions on training the animal.
 
 ### Final Task [[Files](Final Task)]
-There are three variations of the final task:
+There are several variations of the final task:
 
 * [ClrChng](Final Task/ClrChng) - In this version, the square appears at a random different location on the screen every trial.
 * [ClrCalTL](Final Task/ClrCalTL) - Allows you to use the numerical keypad to control the location of where the next stimulus will appear on the screen.  This is very useful for calibrating a headposted monkey's eyetracking, and is used daily for that purpose.
