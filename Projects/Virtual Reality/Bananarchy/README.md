@@ -1,6 +1,7 @@
 ## BANANARCHY
 ### Training Steps
 Change the 'training' variable at the top of the config file to set the task to any one of the following training steps:
+
 0 = Final Task [BROKEN].
 
 1.x = Left-Right Training.  No background.  Crosshairs in center of screen, and banana appears on left or right of crosshairs.  Subject has to push joystick to right or left to align the crosshairs with the banana.  Once the crosshairs hit the banana, the position is locked in place until all the reward is dispensed.  Then the tasks restarts with the banana in a new random location.
