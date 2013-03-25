@@ -55,22 +55,6 @@ Make code prettier:
 * Make if statements more readable by by starting new line after each conditional
 * Write method to initialize / import all config variables.
 
-Structural additions and improvements:
-* Set emails to send out one message (constructed throughout a trial) only between trials.
-* Add other 3D objects/models to the environment.
-* A separate nidaq class should be made, akin to the EEG class.
-* Get a higher quality banana
-* Setup to use the rays as much as possible and maybe avoid having to do the whole clunky trig calculations for the training steps < 4.0
-* Make a GUI!
-* OS detection for font directory.
-* Real stereo 3D.
-* Eyetracker and sync-pulsing interface!!!!!!
-* Work on the logging!
-* Perhaps some of the tasks don't need the inputEvent argument??
-* Solve possible bug where the maximum turning speed suddenly gets stuck at 0 or fails to be set to actual full speed.
-* Remove backface culling for the Bananas??  Would that do anything? Is there texture on the inside??
-* Use Intervals (perhaps for banana rotation) and event handling where appropriate.
-
 ### Changelog
 
 Version 0.3.2:
