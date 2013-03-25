@@ -259,6 +259,14 @@ class bananarchy:
             self.treeModel = Model("tree", config['treeModel'], config['treeLoc'])
             self.treeModel.setScale(config['treeScale'])
 
+            # Load Skyscraper
+            self.skyscraperModel = Model("skyscraper", config['skScraperModel'], config['skScraperLoc'])
+            self.skyscraperModel.setScale(config['skScraperScale'])
+
+            # Load Streetlight
+            self.streetlightModel = Model("streetlight", config['strtLightModel'], config['strtLightLoc'])
+            self.streetlightModel.setScale(config['strtLightScale'])
+
 
         # Load bananas.
         self.bananaModels = []

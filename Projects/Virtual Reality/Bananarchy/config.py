@@ -69,6 +69,10 @@
 #---  Perhaps some of the tasks don't need the inputEvent argument??
 #---  Solve possible bug where the maximum turning speed suddenly gets stuck at 0 or fails to be set to
 #     actual full speed.
+#---  Remove backface culling for the Bananas??  Would that do anything? Is there
+#     texture on the insie??
+#---  Use Intervals (perhaps for banana rotation) and event handling where appropriate.
+
 #============================================================================================================
 #Version 0.3.2 Changelog
 #-------------
@@ -280,13 +284,20 @@ else:
         targetHwinR = 2 #1.2 is sort of the boundary.
 
 # Terrain, sky.
-terrainModel  = './models/towns/final.bam'
+terrainModel  = './models/towns/field.bam'
 terrainCenter = Point3(0,0,0)
 skyModel      = './models/sky/sky.bam'
 skyScale      = 1.6
 treeModel     = './models/trees/palmTree.bam'
-treeLoc       = Point3(15, 18, 0)
+treeLoc       = Point3(13, 13, 0)
 treeScale     = .0175
+skScraperModel= './models/skyscraper/skyscraper.bam'
+skScraperLoc  = Point3(-13, -13, 0)
+skScraperScale= .3
+strtLightModel= './models/streetlight/streetlight.bam'
+strtLightLoc  = Point3(-13, 13, 0)
+strtLightScale= .75
+
 
 # Some reward pump parameters.
 alignmentReward = 0 # Reward for initial alignment? Yes(1) or No(0)
