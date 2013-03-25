@@ -1,61 +1,32 @@
 ## BANANARCHY
 ### Training Steps
 Change the 'training' variable at the top of the config file to set the task to any one of the following training steps:
-  0 = Final Task [BROKEN].
+0 = Final Task [BROKEN].
 
-1.x = Left-Right Training.  No background.  Crosshairs in center of screen,
-      and banana appears on left or right of crosshairs.  Subject has to
-      push joystick to right or left to align the crosshairs with the
-      bannaa.  Once the crosshairs hit the banana, the position is locked in place
-      until all the reward is dispensed.  Then the tasks restarts with the banana
-      in a new random location.
-1.1 = Left only. [Perhaps need to add a variable to 
-      control max distance, and vary within that.  That's what
-      increaseDistance and decreaseDistance should do.]
-1.2 = Right only. [Perhaps need to add a variable to 
-      control max distance, and vary within that.  That's what
-      increaseDistance and decreaseDistance should do.]
-1.3 = Both, randomized location and distance.
+1.x = Left-Right Training.  No background.  Crosshairs in center of screen, and banana appears on left or right of crosshairs.  Subject has to push joystick to right or left to align the crosshairs with the banana.  Once the crosshairs hit the banana, the position is locked in place until all the reward is dispensed.  Then the tasks restarts with the banana in a new random location.
+* 1.1 = Left only. [Perhaps need to add a variable to control max distance, and vary within that.  That's what increaseDistance and decreaseDistance should do.]
+* 1.2 = Right only. [Perhaps need to add a variable to control max distance, and vary within that.  That's what increaseDistance and decreaseDistance should do.]
+* 1.3 = Both, randomized location and distance.
 
-2.x = Continuation of the left-right training in 1.x.  When the crosshairs
-      align wih the target, some reward is dispensed, but the positions
-      don't lock in and the crosshairs are allowed to leave the target, at
-      which point reward stops being dispensed, until the crosshairs and
-      target are aligned again.  The goal is to get the animal to leave
-      the crosshairs 
-2.1 = The window within which the crosshair has to fall is fairly large
-      Window to Left of Banana = 4; Right = 6.  They are different for technical
-      reasons I won't go into here.
-2.2 = Left = 3; Right = 5.
-2.3 = Left = 2; Right = 4.
-2.4 = Left = 1; Right = 3;
-2.5 = Left = 1; Right = 2; This is the final window.
+2.x = Continuation of the left-right training in 1.x.  When the crosshairs align wih the target, some reward is dispensed, but the positions don't lock in and the crosshairs are allowed to leave the target, at which point reward stops being dispensed, until the crosshairs and target are aligned again.  The goal is to get the animal to leave the crosshairs 
+* 2.1 = The window within which the crosshair has to fall is fairly large
 
 3.x = Introducing forward movement. 
-3.1 = Start out with banana centered, just go forward to get reward.
-3.2 = Left-right to banana, with crosshairs on it, then go forward to get rewarded again.
-      Forward movement is blocked until crosshair turns blue.  When crosshairs hit banana,
-      further turning is blocked.  Only forward movement is allowed.
-3.3 = Require him to stop on his own on the banana.  As soon as he moves forward a bit,
-      left and right turning is blocked, only more forward movement is allowed.    He is
-      rewarded up to 6 beeps at a time for turning until the crosshairs are blue, and then
-      he can only get more reward by actually going up to the banana.
+* 3.1 = Start out with banana centered, just go forward to get reward.
+* 3.2 = Left-right to banana, with crosshairs on it, then go forward to get rewarded again. Forward movement is blocked until crosshair turns blue.  When crosshairs hit banana, further turning is blocked. Only forward movement is allowed.
+* 3.3 = Require him to stop on his own on the banana.  As soon as he moves forward a bit, left and right turning is blocked, only more forward movement is allowed.    He is rewarded up to 6 beeps at a time for turning until the crosshairs are blue, and then he can only get more reward by actually going up to the banana.
 
 4.x = Introducing the environment. 
-4.0 = Starts off the same place as 3.3. Except the background is present and there is a massive,
-      and very dense fog over it.  Press F to remove the fog and eluminate the environment/backround
-      little by little.
-4.1 = Remove the block for turning after he moves forward.
-4.2 = Allow forward movement even when he's not with a blue cross.
-4.25 = Remove FOV rays blocking turning.
-4.3 = At beginning of new trial, face same direction as end of previous one. FOV rays blocking turning still on.
-4.35 = Remove FOV rays blocking turning from 4.3.
+* 4.0 = Starts off the same place as 3.3. Except the background is present and there is a massive, and very dense fog over it.  Press F to remove the fog and eluminate the environment/backround little by little.
+* 4.1 = Remove the block for turning after he moves forward.
+* 4.2 = Allow forward movement even when he's not with a blue cross.
+* 4.25 = Remove FOV rays blocking turning.
+* 4.3 = At beginning of new trial, face same direction as end of previous one. FOV rays blocking turning still on.
+* 4.35 = Remove FOV rays blocking turning from 4.3.
 
 5.x = More bananas come in.
-5.1 = Same as 4.25, except now there are multiple bananas that he has to go around and pick up.  Position
-      resets to the center and faces the original 0-header position after gathering each batch of bananas.
-5.2 = A given number of bananas appear on the field and you have to go gather them all,
-      then a new set appears.  Position doesn't reset, neither does header direction.
+* 5.1 = Same as 4.25, except now there are multiple bananas that he has to go around and pick up.  Position resets to the center and faces the original 0-header position after gathering each batch of bananas.
+* 5.2 = A given number of bananas appear on the field and you have to go gather them all, then a new set appears.  Position doesn't reset, neither does header direction.
 
 ### To Do
 
