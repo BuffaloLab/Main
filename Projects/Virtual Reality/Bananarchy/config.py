@@ -47,9 +47,15 @@ movementType = 'walking' # car | walking
 
 # Instructions.
 instructSize    = 0.3
+if sys.platform.startswith('win'):
+        instructFont = '/c/WINDOWS/Fonts/times.ttf'
+        if platform.release()=='7':
+                instructFont = '/c/Windows/Fonts/times.ttf'
+elif sys.platform.startswith('linux'):
+        instructFont = '/usr/share/fonts/truetype/freefont/FreeSans.ttf'
 #instructFont    = '/usr/share/fonts/truetype/freefont/FreeSans.ttf';  #Linux
 #instructFont    = '/c/Windows/Fonts/times.ttf';                      # Windows 7
-instructFont    = '/c/WINDOWS/Fonts/times.ttf';                 #Windows XP
+#instructFont    = '/c/WINDOWS/Fonts/times.ttf';                 #Windows XP
 instructBgColor = Point4(0, 0, 0, 1)
 instructFgColor = Point4(1, 1, 1, 1)
 instructMargin  = 0.06
