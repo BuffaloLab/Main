@@ -4,7 +4,7 @@
   "maya2egg2011 -o skyscraper.egg skyscraper.mb"
 }
 <Texture> wall_01SG1 {
-  "/s/Kiril/Dosch/Dosch - All 3D Collection/Dosch_3d Skyscrapers/conc.jpg"
+  "textures/conc.jpg"
   <Scalar> format { rgb }
   <Scalar> wrapu { repeat }
   <Scalar> wrapv { repeat }
@@ -13,7 +13,7 @@
   <Scalar> uv-name { UVChannel_1 }
 }
 <Texture> tiles_01SG1 {
-  "/s/Kiril/Dosch/Dosch - All 3D Collection/Dosch_3d Skyscrapers/metal.jpg"
+  "textures/metal.jpg"
   <Scalar> format { rgb }
   <Scalar> wrapu { repeat }
   <Scalar> wrapv { repeat }

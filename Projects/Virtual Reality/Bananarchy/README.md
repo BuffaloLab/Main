@@ -102,3 +102,8 @@ Version 0.4.0
 * Added fog effect to signify end of trial and the arrival of new bananas.
 * Added option for last banana in trial to get double reward.
 * Made field smaller.  Added streetlight and skyscraper.
+
+03/27/2013:
+* Automatic OS detection for font directory selection
+* fixed skyscraper textures
+
