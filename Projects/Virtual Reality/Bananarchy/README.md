@@ -46,6 +46,8 @@ Structural additions and improvements:
 * Solve possible bug where the maximum turning speed suddenly gets stuck at 0 or fails to be set to actual full speed.
 * Remove backface culling for the Bananas??  Would that do anything? Is there texture on the inside??
 * Use Intervals (perhaps for banana rotation) and event handling where appropriate.
+* Make eye calibration task
+* Create experimenter display that shows eyetrace, and possibly various stats of interest.
 
 Make code prettier:
 * Figure out what to do with the window sizes for each training step, the speeds, distances, etc.  
