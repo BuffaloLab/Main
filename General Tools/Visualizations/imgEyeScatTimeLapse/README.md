@@ -7,10 +7,10 @@ Creates a time-lapse visualization of eye position overlaid onto the image the a
 ###Caveats
 * At present, this only works with images that were displayed full-screen, or in the center of the screen.  Some tweaking would need to be done to allow for other options. 
 * The eye data fed into the function needs to be in pixel coordinates.
+* While the script runs, make sure that the figure is fully and not obscured by any other windows, otherwise they will show up in the capture of the final video.
 
 ###Syntax: 
-    imgEyeScatTimeLapse(imagePath, xEyeData, yEyeData, xEyeDataMin, xEyeDataMax, 
-                        yEyeDataMin, yEyeDataMax, eyeSampRate, eyeSamplesPerFrame, outputVidPath, outputSpeed)
+    imgEyeScatTimeLapse(imagePath, xEyeData, yEyeData, xEyeDataMin, xEyeDataMax, yEyeDataMin, yEyeDataMax, eyeSampRate, eyeSamplesPerFrame, outputVidPath, outputSpeed)
 
 * imagePath = String of the filepath of the image the animal was looking at (i.e. 's:\eblab\image.bmp')
 * xEyeData = Matrix of the X eye positions
