@@ -3,9 +3,13 @@
 ###Description
 Creates a time-lapse visualization of eye position overlaid onto the image the animal was looking at.  A line isn't drawn to connect the past and present points.  Rather, only a handful of eye samples (as you many as you choose) are displayed each frame.  It looks like this:
 
-At present, this only works with images that were displayed full-screen, or in the center of the screen.  Some tweaking would need to be done to allow for other options.  Also, the eye data fed into the function needs to be in pixel coordinates.
+###Caveats
+* At present, this only works with images that were displayed full-screen, or in the center of the screen.  Some tweaking would need to be done to allow for other options. 
+* The eye data fed into the function needs to be in pixel coordinates.
 
-###Syntax: imgEyeScatTimeLapse(imagePath, xEyeData, yEyeData, xEyeDataMin, xEyeDataMax, yEyeDataMin, yEyeDataMax, eyeSampRate, eyeSamplesPerFrame, outputVidPath, outputSpeed)
+###Syntax: 
+    imgEyeScatTimeLapse(imagePath, xEyeData, yEyeData, xEyeDataMin, xEyeDataMax, 
+                        yEyeDataMin, yEyeDataMax, eyeSampRate, eyeSamplesPerFrame, outputVidPath, outputSpeed)
 
 * imagePath = String of the filepath of the image the animal was looking at (i.e. 's:\eblab\image.bmp')
 * xEyeData = Matrix of the X eye positions
