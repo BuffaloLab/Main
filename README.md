@@ -25,7 +25,7 @@ We train the monkey in the basics of daily work in our lab by teaching it Bar, C
 ### Other Tools
 * [Generating CORTEX ITM and CND files](./General Tools/Useful Functions/Making Cortex Files) - These functions automatically generate ITM and CND files upon being fed arrays of values each column of settings.
 * [Cluster Fixation Detector](./General Tools/Useful Functions/ClusterFixationDetector) - A function (written by Seth) to detect fixations using k-means clustering.
-* [Visualisations](./General Tools/Visualizations) - Various visualizations of data.
+* [Visualizations](./General Tools/Visualizations) - Various visualizations of data.
 
 ### Methods
 * [Saccade Detection](./General Tools/Methods/Saccade-Detection.md)
