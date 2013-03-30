@@ -3,7 +3,7 @@
 ###Description
 Creates a time-lapse visualization of eye position overlaid onto the image the animal was looking at.  A line isn't drawn to connect the past and present points.  Rather, only a handful of eye samples (as you many as you choose) are displayed each frame.  It looks like this:
 
-![example](example.gif?raw=true)
+![example](example.gif)
 
 ###Caveats
 * At present, this only works with images that were displayed full-screen, or in the center of the screen.  Some tweaking would need to be done to allow for other options. 
