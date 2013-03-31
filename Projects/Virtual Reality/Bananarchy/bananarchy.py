@@ -669,7 +669,7 @@ class bananarchy:
             alignment = False
             for i in range(self.targetRayColQueue.getNumEntries()):
                 entry = self.targetRayColQueue.getEntry(i)
-                if entry.getIntoNodePath().getName()[0:6] == self.bananaModels[0].retrNodePath().getName()[0:6]:
+                if entry.getIntoNodePath().getName().startswith('banana'):#[0:6] == self.bananaModels[0].retrNodePath().getName()[0:6]:
                     alignment = True
             #alignment = self.bananaModels[0].retrNodePath().getName()[0:6] == self.targetRayColQueue.getEntry(3).getIntoNodePath().getName()[0:6]
         
