@@ -11,6 +11,8 @@ nidaq = 0
 
 
 from random import uniform
+import os
+import platform
 
 ##########################
 # Core PandaEPL settings.#
