@@ -23,15 +23,15 @@ FOV = 60
 # Movement.
 linearAcceleration  = 30
 if int(training) >= 3:
-        fullForwardSpeed = 2.7
+        fullForwardSpeed = 2.8
 else:
         fullForwardSpeed    = 0
 fullBackwardSpeed   = 0 
-turningAcceleration = 50
+turningAcceleration = 130
 if training == 3.1:
         fullTurningSpeed = 0
 elif training >= 2:
-        fullTurningSpeed    = 35
+        fullTurningSpeed    = 55
 else:
         fullTurningSpeed = 200
 turningLinearSpeed  = 2 # Factor
@@ -133,7 +133,7 @@ pulseInterval = 200 # in ms
 if int(training) == 2:
         numBeeps = 40 # Number of pulses/beeps in typical reward sequence
 else:
-        numBeeps = 6
+        numBeeps = 4
 
 # (Non-default) command keys.
 keyboard = Keyboard.getInstance()
@@ -170,7 +170,7 @@ joystick.bind("toggleDebug", "joy_button0")
 initialFogScheme  = 0
 expFogColor       = Point3(0.4,0.4,0.4)
 expFogDensity     = 1
-eotEffect = 1 #Signify the End of Trial with fog effect? 1= yes; 0=no.
+eotEffect = 0 #Signify the End of Trial with fog effect? 1= yes; 0=no.
 eotEffectSpeed = 17 #ms per 1/70th fog density change.
 
 # Email Info
