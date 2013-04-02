@@ -43,11 +43,14 @@ Structural additions and improvements:
 * Eyetracker and sync-pulsing interface!!!!!!
 * Work on the logging!
 * Perhaps some of the tasks don't need the inputEvent argument??
-* Solve possible bug where the maximum turning speed suddenly gets stuck at 0 or fails to be set to actual full speed.
 * Remove backface culling for the Bananas??  Would that do anything? Is there texture on the inside??
 * Use Intervals (perhaps for banana rotation) and event handling where appropriate.
 * Make eye calibration task
 * Create experimenter display that shows eyetrace, and possibly various stats of interest.
+
+Bugs:
+* Solve possible bug where the maximum turning speed suddenly gets stuck at 0 or fails to be set to actual full speed.
+* Very rarely, it's still possible to get a banana without actually seeing it displayed on the screen.  Probably from bieng inside the banana.
 
 Make code prettier:
 * Figure out what to do with the window sizes for each training step, the speeds, distances, etc.  

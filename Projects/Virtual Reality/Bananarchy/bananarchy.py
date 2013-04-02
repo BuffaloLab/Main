@@ -11,8 +11,10 @@ from numpy import *
 import ctypes
 import smtplib
 
-
-#nidaq = ctypes.windll.nicaiu
+##from PyDAQmx.DAQmxConstants import *
+##from PyDAQmx.DAQmxTypes import *
+##from PyDAQmx.DAQmxFunctions import *
+##from PyDAQmx.DAQmxCallBack import *
 
 #Remove Cursor, set Window title
 props = WindowProperties()
@@ -21,7 +23,6 @@ props.setTitle('Bananarchy')
 base.win.requestProperties(props)
 
 class bananarchy:
-
     def __init__(self):
         """
         Initialize the experiment.
@@ -182,61 +183,57 @@ class bananarchy:
         Setup basic NI-DAQ hardware controls
         """
 
-        #Set ctypes
-        self.int32 = ctypes.c_long
-        self.uInt32 = ctypes.c_ulong
-        self.uInt64 = ctypes.c_ulonglong
-        self.float64 = ctypes.c_double
-        self.bool32 = ctypes.c_bool
-        self.TaskHandle = self.uInt32
-
         self.beeps = 0   #Beep/Pulse counter
         self.reward = 2  #When set to 1, reward output is triggered.
 
         if config['nidaq'] == 1:
-            #Import certain constants defined in the NI-DAQ API header file
-            self.DAQmx_Val_Cfg_Default = self.int32(-1)
-            self.DAQmx_Val_RSE = 10083
-            self.DAQmx_Val_Volts = 10348
-            self.DAQmx_Val_Rising = 10280
-            self.DAQmx_Val_FiniteSamps = 10178
-            self.DAQmx_Val_GroupByChannel = 0
+
+            DAQmxResetDevice('dev1')    #Reset Device
+
+            #Initialize NI-DAQ Task Handles
+            self.pumpTaskHandle = TaskHandle(0)
+            self.eogTaskHandle = TaskHandle(1)
+
             
+            #Pump output parameters.
+            outRate = 115
+            outSamps = 15
+            outMinV = 9.0
+            outMaxV = 10.0
+            self.outPumpData = zeros(outSamps, dtype = float64)
             
-            #Initialize variables
-            self.taskHandle = self.TaskHandle(0)
 
-            #Set some basic variables that control the reward pulses.
-            self.Rate = 115
-            self.samps = 15
-            self.data = zeros( ( self.samps ), dtype=float64 )
+            #EOG input parameters.
+            eogSampRate = 240
+            eogSampsPerChanToAcquire = 100
 
-            #Setup NI-DAQ task
-            nidaq.DAQmxCreateTask("",
-                    ctypes.byref( self.taskHandle ))
-            nidaq.DAQmxCreateAOVoltageChan( self.taskHandle,
-                                               "Dev1/ao0",
-                                               "",
-                                               self.float64(9.0),
-                                               self.float64(10.0),
-                                               self.DAQmx_Val_Volts,
-                                               None)
-            nidaq.DAQmxCfgSampClkTiming( self.taskHandle,
-                                            "",
-                                            self.float64(self.Rate),
-                                            self.DAQmx_Val_Rising,
-                                            self.DAQmx_Val_FiniteSamps,
-                                            self.uInt64(self.samps));
+            nidaq = ctypes.windll.nicaiu
 
-
-            nidaq.DAQmxWriteAnalogF64( self.taskHandle,
-                                          self.int32(self.samps),
+            #Setup NI-DAQ pump output task
+            DAQmxCreateTask("", byref(self.pumpTaskHandle))
+            DAQmxCreateAOVoltageChan(self.pumpTaskHandle, "Dev1/ao0", "", outMinV, outMaxV, DAQmx_Val_Volts, None)
+            DAQmxCfgSampClkTiming(self.pumpTaskHandle, "", outRate, DAQmx_Val_Rising,
+                                  DAQmx_Val_FiniteSamps, outSamps)
+            #DAQmxWriteAnalogF64(self.pumpTaskHandle, int32(outSamps), 0, float64(-1),
+            #                    DAQmx_Val_GroupByChannel, self.outPumpData, None, None)
+            #One day should modify self.outPumpData to allow for the above. insead of below function.
+            nidaq.DAQmxWriteAnalogF64( self.pumpTaskHandle,
+                                          int32(outSamps),
                                           0,
-                                          self.float64(-1),
-                                          self.DAQmx_Val_GroupByChannel,
-                                          self.data.ctypes.data,
+                                          float64(-1),
+                                          DAQmx_Val_GroupByChannel,
+                                          self.outPumpData.ctypes.data,
                                           None,
-                                          None)        
+                                          None)
+
+
+
+            #Setup NI-DAQ EOG input task
+            DAQmxCreateTask("",byref(self.eogTaskHandle))
+            DAQmxCreateAIVoltageChan(self.eogTaskHandle,"Dev1/ai3","",DAQmx_Val_RSE,-5.0,5.0,DAQmx_Val_Volts,None)
+            DAQmxCreateAIVoltageChan(self.eogTaskHandle,"Dev1/ai4","",DAQmx_Val_RSE,-5.0,5.0,DAQmx_Val_Volts,None)
+            DAQmxCfgSampClkTiming(self.eogTaskHandle,"",eogSampRate,DAQmx_Val_Rising,DAQmx_Val_ContSamps,eogSampsPerChanToAcquire)
+            self.startedEOG = 0
 
     def loadEnvironment(self, config):
         """
@@ -372,13 +369,7 @@ class bananarchy:
                 y = random.uniform(config['minFwDistance'], config['maxFwDistance'])
                 self.bananaModels[i].setPos(Point3(x, y, config['bananaZ']))
                 self.bananaModels[i].setStashed(0)
-                self.stashed = 0
-
-        #print(self.bananaModels[0].retrNodePath().node().getNumChildren())
-        #print(self.bananaModels[0].retrNodePath().node().getChild(0))
-        #print(self.bananaModels[0].retrNodePath().getCollideMask())
-        #print(avatar.getCollisionRadius())
-        
+                self.stashed = 0       
 	
     def left(self, inputEvent, config, avatar):
         self.bananaModels[0].setStashed(1)
@@ -543,9 +534,9 @@ class bananarchy:
        
         if (self.beeps < config['numBeeps']) & (self.reward == 1):
             if config['nidaq'] == 1:
-                nidaq.DAQmxStartTask( self.taskHandle )
-                nidaq.DAQmxWaitUntilTaskDone( self.taskHandle, self.float64(-1) )
-                nidaq.DAQmxStopTask( self.taskHandle )
+                DAQmxStartTask(self.pumpTaskHandle)
+                DAQmxWaitUntilTaskDone(self.pumpTaskHandle, DAQmx_Val_WaitInfinitely)
+                DAQmxStopTask(self.pumpTaskHandle)
             else:
                 print('Beep: ' + str(self.beeps + 1))
                 #print('\a')
@@ -711,6 +702,15 @@ class bananarchy:
             if int(config['training']) <= 3:
                 if self.beeps >= 5:
                     self.reward = 0
+
+        if config['nidaq'] == 1:
+            if self.startedEOG == 0:
+                DAQmxStartTask(self.eogTaskHandle)
+                self.startedEOG = 1
+
+            read = int32()
+            eogData = zeros(100)     
+            DAQmxReadAnalogF64(self.eogTaskHandle,DAQmx_Val_Auto,10.0,DAQmx_Val_GroupByScanNumber,eogData,100,byref(read),None)        
                     
 
 # Create a new instance of the experiment and start it up.
