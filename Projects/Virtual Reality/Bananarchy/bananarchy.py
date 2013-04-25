@@ -11,16 +11,58 @@ from numpy import *
 import ctypes
 import smtplib
 
-##from PyDAQmx.DAQmxConstants import *
-##from PyDAQmx.DAQmxTypes import *
-##from PyDAQmx.DAQmxFunctions import *
-##from PyDAQmx.DAQmxCallBack import *
+from PyDAQmx.DAQmxConstants import *
+from PyDAQmx.DAQmxTypes import *
+from PyDAQmx.DAQmxFunctions import *
+from PyDAQmx.DAQmxCallBack import *
 
 #Remove Cursor, set Window title
 props = WindowProperties()
 props.setCursorHidden(True)
 props.setTitle('Bananarchy')
 base.win.requestProperties(props)
+
+class MyList(list):
+    pass
+
+earliest = MyList()
+earliest.extend([0])
+id_a = create_callbackdata_id(earliest)
+
+def EveryNCallback_py(taskHandle, everyNsamplesEventType, nSamples, callbackData_ptr):
+    latest = mstime()
+    read = int32()
+    eogData = zeros(2)
+    DAQmxReadAnalogF64(eogTaskHandle,1,10.0,DAQmx_Val_GroupByScanNumber,eogData,2,byref(read),None)
+    callbackdata = get_callbackdata_from_id(callbackData_ptr)
+    Log.getInstance().writeLine([callbackdata[0], latest-callbackdata[0]], "EyeData",  [((eogData[0] * 231) + 30), ((eogData[1] * 176) - 43)])
+    callbackdata[0] = latest
+    #callbackdata = latest
+    #print(callbackdata)
+    return 0
+
+def DoneCallback_py(taskHandle, status, callbackData):
+    print "Status",status.value
+    return 0 # The function should return an integer
+
+eogSampRate = 240
+eogSampsPerChanToAcquire = 1
+eogTaskHandle = TaskHandle(1)
+
+DAQmxResetDevice('Dev1')    #Reset Device
+
+DAQmxCreateTask("",byref(eogTaskHandle))
+DAQmxCreateAIVoltageChan(eogTaskHandle,"Dev1/ai3","",DAQmx_Val_RSE,-5.0,5.0,DAQmx_Val_Volts,None)
+DAQmxCreateAIVoltageChan(eogTaskHandle,"Dev1/ai4","",DAQmx_Val_RSE,-5.0,5.0,DAQmx_Val_Volts,None)
+DAQmxCfgSampClkTiming(eogTaskHandle,"",eogSampRate,DAQmx_Val_Rising,DAQmx_Val_ContSamps,eogSampsPerChanToAcquire)
+
+#Callback
+EveryNCallback = DAQmxEveryNSamplesEventCallbackPtr(EveryNCallback_py)
+DoneCallback = DAQmxDoneEventCallbackPtr(DoneCallback_py)
+DAQmxRegisterEveryNSamplesEvent(eogTaskHandle,DAQmx_Val_Acquired_Into_Buffer,1,0,EveryNCallback,id_a)
+DAQmxRegisterDoneEvent(eogTaskHandle,0,DoneCallback,None)
+
+
 
 class bananarchy:
     def __init__(self):
@@ -43,6 +85,12 @@ class bananarchy:
 
         config = Conf.getInstance().getConfig() #Get configuration dictionary.
         avatar = Avatar.getInstance()
+
+        # Register Custom Log Entries
+       	Log.getInstance().addType("YUMMY",[("BANANA",basestring)], False) #This one corresponds to colliding with a banana.
+       	Log.getInstance().addType("EyeData", [("X", float), ("Y", float)], False)
+       	Log.getInstance().addType("NewTrial", [("Trial", int)], False)
+       	
         self.nidaqSetup(config) #Setup the basic NI-DAQ Hardware Controls
         self.loadEnvironment(config) #Load environment.
 
@@ -52,8 +100,8 @@ class bananarchy:
             self.setUpFog()
         self.completedTrial = 0
         
-        # Register Custom Log Entries
-       	Log.getInstance().addType("YUMMY",[("BANANA",basestring)], False) #This one corresponds to colliding with a banana.
+        
+       	#Log.getInstance().addType("EyeData", [("Z", numpy.ndarray)], True)
         
         # Create crosshairs around what seems to be the center of the screen
 	self.cross = Text("cross", '+', Point3(0,0,0), config['instructSize'], Point4(1,0,0,config['xHairAlpha']), config['instructFont'])
@@ -122,6 +170,7 @@ class bananarchy:
         self.fullTurningSpeed = config['fullTurningSpeed']
         self.maxFwDistance = config['maxFwDistance']
         self.minFwDistance = config['minFwDistance']
+        self.trialNum = 0
         if config['training'] < 5:
             if config['training'] == 3.1:
                 self.center(self, config, avatar)
@@ -139,8 +188,7 @@ class bananarchy:
             self.email.login(config['emailUsername'], config['emailPassword'])
             self.msgHeaders = ("From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n" % (config['emailFrom'], ", ".join(config['emailTo']), config['subject']))
             self.sendEmail("New Session Started. Training = " + str(config['training']))
-
-
+   
     def setupCollisionRays(self, config, avatar):
         #self.terrainModel.retrNodePath().reparentTo(render)
         #self.terrainModel.retrNodePath().setCollideMask(BitMask32.bit(1))
@@ -188,11 +236,11 @@ class bananarchy:
 
         if config['nidaq'] == 1:
 
-            DAQmxResetDevice('dev1')    #Reset Device
+            
 
             #Initialize NI-DAQ Task Handles
             self.pumpTaskHandle = TaskHandle(0)
-            self.eogTaskHandle = TaskHandle(1)
+            #self.eogTaskHandle = TaskHandle(1)
 
             
             #Pump output parameters.
@@ -204,8 +252,8 @@ class bananarchy:
             
 
             #EOG input parameters.
-            eogSampRate = 240
-            eogSampsPerChanToAcquire = 100
+            #eogSampRate = 240
+            #eogSampsPerChanToAcquire = 1000
 
             nidaq = ctypes.windll.nicaiu
 
@@ -226,14 +274,46 @@ class bananarchy:
                                           None,
                                           None)
 
+            earliest[0] = mstime()
+            DAQmxStartTask(eogTaskHandle)
 
 
-            #Setup NI-DAQ EOG input task
-            DAQmxCreateTask("",byref(self.eogTaskHandle))
-            DAQmxCreateAIVoltageChan(self.eogTaskHandle,"Dev1/ai3","",DAQmx_Val_RSE,-5.0,5.0,DAQmx_Val_Volts,None)
-            DAQmxCreateAIVoltageChan(self.eogTaskHandle,"Dev1/ai4","",DAQmx_Val_RSE,-5.0,5.0,DAQmx_Val_Volts,None)
-            DAQmxCfgSampClkTiming(self.eogTaskHandle,"",eogSampRate,DAQmx_Val_Rising,DAQmx_Val_ContSamps,eogSampsPerChanToAcquire)
-            self.startedEOG = 0
+##            #Setup NI-DAQ EOG input task
+##            DAQmxCreateTask("",byref(self.eogTaskHandle))
+##            DAQmxCreateAIVoltageChan(self.eogTaskHandle,"Dev1/ai3","",DAQmx_Val_RSE,-5.0,5.0,DAQmx_Val_Volts,None)
+##            DAQmxCreateAIVoltageChan(self.eogTaskHandle,"Dev1/ai4","",DAQmx_Val_RSE,-5.0,5.0,DAQmx_Val_Volts,None)
+##            DAQmxCfgSampClkTiming(self.eogTaskHandle,"",eogSampRate,DAQmx_Val_Rising,DAQmx_Val_ContSamps,eogSampsPerChanToAcquire)
+##            self.startedEOG = 0
+##            #Callback
+##            eogTest = MyList()
+##            id_a = create_callbackdata_id(eogTest)
+##            EveryNCallback = DAQmxEveryNSamplesEventCallbackPtr(self.EveryNCallback_py)
+##            DoneCallback = DAQmxDoneEventCallbackPtr(self.DoneCallback_py)
+##            DAQmxRegisterEveryNSamplesEvent(self.eogTaskHandle,DAQmx_Val_Acquired_Into_Buffer,1000,0,EveryNCallback,id_a)
+##            DAQmxRegisterDoneEvent(self.eogTaskHandle,0,DoneCallback,None)
+##            DAQmxStartTask(self.eogTaskHandle)
+            
+##    def EveryNCallback_py(taskHandle, everyNsamplesEventType, nSamples, callbackData_ptr):
+##        return 0
+##        read = int32()
+##        eogData = zeros(100)
+##        DAQmxReadAnalogF64(self.eogTaskHandle,DAQmx_Val_Auto,10.0,DAQmx_Val_GroupByScanNumber,eogData,100,byref(read),None)
+##        print(eogData[0:read*2])
+#        for i in range(0, read.value):
+#            VLQ.getInstance().writeLine("EyeData",  [eogData[2*(i-1)], eogData[(2*i)-1]])
+        
+        
+        
+##        callbackdata = get_callbackdata_from_id(callbackData_ptr)
+##        read = int32()
+##        data = zeros(2000)
+##        DAQmxReadAnalogF64(taskHandle,DAQmx_Val_Auto,10.0,DAQmx_Val_GroupByScanNumber,data,2000,byref(read),None)
+##        callbackdata.extend(data.tolist())
+##        #print "Acquired total %d samples"%len(data)
+##        return 0 # The function should return an integer
+##    def DoneCallback_py(taskHandle, status, callbackData):
+##        print "Status",status.value
+##        return 0 # The function should return an integer
 
     def loadEnvironment(self, config):
         """
@@ -263,6 +343,11 @@ class bananarchy:
             # Load Streetlight
             self.streetlightModel = Model("streetlight", config['strtLightModel'], config['strtLightLoc'])
             self.streetlightModel.setScale(config['strtLightScale'])
+
+            # Load Windmill
+            self.windmillModel = Model("windmill", config['windmillModel'], config['windmillLoc'])
+            self.windmillModel.setScale(config['windmillScale'])
+            self.windmillModel.setH(config['windmillH'])
 
 
         # Load bananas.
@@ -333,6 +418,8 @@ class bananarchy:
 	Reload config file, give bananas new locations, make them visible, set new session number
 	and return the subject to the original location, with no movement/momentum in any direction.
 	'''
+	self.trialNum += 1
+	VLQ.getInstance().writeLine("NewTrial", [self.trialNum])
         
 	config = Conf.getInstance().getConfig()
 
@@ -478,6 +565,7 @@ class bananarchy:
         self.xHairAlpha += .01
         self.cross.setColor(Point4(self.cross.getColor()[0], self.cross.getColor()[1], self.cross.getColor()[2], self.xHairAlpha))
         print("Crosshair Alpha: " + str(self.xHairAlpha))
+        DAQmxStopTask(eogTaskHandle)
         
     def start(self):
         """
@@ -582,7 +670,6 @@ class bananarchy:
         Monitor the header between every frame and perform the relevant
         header-dependent functions.
         """
-
         self.collTrav.traverse(render)
         self.targetRayColQueue.sortEntries()
 
@@ -703,15 +790,20 @@ class bananarchy:
                 if self.beeps >= 5:
                     self.reward = 0
 
-        if config['nidaq'] == 1:
-            if self.startedEOG == 0:
-                DAQmxStartTask(self.eogTaskHandle)
-                self.startedEOG = 1
-
-            read = int32()
-            eogData = zeros(100)     
-            DAQmxReadAnalogF64(self.eogTaskHandle,DAQmx_Val_Auto,10.0,DAQmx_Val_GroupByScanNumber,eogData,100,byref(read),None)        
-                    
-
+##        if config['nidaq'] == 1:
+##            if self.startedEOG == 0:
+##                DAQmxStartTask(self.eogTaskHandle)
+##                self.startedEOG = 1
+##
+##            read = int32()
+##            eogData = zeros(100)     
+##            DAQmxReadAnalogF64(self.eogTaskHandle,DAQmx_Val_Auto,10.0,DAQmx_Val_GroupByScanNumber,eogData,100,byref(read),None)
+##            #VLQ.getInstance().writeLine("EyeData", [eogData[0:read.value*2]])
+##            #VLQ.getInstance().writeLine("EyeData", [eogData[0], eogData[1]])
+##            if read.value >= 1:
+##                for i in range(0, read.value):
+##                    VLQ.getInstance().writeLine("EyeData",  [eogData[2*(i-1)], eogData[(2*i)-1]])
+##                    
 # Create a new instance of the experiment and start it up.
+#DAQmxStartTask(eogTaskHandle)
 bananarchy().start()
