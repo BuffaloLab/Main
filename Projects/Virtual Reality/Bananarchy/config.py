@@ -7,7 +7,7 @@
 
 training = 5.2
 
-nidaq = 0
+nidaq = 1
 
 
 from random import uniform
@@ -26,7 +26,7 @@ if int(training) >= 3:
         fullForwardSpeed = 2.8
 else:
         fullForwardSpeed    = 0
-fullBackwardSpeed   = 0 
+fullBackwardSpeed   = 0
 turningAcceleration = 130
 if training == 3.1:
         fullTurningSpeed = 0
@@ -125,6 +125,10 @@ skScraperScale= .3
 strtLightModel= './models/streetlight/streetlight.bam'
 strtLightLoc  = Point3(-13, 13, 0)
 strtLightScale= .75
+windmillModel = './models/windmill/amill.bam'
+windmillLoc = Point3(13, -13, 0)
+windmillScale = .2
+windmillH = 45
 
 
 # Some reward pump parameters.
@@ -133,7 +137,7 @@ pulseInterval = 200 # in ms
 if int(training) == 2:
         numBeeps = 40 # Number of pulses/beeps in typical reward sequence
 else:
-        numBeeps = 4
+        numBeeps = 3
 
 # (Non-default) command keys.
 keyboard = Keyboard.getInstance()

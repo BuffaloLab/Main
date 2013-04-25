@@ -246,7 +246,7 @@ class bananarchy:
             #Pump output parameters.
             outRate = 115
             outSamps = 15
-            outMinV = 9.0
+            outMinV = 7.0
             outMaxV = 10.0
             self.outPumpData = zeros(outSamps, dtype = float64)
             
