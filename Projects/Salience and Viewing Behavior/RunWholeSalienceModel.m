@@ -22,7 +22,7 @@
 %   3) fixationSalience_and_significanceCF: code determines salience,
 %   salience contrast, and image intensity values at fixation locations.
 %   4) getSalienceMap: creates saliency maps based on Itti et al 1998.
-%       a) can use  getSalienceMapgray to create saliency maps for RGB images 
+%       a) can use  getSalienceMapgray to create saliency maps for RGB images
 %       that are essential gray scale.
 %   5) getViewingBehvaiorCF: calculates viewing behavior statitics
 %   6) runBCRW_CF: code runs the BCRW
@@ -39,39 +39,39 @@
 %   values from data found by ClusterFixation.
 %   3) FixationDetectionUsingVel_Accel_Thresholds: comparable fixation
 %   detection algorithm to Cluster_Fixation but using velocity and
-%   accelration thresholds. 
+%   accelration thresholds.
 %   4) fixationSalience_and_significanceCF_contrast: calculate the values
 %   of each cotrast type that contributes to the saliency map at fixation
-%   locations. 
+%   locations.
 %   5) run_BCRW_parameter_sweep: runs a parameter sweep to determine the value
-%   of 4 parameters not derived from actual viewing behaivor statistics. 
+%   of 4 parameters not derived from actual viewing behaivor statistics.
 %   6) BCRW_paramter_sweep: calls run_BCRW_parameter_sweep and analyzes the
 %   data
 
 % IMPORTANT NOTES: This code is totally automated. You may however need to edit
-% lines of code such as image_sets and scm_image_dir so that you can analyze 
+% lines of code such as image_sets and scm_image_dir so that you can analyze
 % your data as it is organized on your computer. I suggest organizing your data
-% in the following way. For each SCM (scene manipulation) image set create 
+% in the following way. For each SCM (scene manipulation) image set create
 % a new folder and place the images for that SCM set and the cortex data
 % files for every monkey (e.g 'MP100807.2') that corresponds to that image
 % folder Create these folders for each SCM set--the 'image_sets' variable
 % contains the names for these SCM set folders. The location of all these
-% image sets is to be saved under the 'scm_image_dir' variable. When for 
-% example the saliency map code runs the a matlab file containing the saliency 
+% image sets is to be saved under the 'scm_image_dir' variable. When for
+% example the saliency map code runs the a matlab file containing the saliency
 % map will be placed in the SCM folder where the image was found. Also, make
-% sure the save command saves to the desired folder. I suggest using the search 
+% sure the save command saves to the desired folder. I suggest using the search
 % function to fix these. Additionally, many of the sub-functions assume the
 % structure of SCM images where novel images are followed by the
-% presentation of the same image, the image with a replaced object, or the 
+% presentation of the same image, the image with a replaced object, or the
 % image with a moved object. Please be aware the code will have to be
 % changed to use data organized in a different fashion or analyze data from
 % familar images. FINALLY THIS CODE USES INVERTED IMAGE INTENSITIES in
-% other words based on statistical results the code assumes lower image 
-% intensities predict fixations better than high image intensities. 
+% other words based on statistical results the code assumes lower image
+% intensities predict fixations better than high image intensities.
 
 %---[1] Get the salience maps for multiple task sets---%
-scm_image_dir = 'C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\SCM Image Sets\';
-image_sets = {'Set005','Set006','Set007','Set008','Set009',...
+scm_image_dir = 'C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\';
+image_sets = {'Set006','Set007','Set008','Set009',...
     'SetE001','SetE002','SetE003','SetE004'};
 for imset = 1:length(image_sets);
     dirName = [scm_image_dir image_sets{imset}];
@@ -95,6 +95,9 @@ for imset = 1:length(image_sets);
 end
 %%
 %---[2] Get Fixations and Saccades from Behavioral Files---%
+scm_image_dir = 'C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\';
+image_sets = {'Set006','Set007','Set008','Set009',...
+    'SetE001','SetE002','SetE003','SetE004'};
 for imset = 1:length(image_sets);
     dirName = [scm_image_dir image_sets{imset}];
     cd(dirName)
@@ -118,8 +121,8 @@ end
 clearvars -except scm_image_dir image_sets
 %%
 %---[3] Calculate Salience at Each Fixation---%
-scm_image_dir = 'C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\SCM Image Sets\';
-image_sets = {'Set005','Set006','Set007','Set008','Set009',...
+scm_image_dir = 'C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\';
+image_sets = {'Set006','Set007','Set008','Set009',...
     'SetE001','SetE002','SetE003','SetE004'};
 PLOTOPTIONS = 'none';
 imageX = 800; imageY = 600;
@@ -141,8 +144,8 @@ end
 clearvars -except scm_image_dir image_sets
 %%
 %%---[4] Calculate Average Salience at Each Fixation Across mutliple data sets---%
-scm_image_dir = 'C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\SCM Image Sets\';
-image_sets = {'Set005','Set006','Set007','Set008','Set009',...
+scm_image_dir = 'C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\';
+image_sets = {'Set006','Set007','Set008','Set009',...
     'SetE001','SetE002','SetE003','SetE004'};
 tags = {'MP','TT','JN','IW'};
 minlen = 100;
@@ -275,14 +278,14 @@ allstatvariablenames = {
     'parameters during a fixatoin. Z-column is organized by fixation number';
     };
 
-save(['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
+save(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\'...
     'SCM Image Sets\CombinedSalienceStatistics.mat'],'alldata','allshuffled',...
     'allstatistics','allstatvariablenames');
 clearvars -except scm_image_dir image_sets
 %%
 %---[5] Extract Viewing Behavior---%
-scm_image_dir = 'C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\SCM Image Sets\';
-image_sets = {'Set005','Set006','Set007','Set008','Set009',...
+scm_image_dir = 'C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\';
+image_sets = {'Set006','Set007','Set008','Set009',...
     'SetE001','SetE002','SetE003','SetE004'};
 tags = {'MP','TT','JN','IW'};
 PLOTOPTIONS = 'none';
@@ -307,8 +310,8 @@ end
 clearvars -except scm_image_dir image_sets
 %%
 %---[6] Combine Viewing Behavior by Monkey---%
-scm_image_dir = 'C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\SCM Image Sets\';
-image_sets = {'Set005','Set006','Set007','Set008','Set009',...
+scm_image_dir = 'C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\';
+image_sets = {'Set006','Set007','Set008','Set009',...
     'SetE001','SetE002','SetE003','SetE004'};
 tags = {'MP','TT','JN','IW'};
 medianfix = NaN(length(image_sets),length(tags));
@@ -348,6 +351,7 @@ for i = 1:length(tags)
     allview{i}.fixduration = [];
     allview{i}.sacangle = [];
     allview{i}.sacdist = [];
+    allview{i}.sacamplitude = [];
     allview{i}.sacduration = [];
     allview{i}.timebtwfix = [];
 end
@@ -398,6 +402,7 @@ for SET = 1:length(image_sets);
                         fixduration];
                     allview{ii}.sacangle = [allview{ii}.sacangle;sacangle];
                     allview{ii}.sacdist = [allview{ii}.sacdist;sacdist];
+                    allview{ii}.sacamplitude = [allview{ii}.sacamplitude;sacamplitude];
                     allview{ii}.sacduration = [allview{ii}.sacduration;sacduration];
                     allview{ii}.timebtwfix = [allview{ii}.timebtwfix;...
                         timebtwfix];
@@ -414,7 +419,7 @@ clearvars -except scm_image_dir image_sets allview tags
 SAMPRATE = 5;
 n = (-180:180)*pi/180;
 variables = {'Dist','vel','accel','rot'};
-f = fspecial('gaussian',[100,100],50);
+f = fspecial('gaussian',[256,256],24);
 graphnum = gcf;
 if graphnum == 1
     graphnum = 0;
@@ -483,7 +488,7 @@ for i = 1:length(tags)
     title(tags{i})
     
     figure(graphnum+6)
-    suptitle('Distribution of Saccade Durations')
+    suptitle('Distribution of Saccade Durations (Arc Lenght)')
     hax(6,i) = subplot(2,2,i);
     sacduration = allview{i}.sacduration(~isnan(allview{i}.sacduration))*SAMPRATE;
     sacduration(sacduration > 150) = [];
@@ -666,18 +671,27 @@ for i = 1:length(tags)
     title(tags{i})
     ph=findall(gca,'type','text');
     set(ph,'fontweight','bold');
+    
+    figure(graphnum+16)
+    suptitle('Distribution of Saccade Amplitudes')
+    hax(16,i) = subplot(2,2,i);
+    sacdist = allview{i}.sacamplitude(~isnan(allview{i}.sacamplitude));
+    sacdist(sacdist > 800) = [];
+    hist(sacdist,100)
+    xlabel('Distance (Pixels)')
+    title(tags{i})
 end
 
 screen_size = get(0, 'ScreenSize');
-figdir = ['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
-    'Plots-All SCM FIles\Viewing Behaivor\'];
+figdir = ['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\'...
+    'Plots-All SCM Files\Viewing Behavior\'];
 figuretitles = {
     'Distribution of Angles between fixations';
     'Distribution of Angles Leaving a fixation';
     'Distribution of Fixation Durations';
     'Distribution of Distances Between Fixations';
     'Fixation (Saccade) Rate';
-    'Distribution of Saccade Durations';
+    'Distribution of Saccade Durations-Arc Length';
     'Distribution of Saccade Distances';
     'Correlation between Saccade Duration and Saccade Distance';
     'Fixation and Saccade Statistics by Fixation or Saccade Number';
@@ -687,6 +701,7 @@ figuretitles = {
     'Persistence Profile';
     'Saccade and Fixation Distance Profiles';
     'Distribution of angles entering a fixation';
+    'Distribution of Saccade Amplitudes';
     };
 
 for ff = 1:size(hax,1);
@@ -742,416 +757,269 @@ allviewvariables = {
     'allview.distbtwnfix: distance between fixations by fixation number';
     'allview.fixduration: fixation duration by fixation number';
     'allview.sacangle: angle of saccade leaving a fixation by saccade number';
-    'allview.sacdist: distance of saccade by saccade number';
+    'allview.sacdist: distance of saccade by saccade number (arc length)';
+    'allview.sacamplitude: saccade amplitude from end to end';
     'allview.timebtwfix: time between fixations by fixation number';
     };
 
-save(['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
+save(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\'...
     'SCM Image Sets\CombinedViewingBehavior.mat'],'tags','allview',...
     'allStatsbyfixation','allviewvariables');
 %%
 %---[7] Calculate Salience at Returned Fixations---%
 % Combines Data by Monkey for Salience at Returned Fixations---%
-scm_image_dir = 'C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\SCM Image Sets\';
-image_sets = {'Set005','Set006','Set007','Set008','Set009',...
+scm_image_dir = 'C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\';
+image_sets = {'Set006','Set007','Set008','Set009',...
     'SetE001','SetE002','SetE003','SetE004'};
-pairings = 'closest';
 imageX = 800; imageY = 600;
-distancethreshold1 = [0 0 0  0  0  0  0  0  0   24 24 24 48  48 72 72  96  120  144 168 200 400];%in pixels 24 pixels/dva
-distancethreshold2 = [0 3 6  12 24 48 72 96 120 48 72 96 72  96 96 120 120 144  168 200 400 800];%in pixels 24 pixels/dva
+distancethreshold = [0  24 48 72 96  120  144 168 200 400 800];%in pixels 24 pixels/dva
+distancethreshold = [distancethreshold;
+    [24 48 72 96 120 144  168 200 400 800 10000]];%in pixels 24 pixels/dva
 tags = {'MP','TT','JN','IW'};
-combinedksp = cell(1,length(distancethreshold1));
-allSalIOR = cell(1,length(distancethreshold1));
-for dt = 1:length(distancethreshold1)
-    distthresh= [distancethreshold1(dt) distancethreshold2(dt)];
-    for SET = 1:length(image_sets);
-        SETNUM = image_sets{SET};
-        cd([scm_image_dir SETNUM])
-        matfiles = what;
-        eyedatafiles = [];
-        for i = 1:length(matfiles.mat);
-            str = strfind(matfiles.mat{i},'fixation');
-            if ~isempty(str)
-                eyedatafiles = [eyedatafiles i];
-            end
-        end
-        for eyefile = eyedatafiles;
-            SalienceIOR(matfiles.mat{eyefile},distthresh,imageX,imageY,pairings)
-        end
-    end
-    
-    SAMPRATE =5;
-    alltotalfixs = zeros(1,length(tags));
-    alltotaluniquereturns = zeros(1,length(tags));
-    allreturnfixsal = cell(1,4);
-    allIORfixsal = cell(1,4);
-    allfixdur = cell(1,4);
-    for SET = 1:length(image_sets);
-        SETNUM = image_sets{SET};
-        cd([scm_image_dir SETNUM])
-        matfiles = what;
-        statfiles = [];
-        for i = 1:length(matfiles.mat);
-            str = strfind(matfiles.mat{i},'SalienceIOR');
-            if ~isempty(str)
-                for ii = 1:length(tags);
-                    strt = strfind(matfiles.mat{i},tags{ii});
-                    if ~isempty(strt)
-                        load(matfiles.mat{i});
-                        alltotalfixs(ii) = alltotalfixs(ii) + totalfixs;
-                        alltotaluniquereturns(ii) = alltotaluniquereturns(ii) + ...
-                            totaluniquereturns;
-                        allreturnfixsal{ii} = [allreturnfixsal{ii};returnfixsal];
-                        allIORfixsal{ii} = [allIORfixsal{ii};IORfixsal'];
-                        allfixdur{ii} = [allfixdur{ii};fixdur'];
-                    end
+for SET = 1:length(image_sets);
+    SETNUM = image_sets{SET};
+    cd([scm_image_dir SETNUM])
+    matfiles = what;
+    eyedatafiles = [];
+    for i = 1:length(matfiles.mat);
+        if ~isempty(strfind(matfiles.mat{i},'fixation'))
+            for ii = 1:length(tags);
+                if ~isempty(strfind(matfiles.mat{i},tags{ii}))
+                    eyedatafiles(ii) = i;
                 end
             end
         end
     end
-    
-    allSalIOR{dt}.SalienceIORFixations = allIORfixsal;
-    allSalIOR{dt}.numberfixation = alltotalfixs;
-    allSalIOR{dt}.numberuniquereturns = alltotaluniquereturns;
-    allSalIOR{dt}.Saliencereturnedfixations =  allreturnfixsal;
-    allSalIOR{dt}.fixationduration = allfixdur;
-    
-    if dt ~= 1;
-        ksp = NaN(3,length(tags));
-        tp = NaN(3,length(tags));
-        for i = 1:length(tags)
-            [~,p] = kstest2(allreturnfixsal{i}(:,4),allreturnfixsal{i}(:,8));
-            ksp(1,i) = p;
-            [~,p] = kstest2(allSalIOR{1}.SalienceIORFixations{i},allreturnfixsal{i}(:,4));
-            ksp(2,i) = p;
-            [~,p] = kstest2(allSalIOR{1}.SalienceIORFixations{i},allreturnfixsal{i}(:,8));
-            ksp(3,i) = p;
-            [~,p] = ttest2(allreturnfixsal{i}(:,9),allreturnfixsal{i}(:,10));
-            tp(1,i) = p;
-            [~,p] = ttest2(allSalIOR{1}.fixationduration{i},allreturnfixsal{i}(:,9));
-            tp(2,i) = p;
-            [~,p] = ttest2(allSalIOR{1}.fixationduration{i},allreturnfixsal{i}(:,10));
-            tp(3,i) = p;
-        end
-        
-        
-        allSalIOR{dt}.pvalues = ksp;
-        allSalIOR{dt}.ttestpvalues = tp;
-        
-        
-        graphnum = gcf;
-        if graphnum == 1
-            graphnum = 0;
-        end
-        cd 'C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\Plots-All SCM Files\IOR and Salience Images'
-        for i = 1:length(tags);
-            figure(graphnum+i)
-            suptitle([tags{i} ' Comparison of Salience at Returned Fixations to'...
-                ' All other Fixations-Distance Threshold: ' ...
-                num2str(distthresh(1)) '-' num2str(distthresh(2))])
-            h = subplot(2,2,1);
-            ax = get(h,'Position');
-            ax(2) = .55;
-            set(h,'Position',ax)
-            hold on
-            h = bar(1,100*alltotaluniquereturns(i)./alltotalfixs(i));
-            set(h(1),'facecolor','r')
-            bar(2,100*size(allreturnfixsal{i},1)./alltotalfixs(i))
-            title('Percent of Fixations with Unique Return Locations or Pairs of Returned Locations')
-            ylabel('Percent % ')
-            xlim([0.5 2.5])
-            set(gca,'XTick',1:2)
-            set(gca,'XTickLabel',{'Unique','Pairs'})
-            hold off
-            
-            h = subplot(2,2,2);
-            ax = get(h,'Position');
-            ax(2) = .55;
-            set(h,'Position',ax)
-            hist(allreturnfixsal{i}(:,9),100)
-            title('Distance Between Return-Pairs')
-            xlabel('Distance (pixels)')
-            
-            subplot(2,2,3)
-            hist(5*(allreturnfixsal{i}(:,7)-allreturnfixsal{i}(:,3)),100)
-            title('Time Between Return-Pairs')
-            xlabel('Time (ms)')
-            
-            subplot(2,2,4)
-            hold on
-            h = bar(1,nanmean(allreturnfixsal{i}(:,4)));
-            set(h,'facecolor','r')
-            set(h,'edgecolor','r')
-            errorbar(1,nanmean(allreturnfixsal{i}(:,4)),nanstd(allreturnfixsal{i}(:,4))./...
-                sqrt(sum(~isnan(allreturnfixsal{i}(:,4)))),'color','k','linewidth',3)
-            h = bar(2,nanmean(allreturnfixsal{i}(:,8)));
-            set(h,'facecolor','g')
-            set(h,'edgecolor','g')
-            errorbar(2,nanmean(allreturnfixsal{i}(:,8)),nanstd(allreturnfixsal{i}(:,8))./...
-                sqrt(sum(~isnan(allreturnfixsal{i}(:,8)))),'color','k','linewidth',3)
-            h = bar(3,nanmean(allIORfixsal{i}));
-            set(h,'edgecolor','b')
-            af = allSalIOR{1}.SalienceIORFixations{i};
-            errorbar(3,nanmean(af),nanstd(af)./sqrt(length(af)),'color','k','linewidth',3)
-            ylim([0 1])
-            title('Salience Measures')
-            set(gca,'XTick',1:3)
-            set(gca,'XTickLabel',{'Prior','Return','All'})
-            startpos = max([nanmean(allreturnfixsal{i}(:,4)),...
-                nanmean(allreturnfixsal{i}(:,8)),nanmean(allIORfixsal{i})])+.05;
-            plot([1 1],[startpos startpos + .05],'k')
-            plot([2 2],[startpos startpos + .05],'k')
-            plot([1 2],[startpos+.05 startpos+.05],'k')
-            text(1.5,startpos+.1,['p = ' num2str(ksp(1,i))],'HorizontalAlignment','center')
-            plot([2 2],[startpos+.1 startpos + .15],'k')
-            plot([3 3],[startpos+.1 startpos + .15],'k')
-            plot([2 3],[startpos+.15 startpos+.15],'k')
-            text(2.5,startpos+.2,['p = ' num2str(ksp(3,i),'%1.1e\n')],'HorizontalAlignment','center')
-            plot([1 1],[startpos+.2 startpos + .25],'k')
-            plot([3 3],[startpos+.2 startpos + .25],'k')
-            plot([1 3],[startpos+.25 startpos+.25],'k')
-            text(2,startpos+.3,['p = ' num2str(ksp(2,i),'%1.1e\n')],'HorizontalAlignment','center')
-            hold off
-            set(gcf,'Position',get(0,'Screensize'))%
-            set(gcf,'PaperPositionMode','auto')
-            filename = [tags{i} ' Comparison of Salience at Returned Fixations to'...
-                ' All other Fixations-Distance Threshold_' ...
-                num2str(distthresh(1)) '-' num2str(distthresh(2))];
-            print(filename,'-djpeg')
-            close gcf
-        end
-    else
-        allSalIOR{dt}.pvalues = 1;
-    end
-    
-    combinedallIORfixsal =allSalIOR{1}.SalienceIORFixations{1};
-    combinedallreturnfixsal = allreturnfixsal{1};
-    combinedalltotalfixs = alltotalfixs(1);
-    combinedalltotaluniquereturns = alltotaluniquereturns(1);
-    for i = 2:length(tags)
-        combinedallIORfixsal = [combinedallIORfixsal;allSalIOR{1}.SalienceIORFixations{i}];
-        combinedallreturnfixsal = [combinedallreturnfixsal;allreturnfixsal{i}];
-        combinedalltotalfixs = combinedalltotalfixs + alltotalfixs(i);
-        combinedalltotaluniquereturns = combinedalltotaluniquereturns + alltotaluniquereturns(i);
-    end
-    if dt~=1
-        combinedksp{dt} = NaN(1,3);
-        [~,p] = kstest2(combinedallreturnfixsal(:,4),combinedallreturnfixsal(:,8));
-        combinedksp{dt}(1) = p;
-        [~,p] = kstest2(combinedallIORfixsal,combinedallreturnfixsal(:,4));
-        combinedksp{dt}(2) = p;
-        [~,p] = kstest2(combinedallIORfixsal,combinedallreturnfixsal(:,8));
-        combinedksp{dt}(3) = p;
-        
-        figure(graphnum+1)
-        suptitle(['Combined Comparison of Salience at Returned Fixations to'...
-            'All other Fixations-Distance Threshold: ' ...
-            num2str(distthresh(1)) '-' num2str(distthresh(2))])
-        h = subplot(2,2,1);
-        ax = get(h,'Position');
-        ax(2) = .55;
-        set(h,'Position',ax)
-        hold on
-        h = bar(1,100*combinedalltotaluniquereturns/combinedalltotalfixs);
-        set(h(1),'facecolor','r')
-        bar(2,100*size(combinedallreturnfixsal,1)/combinedalltotalfixs)
-        title('Percent of Fixations with Unique Return Locations or Pairs of Returned Locations')
-        ylabel('Percent % ')
-        xlim([0.5 2.5])
-        set(gca,'XTick',1:2)
-        set(gca,'XTickLabel',{'Unique','Pairs'})
-        hold off
-        
-        h = subplot(2,2,2);
-        ax = get(h,'Position');
-        ax(2) = .55;
-        set(h,'Position',ax)
-        hold on
-        h = bar(1,nanmean(combinedallreturnfixsal(:,4)));
-        set(h,'facecolor','r')
-        set(h,'edgecolor','r')
-        errorbar(1,nanmean(combinedallreturnfixsal(:,4)),nanstd(combinedallreturnfixsal(:,4))./...
-            sqrt(sum(~isnan(combinedallreturnfixsal(:,4)))),'color','k','linewidth',3)
-        h = bar(2,nanmean(combinedallreturnfixsal(:,8)));
-        set(h,'facecolor','g')
-        set(h,'edgecolor','g')
-        errorbar(2,nanmean(combinedallreturnfixsal(:,8)),nanstd(combinedallreturnfixsal(:,8))./...
-            sqrt(sum(~isnan(combinedallreturnfixsal(:,8)))),'color','k','linewidth',3)
-        h = bar(3,nanmean(combinedallIORfixsal));
-        set(h,'edgecolor','b')
-        errorbar(3,nanmean(combinedallIORfixsal),nanstd(nanmean(combinedallIORfixsal))./...
-            sqrt(length(combinedallIORfixsal)),'color','k','linewidth',3)
-        ylim([0 1])
-        title('Salience Measures')
-        set(gca,'XTick',1:3)
-        set(gca,'XTickLabel',{'Prior','Return','Other'})
-        startpos = max([nanmean(combinedallreturnfixsal(:,4)),...
-            nanmean(combinedallreturnfixsal(:,8)),nanmean(combinedallIORfixsal)])+.05;
-        plot([1 1],[startpos startpos + .05],'k')
-        plot([2 2],[startpos startpos + .05],'k')
-        plot([1 2],[startpos+.05 startpos+.05],'k')
-        text(1.5,startpos+.1,['p = ' num2str(combinedksp{dt}(1))],'HorizontalAlignment','center')
-        plot([2 2],[startpos+.1 startpos + .15],'k')
-        plot([3 3],[startpos+.1 startpos + .15],'k')
-        plot([2 3],[startpos+.15 startpos+.15],'k')
-        text(2.5,startpos+.2,['p = ' num2str(combinedksp{dt}(3),'%1.1e\n')],'HorizontalAlignment','center')
-        plot([1 1],[startpos+.2 startpos + .25],'k')
-        plot([3 3],[startpos+.2 startpos + .25],'k')
-        plot([1 3],[startpos+.25 startpos+.25],'k')
-        text(2,startpos+.3,['p = ' num2str(combinedksp{dt}(2),'%1.1e\n')],'HorizontalAlignment','center')
-        hold off
-        
-        subplot(2,2,3);
-        plot(combinedallreturnfixsal(:,9),combinedallreturnfixsal(:,8),'.')
-        title('Distance Btw Return-Pairs & Salience at Return Fixation')
-        xlabel('Distance (pixels)')
-        ylabel('Normalized Salience')
-        
-        subplot(2,2,4)
-        hold on
-        p(1) = plot(5/1000*(combinedallreturnfixsal(:,3)),...
-            combinedallreturnfixsal(:,4),'.r');
-        p(2) = plot(5/1000*(combinedallreturnfixsal(:,7)),...
-            combinedallreturnfixsal(:,8),'.b');
-        hold off
-        title('Fixation Time & Salience at Fixation')
-        xlabel('Time (secs)')
-        ylabel('Normalized Salience')
-        legend(p,{'Initial Fixation','Return Fixation'})
-        
-        set(gcf,'Position',get(0,'Screensize'))%
-        set(gcf,'PaperPositionMode','auto')
-        filename = ['Combined Comparison of Salience at Returned Fixations to'...
-            ' All other Fixations-Distance Threshold_' ...
-            num2str(distthresh(1)) '-' num2str(distthresh(2))];
-        print(filename,'-djpeg')
-        close gcf
-    else
-        combinedksp{dt} = 1;
+    for eyefile = eyedatafiles;
+        SalienceIOR(matfiles.mat{eyefile},distancethreshold,imageX,imageY)
     end
 end
 
-cd 'C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\Plots-All SCM Files\IOR and Salience Images'
-meanfixsal = [];
-for i = 1:length(tags);
-    meanfixsal = [meanfixsal; allSalIOR{1}.SalienceIORFixations{i}];
-end
-clr = 'rgbm';
-means = NaN(length(distancethreshold1),length(tags));
-combinedIORsal = [];
-labels = cell(1,length(distancethreshold1));
-figure
-hold on
-for i = 2:length(distancethreshold1)
-    for ii = 1:length(tags)
-        means(i,ii) = nanmean(allSalIOR{i}.Saliencereturnedfixations{ii}(:,8));
-        p(ii) = plot(i,means(i,ii),['.' clr(ii)]);
-        combinedIORsal = [combinedIORsal;allSalIOR{i}.SalienceIORFixations{ii}];
-        if combinedksp{i}(3) < 0.05 & combinedksp{i}(2) < 0.05
-            p(7) = plot(i,0.5,'*r','markersize',5);
+totalfixations = zeros(1,size(distancethreshold,2));
+allSalIOR = cell(1,size(distancethreshold,2));
+for SET = 1:length(image_sets);
+    SETNUM = image_sets{SET};
+    cd([scm_image_dir SETNUM])
+    matfiles = what;
+    eyedatafiles = [];
+    for i = 1:length(matfiles.mat);
+        if ~isempty(strfind(matfiles.mat{i},'SalienceIOR'))
+            load(matfiles.mat{i});
+            for ii = 1:length(allSalIOR);
+                allSalIOR{ii} = [allSalIOR{ii}; returnfixsal{ii}];
+                totalfixations(ii) = totalfixations(ii)+size(returnfixsal{ii},1);
+            end
         end
     end
-    labels{i} = [num2str(distancethreshold1(i)) '-' num2str(distancethreshold2(i))];
 end
-p(5) = plot(median(means,2),'k','linewidth',3);
-p(6) = plot(2:length(distancethreshold1),...
-    nanmean(meanfixsal)*ones(1,length(distancethreshold1)-1),'--k');
-hold off
-legend(p,[tags,{'Combined Mean','Mean at other fixations','p < 0.05, kstest'}],'location',...
-    'NorthEastOutside');
-xlabel('Distance Treshold')
-set(gca,'XTick',1:length(distancethreshold1))
-xlim([1 length(distancethreshold1)+1])
-ylim([0 .55])
+
+load(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\'...
+    'CombinedSalienceStatistics.mat'],'alldata','allshuffled');
+chance = allshuffled(:,1,1,:);
+chance(isnan(chance)) = [];
+allsal = alldata(:,1,1,:);
+allsal(isnan(allsal)) = [];
+clear alldata allshuffled
+
+return_sal_pvalues = NaN(size(distancethreshold,2),3);
+return_sal_means = NaN(size(distancethreshold,2),2);
+return_sal_stds = NaN(size(distancethreshold,2),2);
+numreturns = NaN(1,size(distancethreshold,2));
+labels = {};
+for i = 1:size(distancethreshold,2);
+    [~,p]=kstest2(allSalIOR{i}(:,4),allSalIOR{i}(:,8));
+    return_sal_pvalues(i,1) = p;
+    [~,p]=kstest2(allsal,allSalIOR{i}(:,4));
+    return_sal_pvalues(i,2) = p;
+    [~,p]=kstest2(allsal,allSalIOR{i}(:,8));
+    return_sal_pvalues(i,3) = p;
+    
+    return_sal_means(i,1) = mean(allSalIOR{i}(:,4));
+    return_sal_means(i,2) = mean(allSalIOR{i}(:,8));
+    return_sal_stds(i,1) = std(allSalIOR{i}(:,4));
+    return_sal_stds(i,2) = std(allSalIOR{i}(:,8));
+    numreturns(i) = length(allSalIOR{i}(:,8));
+    labels{i} = [num2str(distancethreshold(1,i)) '-' num2str(distancethreshold(2,i))];
+end
+
+figure
+hold on
+plot([0 size(distancethreshold,2)+1],[mean(allsal) mean(allsal)],'-k','linewidth',2);
+plot([0 size(distancethreshold,2)+1],[mean(chance) mean(chance)],'--k','linewidth',2);
+errorbar(return_sal_means(:,2),return_sal_stds(:,2)./sqrt(numreturns'))
+errorbar(return_sal_means(:,1),return_sal_stds(:,1)./sqrt(numreturns'),'g')
+ylim([0.15 0.45])
+for i = 1:size(return_sal_pvalues,1)
+    if return_sal_pvalues(i,3) < 0.05 %if the return is
+        plot(i,0.43,'r*')
+    end
+end
+xlabel('Distance Tresholds')
+set(gca,'XTick',1:length(distancethreshold))
 set(gca,'XTickLabel',labels)
-ylabel('Normalized Salience')
-set(gcf,'Position',get(0,'Screensize'))%
-set(gcf,'PaperPositionMode','auto')
-filename = 'Mean Salience Value by Threshold';
-print(filename,'-djpeg')
-close gcf
+hold off
+legend('Mean Salience @ Fixations','Chance Salience','Salience @ Return Fixation',...
+    'Salience @ Prior Fixation','p < 0.05','location','northeastoutside')
+hold off
 
-corrs = NaN(length(tags),length(distancethreshold1)-1);
-avgcorr = NaN(1,length(distancethreshold1)-1);
-pcorrs = NaN(length(tags),length(distancethreshold1)-1);
-avgpcorr = NaN(1,length(distancethreshold1)-1);
-p_paired_tttest = NaN(length(tags),length(distancethreshold1)-1);
-avgp_paired_ttest = NaN(1,length(distancethreshold1)-1);
-mean_durfix1 = NaN(length(tags),length(distancethreshold1)-1);
-mean_durfix2 = NaN(length(tags),length(distancethreshold1)-1);
-for i = 2:length(distancethreshold1)
-    temp1 = [];
-    temp2 = [];
-    for t = 1:length(tags)
-        mean_durfix1(t,i-1) = mean(allSalIOR{i}.Saliencereturnedfixations{t}(:,10));
-        mean_durfix2(t,i-1) = mean(allSalIOR{i}.Saliencereturnedfixations{t}(:,11));
-        [r,p] = corrcoef(allSalIOR{i}.Saliencereturnedfixations{t}(:,10),allSalIOR{i}.Saliencereturnedfixations{t}(:,11));
-        corrs(t,i-1) = r(2,1);
-        pcorrs(t,i-1) = p(2,1);
-        [~,p,~] = ttest(allSalIOR{i}.Saliencereturnedfixations{t}(:,10),allSalIOR{i}.Saliencereturnedfixations{t}(:,11));
-        p_paired_tttest(t,i-1) = p;
-        temp1 = [temp1;allSalIOR{i}.Saliencereturnedfixations{t}(:,10)];
-        temp2 = [temp2;allSalIOR{i}.Saliencereturnedfixations{t}(:,11)];
-    end
-    [r,p] = corrcoef(temp1,temp2);
-    avgcorrs(i-1) = r(2,1);
-    avgpcorrs(i-1) = p(2,1);
-    [~,p,~] = ttest(temp1,temp2);
-    avgp_paired_tttest(i-1) = p;
+
+load(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\'...
+    'CombinedViewingBehavior.mat'],'allview');
+fixationduration = [];
+for i = 1:length(tags);
+    fixationduration = [fixationduration; 5*allview{i}.fixduration];
+end
+clear allview
+fixationduration(isnan(fixationduration)) = [];
+
+return_dur_pvalues = NaN(size(distancethreshold,2),3);
+return_dur_means = NaN(size(distancethreshold,2),2);
+return_dur_stds = NaN(size(distancethreshold,2),2);
+numreturns = NaN(1,size(distancethreshold,2));
+labels = {};
+for i = 1:size(distancethreshold,2);
+    [~,p]=kstest2(allSalIOR{i}(:,10),5*allSalIOR{i}(:,11));
+    return_dur_pvalues(i,1) = p;
+    [~,p]=kstest2(fixationduration,5*allSalIOR{i}(:,10));
+    return_dur_pvalues(i,2) = p;
+    [~,p]=kstest2(fixationduration,5*allSalIOR{i}(:,11));
+    return_dur_pvalues(i,3) = p;
+    
+    return_dur_means(i,1) = mean(5*allSalIOR{i}(:,10));
+    return_dur_means(i,2) = mean(5*allSalIOR{i}(:,11));
+    return_dur_stds(i,1) = std(5*allSalIOR{i}(:,10));
+    return_dur_stds(i,2) = std(5*allSalIOR{i}(:,11));
+    numreturns(i) = length(5*allSalIOR{i}(:,11));
+    labels{i} = [num2str(distancethreshold(1,i)) '-' num2str(distancethreshold(2,i))];
 end
 
 figure
 hold on
-plot(5*mean(mean_durfix1))
-plot(5*mean(mean_durfix2),'g')
-for i = 2:length(distancethreshold1);
-    if avgp_paired_tttest(i-1) < 0.05 && avgpcorrs(i-1) < 0.05
-        plot(i-1,max(5*mean(mean_durfix2))+5,'r*','markersize',3)
+plot([0 size(distancethreshold,2)+1],[mean(fixationduration) mean(fixationduration)],'-k','linewidth',1);
+errorbar(return_dur_means(:,2),return_dur_stds(:,2)./sqrt(numreturns'))
+errorbar(return_dur_means(:,1),return_dur_stds(:,1)./sqrt(numreturns'),'g')
+
+for i = 1:size(return_dur_pvalues,1)
+    if return_dur_pvalues(i,1) < 0.05 %if the return is
+        plot(i,290,'r*')
     end
 end
-legend('Initial Fixation','Return Fixatin','p < 0.05','location','NorthEastOutside')
-xlabel('Distance Treshold')
-set(gca,'XTick',0:length(distancethreshold1))
-xlim([0 length(distancethreshold1)])
-set(gca,'XTickLabel',labels(1:end))
+xlabel('Distance Tresholds')
+set(gca,'XTick',1:length(distancethreshold))
+set(gca,'XTickLabel',labels)
+hold off
+legend('Mean Fixation Duration','Duration of Return Fixation',...
+    'Duration of Prior Fixation','p < 0.05','location','northeastoutside')
+hold off
 
-allIORvariablenames = {
-    'distancethreshold: distance between mean fixation location to consider';
-    'as a return fixation: distance only from distancethreshold1 to distancethreshold2';
+dur = [];
+sal = [];
+for i = 1:2
+    for ii = 1:size(allSalIOR{i})
+        dur = [dur ; 5*allSalIOR{i}(ii,11)];
+        sal = [sal; allSalIOR{i}(ii,8)];
+    end
+end
+figure
+plot(dur,sal,'.')
+hold off
+xlabel('Duration (ms)')
+ylabel('Normalized Salience')
+[r,p]= corrcoef(dur,sal);
+xlim([0 660])
+
+dist = [];
+sal = [];
+for i = 1:2
+    for ii = 1:size(allSalIOR{i})
+        dist = [dist ; allSalIOR{i}(ii,9)];
+        sal = [sal; allSalIOR{i}(ii,8)];
+    end
+end
+figure
+plot(dist,sal,'.')
+hold off
+xlabel('Distance (pixels)')
+ylabel('Normalized Salience')
+[r,p]= corrcoef(dist,sal);
+
+mean_time_btwn_return = [];
+mean_numfixations_btwn_return = [];
+std_time_btwn_return = [];
+std_numfixations_btwn_return = [];
+for i = 1:size(distancethreshold,2);
+    mean_time_btwn_return(i) = 5*mean(allSalIOR{i}(:,7)-allSalIOR{i}(:,3)-1);
+    mean_numfixations_btwn_return(i) = mean(allSalIOR{i}(:,13)-allSalIOR{i}(:,12)-1);
+    std_time_btwn_return(i) = 5*std(allSalIOR{i}(:,7)-allSalIOR{i}(:,13)-1);
+    std_numfixations_btwn_return(i) = std(allSalIOR{i}(:,13)-allSalIOR{i}(:,12)-1);
+end
+
+figure
+errorbar(mean_time_btwn_return,std_time_btwn_return./sqrt(numreturns));
+xlabel('Distance Tresholds')
+set(gca,'XTick',1:length(distancethreshold))
+set(gca,'XTickLabel',labels)
+ylabel('Duration between prior and return fixation')
+
+figure
+errorbar(mean_numfixations_btwn_return,std_numfixations_btwn_return./sqrt(numreturns))
+xlabel('Distance Tresholds')
+set(gca,'XTick',1:length(distancethreshold))
+set(gca,'XTickLabel',labels)
+ylabel('Number of fixations in-between prior and return fixation')
+
+returnstats.sal_at_allfixation = allsal;
+returnstats.chancesalience = mean(chance);
+returnstats.sal_means = return_sal_means;
+returnstats.sal_stds = return_sal_stds;
+returnstats.sal_pvalues = return_sal_pvalues;
+returnstats.dist_sal_correlation = [r(2),p(2)];
+
+returnstats.dur_at_allfixation = fixationduration;
+returnstats.dur_means = return_dur_means;
+returnstats.dur_stds = return_dur_stds;
+returnstats.dur_pvalues = return_dur_pvalues;
+
+returnstats.mean_time_btwn_return = mean_numfixations_btwn_return;
+returnstats.std_time_btwn_return = std_numfixations_btwn_return;
+returnstats.mean_numfixations_btwn_return = mean_numfixations_btwn_return;
+returnstats.std_numfixations_btwn_return = std_numfixations_btwn_return;
+
+SalIORvariablenames = {
+    'allSalIOR: combined data from all Salience IOR runs organized by distance';
+    'threshold in the following way-[fix1x fix1y fix1t fix1sal fix2x fix2y fix2t...';
+    'fix2sal fixdist fix1dur fix2dur fixnum1 fixnum2]';
     '';
-    'tags: subject names';
+    'distancethreshold: distance thresholds to define pairs of fixations';
     '';
-    'dt: below is the iteration loop of distancethreshold';
-    'allSalIOR{dt}.pvalues: p-values from t-test comparing salience distributions';
-    'between salience at first fixation to salience at return fixation and both';
-    'to salience at other fixations that had no return pair arranged by tag';
+    'returnstats....'
+    'sal_at_allfixation: salience at fixations 1-35, the median # of fixations';
+    'chancesalience: 95% confidence interval of chance salience';
+    'sal_means: mean salience by distancthreshold arranged with prior fixations';
+    'in the first column and return fixations in second column';
+    'sal_stds: std of salience by distancthreshold arranged with prior fixations';
+    'in the first column and return fixations in second column';
+    'sal_pvalues: p-values comparing salience by distancthreshold arranged with';
+    'a kstest comparing salience @ prior fixations to return fixations, salience';
+    'at prior fixations to all fixations, and salience at return fixations to all fixations';
     '';
-    'allSalIOR{dt}.SalienceIORFixations: salience at other fixations ';
-    'allSalIOR{dt}.numberfixation: total number of fixations by tag';
-    'allSalIOR{dt}.numberuniquereturns: total number of unique return fixation;'
-    'locations by tag';
+    'dist_sal_correlation: correlation coefficient r, then pvalue of coefficient';
+    'dur_:arranged and calculated in the same manner as for salience except for';
+    'the relationship between fixation duration and salinece';
     '';
-    'allSalIOR{dt}.Saliencereturnedfixations: salience at first fixation and';
-    'salience at return fixation arranged by tag. Each subcell contains';
-    '[fix1x fix1y fix1t fix1sal fix2x fix2y fix2t fix2sal fixdist]';
-    'where fix is fixation, 1 or 2 is the fixation number in the pair of fixations';
-    'that are within 2 dva of each other, fix#t is the time of the fixation,';
-    'and fixdist is the distance between the pair of fixations';
-    '';
-    'combinedksp{dt}; pvalues structured like allSalIOR{dt}.pvalues except combined';
-    'across all subjects';
+    'Mean_time and number of fixation in between returns and prior fixations'
     };
-save(['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
-    'SCM Image Sets\CombinedSalienceIOR.mat'],...
-    'allIORvariablenames','allSalIOR','combinedksp','distancethreshold1',...
-    'distancethreshold2','tags')
+
+save(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\'...
+    'CombinedSalienceIOR.mat'],'returnstats','totalfixations','allSalIOR',...
+    'SalIORvariablenames','distancethreshold')
 %%
 %---[8] Run BCRW ---%
-scm_image_dir = 'C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\SCM Image Sets\';
+scm_image_dir = 'C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\';
 image_sets = {'Set006','Set007','Set008','Set009',...
     'SetE001','SetE002','SetE003','SetE004'};
 tags = {'MP','TT','JN','IW'};
-Combinedbehaviorfile = ['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\SCM Image Sets'...
+Combinedbehaviorfile = ['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets'...
     '\CombinedViewingBehavior.mat'];
 load(Combinedbehaviorfile,'allview')
 imageX = 800; imageY = 600;
@@ -1182,9 +1050,8 @@ for SET = 1:length(image_sets);
         end
     end
 end
-%%
-%---[9] Combine BCRW and Calculate Goodness of Fit-KL Divergence---%
-scm_image_dir = 'C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\SCM Image Sets\';
+%% [9] Caculated goodness of fit of BCRW for fixation location using KL-Divergence
+scm_image_dir = 'C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\';
 image_sets = {'Set006','Set007','Set008','Set009',...
     'SetE001','SetE002','SetE003','SetE004'};
 tags = {'MP','TT','JN','IW'};
@@ -1245,6 +1112,7 @@ for imset = 1:length(image_sets);
         
         img = double(rgb2gray(imread([num2str(i) '.bmp']))); %want values from 1-256
         imageintensities = 256-img;
+        %         imageintensities = img + 1; % if want to use regular image intensities
         
         for t = 1:length(tags)
             if eyedatafiles(t) ~= 0;
@@ -1323,14 +1191,14 @@ allKLshuff = KLshuff;
 
 pvalues = NaN(1,7);
 for i = 1:size(allKL,2);
-    [~,p] = ttest(allKL(:,i),allKLshuff(:,i));
+    [~,p] = kstest2(allKL(:,i),allKLshuff(:,i));
     pvalues(i) = p;
 end
-[~,p] = ttest(allKL(:,1),allKL(:,2));
+[~,p] = kstest2(allKL(:,1),allKL(:,2));
 pvalues(5) = p;
-[~,p] = ttest(allKL(:,2),allKL(:,3));
+[~,p] = kstest2(allKL(:,2),allKL(:,3));
 pvalues(6) = p;
-[~,p] = ttest(allKL(:,1),allKL(:,3));
+[~,p] = kstest2(allKL(:,1),allKL(:,3));
 pvalues(7) = p;
 
 pos = 2:3:11;
@@ -1346,26 +1214,26 @@ errorbar(pos+0.5,mean(allKLshuff),std(allKLshuff)/sqrt(size(allKL,1)),'xk','line
 for i = 1:length(pvalues);
     if i <= size(allKL,2)
         pos2 = pos(i);
-        h = 0.25+max(mean(allKL(:,i))+std(allKL(:,i))/sqrt(length(allKL(:,i))),...
-            mean(allKLshuff(:,i))+std(allKLshuff(:,i))/sqrt(length(allKLshuff(:,i))));
+        h = 0.25+max(mean(allKL(:,i))+std(allKL(:,i))/sqrt(size(allKL(:,i),1)),...
+            mean(allKLshuff(:,i))+std(allKLshuff(:,i))/sqrt(size(allKLshuff(:,i),1)));
     else
         if i == 5;
             pos2 = 3;
-            h = 1+mean(allKLshuff(:,1))+std(allKLshuff(:,1))/sqrt(length(allKLshuff(:,1)));
+            h = 1+mean(allKLshuff(:,1))+std(allKLshuff(:,1))/sqrt(size(allKLshuff(:,1),1));
             plot([2 2],[h-0.1 h-0.05],'k')
             plot([5 5],[h-0.1 h-0.05],'k')
             plot([2 5],[h-0.05 h-0.05],'k')
         elseif i == 6;
             pos2 = 6.5;
-            h = 1+max(mean(allKLshuff(:,3))+std(allKLshuff(:,3))/length(allKLshuff(:,3)),...
-                mean(allKLshuff(:,2))+std(allKLshuff(:,2))/length(allKLshuff(:,2)));
+            h = 1+max(mean(allKLshuff(:,3))+std(allKLshuff(:,3))/sqrt(size(allKLshuff(:,3),1)),...
+                mean(allKLshuff(:,2))+std(allKLshuff(:,2))/sqrt(size(allKLshuff(:,2),1)));
             plot([5 5],[h-0.1 h-0.05],'k')
             plot([8 8],[h-0.1 h-0.05],'k')
             plot([5 8],[h-0.05 h-0.05],'k')
         elseif i == 7;
             pos2 = 5;
-            h = 1.5+max(mean(allKLshuff(:,3))+std(allKLshuff(:,3))/length(allKLshuff(:,3)),...
-                mean(allKLshuff(:,2))+std(allKLshuff(:,2))/length(allKLshuff(:,2)));
+            h = 1.5+max(mean(allKLshuff(:,3))+std(allKLshuff(:,3))/sqrt(size(allKLshuff(:,3),1)),...
+                mean(allKLshuff(:,2))+std(allKLshuff(:,2))/sqrt(size(allKLshuff(:,2),1)));
             plot([2 2],[h-0.1 h-0.05],'k')
             plot([8 8],[h-0.1 h-0.05],'k')
             plot([2 8],[h-0.05 h-0.05],'k')
@@ -1386,13 +1254,12 @@ set(gca,'XTick',pos)
 set(gca,'XTickLabel',{'Fixation vs Salience','Fixation vs BCRW',...
     'Fixation vs Image Intensity','Salainece  vs Image Intensity'})
 
-save(['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
+save(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\'...
     'SCM Image Sets\Combined-KL-DiveregenceTest-CorrectedImgI.mat'],'pvalues','allKL',...
     'allKLshuff')
-
 %%
 %---[10] Combine BCRW and Calculate Goodness of Fit for Fixation Location-AUC ROC---%
-scm_image_dir = 'C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\SCM Image Sets\';
+scm_image_dir = 'C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\';
 image_sets = {'Set006','Set007','Set008','Set009',...
     'SetE001','SetE002','SetE003','SetE004'};
 tags = {'MP','TT','JN','IW'};
@@ -1460,7 +1327,7 @@ for imset = 1:length(image_sets);
         load(matfiles.mat{saliencemapfiles(i)})
         allsalience = fullmap;
         
-        imageintensities = 256-double(rgb2gray(imread([num2str(i) '.bmp'])));
+        imageintensities = 255-double(rgb2gray(imread([num2str(i) '.bmp'])));
         imageintensities = imageintensities/max(max(imageintensities));
         
         for t = 1:length(tags)
@@ -1589,25 +1456,20 @@ end
 hold off
 ylim([0 0.9])
 
-save(['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
+save(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\'...
     'SCM Image Sets\Combined-ROC-Corrected-ImageI.mat'],'ROC','zpvalues','tpvalues',...
     'all_I_at_fixations','all_BCRW_at_fixations','all_sal_at_fixations')
 %%
 %---[11] Combine BCRW and Calculate Goodness of Fit-AUC ROC Fixation Order---%
-scm_image_dir = 'C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\SCM Image Sets\';
+scm_image_dir = 'C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets\';
 image_sets = {'Set006','Set007','Set008','Set009',...
     'SetE001','SetE002','SetE003','SetE004'};
 tags = {'MP','TT','JN','IW'};
 imageX = 800;
 imageY = 600;
+binsize = 25; %code is optimized for binsize of 25 other values may produce fatal errors
 f = fspecial('gaussian',[256,256],24);
 parkhurst = {'on','off','rand','none'}; %distamce bias for fixation order in Parkhurst, Law, Niebur (2002)
-salience_at_fixations = [];
-salience_at_random = [];
-BCRW_at_fixations = [];
-BCRW_at_random = [];
-I_at_fixations = [];
-I_at_random = [];
 for pk = 1:length(parkhurst);
     salience_at_fixations = [];
     salience_at_random = [];
@@ -1615,7 +1477,16 @@ for pk = 1:length(parkhurst);
     BCRW_at_random = [];
     I_at_fixations = [];
     I_at_random = [];
+    ROC = cell(1,length(image_sets));
+    figure 
+    hold on
     for imset = 1:length(image_sets);
+        isalience_at_fixations = [];
+        isalience_at_random = [];
+        iBCRW_at_fixations = [];
+        iBCRW_at_random = [];
+        iI_at_fixations = [];
+        iI_at_random = [];
         disp(['Image set-' num2str(image_sets{imset})])
         dirName = [scm_image_dir image_sets{imset}];
         cd(dirName)
@@ -1660,13 +1531,13 @@ for pk = 1:length(parkhurst);
         for index = 1:36;
             disp(['Running on image #' num2str(index) ' from ' image_sets{imset}])
             load(matfiles.mat{saliencemapfiles(index)})
-            binsal = bin2(fullmap,25,25);
+            binsal = bin2(fullmap,binsize,binsize);
             binsal(binsal == 0) = min(min(fullmap));
             salorder = NaN(size(binsal));
             tempsal = binsal;
             [rr cc] = meshgrid([11 12 13 14],[15 16 17 18]);
             tempsal(rr,cc) = 0;
-            [rr cc] = meshgrid(1:imageX/25,1:imageY/25);
+            [rr cc] = meshgrid(1:imageX/binsize,1:imageY/binsize);
             fixnum = 1;
             while any(any(binsal > 0));
                 if max(max(tempsal)) == 0;
@@ -1676,7 +1547,7 @@ for pk = 1:length(parkhurst);
                     [i j] = find(tempsal == max(max(tempsal)));
                     if length(i) > 1;
                         ind = sub2ind(size(tempsal),i,j);
-                        [~,ind2] = sort(tempsal(ind));
+                        [~,ind2] = sort(binsal(ind));
                         ind = ind(ind2(1));
                         [i j] = ind2sub(size(tempsal),ind);
                     end
@@ -1698,13 +1569,12 @@ for pk = 1:length(parkhurst);
             
             img = double(rgb2gray(imread([num2str(index) '.bmp'])));
             img = 256-img;
-            binI = bin2(img,25,25);
-            binI(binI == 0) = 1;
+            binI = bin2(img,binsize,binsize);
             Iorder = NaN(size(binI));
             tempI = binI;
             [rr cc] = meshgrid([11 12 13 14],[15 16 17 18]);
             tempI(rr,cc) = 0;
-            [rr cc] = meshgrid(1:imageX/25,1:imageY/25);
+            [rr cc] = meshgrid(1:imageX/binsize,1:imageY/binsize);
             fixnum = 1;
             while any(any(binI > 0));
                 if max(max(tempI)) == 0;
@@ -1714,7 +1584,7 @@ for pk = 1:length(parkhurst);
                     [i j] = find(tempI == max(max(tempI)));
                     if length(i) > 1;
                         ind = sub2ind(size(tempI),i,j);
-                        [~,ind2] = sort(tempI(ind));
+                        [~,ind2] = sort(binI(ind));
                         ind = ind(ind2(1));
                         [i j] = ind2sub(size(tempI),ind);
                     end
@@ -1732,9 +1602,6 @@ for pk = 1:length(parkhurst);
                     end
                     fixnum = fixnum + 1;
                 end
-            end
-            if any(any(isnan(Iorder)));
-                error('ImgNaN','NaNs found in image')
             end
             
             maxfixations =0;
@@ -1757,11 +1624,12 @@ for pk = 1:length(parkhurst);
                 end
             end
             allBCRW = imfilter(allBCRW,f);
-            binfixorderpdf = zeros(imageY/25,imageX/25,maxfixations);
+            binallBCRW = bin2(allBCRW,binsize,binsize);
+            binfixorderpdf = zeros(imageY/binsize,imageX/binsize,maxfixations);
             for i = 1:maxfixations;
-                binfixorderpdf(:,:,i) = bin2(fixorderpdf(:,:,i),25,25);
+                binfixorderpdf(:,:,i) = bin2(fixorderpdf(:,:,i),binsize,binsize);
             end
-            BCRWorder = NaN(imageY/25,imageX/25);
+            BCRWorder = NaN(imageY/binsize,imageX/binsize);
             for ii = 1:maxfixations
                 [i j k] = ind2sub(size(binfixorderpdf),find(binfixorderpdf == max(max(max(binfixorderpdf)))));
                 if length(k) > 1
@@ -1770,10 +1638,10 @@ for pk = 1:length(parkhurst);
                     j = j(mind);
                     k = k(mind);
                     if length(i) > 1
-                        ind = sub2ind([imageY/25,imageX/25],i,j);
-                        [~,ind2] = sort(allBCRW(ind));
+                        ind = sub2ind(size(binallBCRW),i,j);
+                        [~,ind2] = sort(binallBCRW(ind));
                         ind = ind(ind2(1));
-                        [i j] = ind2sub([imageY/25,imageX/25],ind);
+                        [i j] = ind2sub([imageY/binsize,imageX/binsize],ind);
                         k = k(1);
                     end
                 end
@@ -1781,12 +1649,11 @@ for pk = 1:length(parkhurst);
                 binfixorderpdf(i,j,:) = 0;
                 BCRWorder(i,j) = k;
             end
-            binallBCRW = bin2(allBCRW,25,25);
             binallBCRW(~isnan(BCRWorder)) = NaN;
             tempBCRW = binallBCRW;
             [rr cc] = meshgrid([11 12 13 14],[15 16 17 18]);
             tempBCRW(rr,cc) = NaN;
-            [rr cc] = meshgrid(1:imageX/25,1:imageY/25);
+            [rr cc] = meshgrid(1:imageX/binsize,1:imageY/binsize);
             fixnum = maxfixations+1;
             while any(any(binallBCRW > 0));
                 if isnan(min(min(tempBCRW)));
@@ -1796,7 +1663,7 @@ for pk = 1:length(parkhurst);
                     [i j] = find(tempBCRW == max(max(tempBCRW)));
                     if length(i) > 1;
                         ind = sub2ind(size(tempBCRW),i,j);
-                        [~,ind2] = sort(tempBCRW(ind));
+                        [~,ind2] = sort(binallBCRW(ind));
                         ind = ind(ind2(1));
                         [i j] = ind2sub(size(tempBCRW),ind);
                     end
@@ -1809,8 +1676,8 @@ for pk = 1:length(parkhurst);
                     elseif strcmpi(parkhurst{pk},'rand')
                         tempBCRW = tempBCRW.*exp(-((rr-i).^2+(cc-j).^2)/(2*randi([1 10])^2));
                     elseif strcmpi(parkhurst{pk},'off')
-                        tempBCRW(C == 1) = NaN;
                         C = sqrt((rr-j).^2+(cc-i).^2)<=2;
+                        tempBCRW(C == 1) = NaN;
                     end
                     fixnum = fixnum + 1;
                 end
@@ -1838,7 +1705,7 @@ for pk = 1:length(parkhurst);
                     for iii = 1:size(fixations,2)
                         xxyy = fixations(:,iii);
                         xxyy(2) = imageY-xxyy(2);
-                        xxyy = round((xxyy-12.5)/25+1);
+                        xxyy = round((xxyy-binsize/2)/binsize+1);
                         xxyy(xxyy < 1) = 1;
                         xxyy(2,(xxyy(2) > size(binI,1))) = size(binI,1);
                         xxyy(1,(xxyy(1) > size(binI,2))) = size(binI,2);
@@ -1849,75 +1716,94 @@ for pk = 1:length(parkhurst);
                         sfixI(iii) = abs(Iorder(randi(numel(salorder)))-iii);
                         sfixBCRW(iii) = abs(BCRWorder(randi(numel(salorder)))-iii);
                     end
-                    salience_at_fixations = [salience_at_fixations;fixsal];
-                    salience_at_random = [salience_at_random;sfixsal];
-                    BCRW_at_fixations = [BCRW_at_fixations;fixBCRW];
-                    BCRW_at_random = [BCRW_at_random;sfixBCRW];
-                    I_at_fixations = [I_at_fixations;fixI];
-                    I_at_random = [I_at_random;sfixI];
+                    isalience_at_fixations = [isalience_at_fixations;fixsal];
+                    isalience_at_random = [isalience_at_random;sfixsal];
+                    iBCRW_at_fixations = [iBCRW_at_fixations;fixBCRW];
+                    iBCRW_at_random = [iBCRW_at_random;sfixBCRW];
+                    iI_at_fixations = [iI_at_fixations;fixI];
+                    iI_at_random = [iI_at_random;sfixI];
                 end
             end
         end
-    end
-    nans = find(isnan(nanmean(salience_at_fixations)));
-    salience_at_fixations(:,nans) = [];
-    salience_at_random(:,nans) = [];
-    BCRW_at_fixations(:,nans) = [];
-    BCRW_at_random(:,nans) = [];
-    I_at_fixations(:,nans) = [];
-    I_at_random(:,nans) = [];
-    len = size(salience_at_fixations,1);
-    medianlen = median(sum(~isnan(salience_at_fixations),2));
-    thresh = 0:1:numel(BCRWorder);
-    TP = NaN(3,length(thresh)); %True positive
-    FA = NaN(3,length(thresh)); %False alarm
-    ROC = NaN(3,size(salience_at_fixations,2));
-    figure
-    hold on
-    for fixnum = 1:size(salience_at_fixations,2);
-        for ii = 1:length(thresh)
-            TP(1,ii) = sum(salience_at_fixations(:,fixnum) < thresh(ii))/len;
-            FA(1,ii) = sum(salience_at_random(:,fixnum) < thresh(ii))/len;
-            TP(2,ii) = sum(BCRW_at_fixations(:,fixnum) < thresh(ii))/len;
-            FA(2,ii) = sum(BCRW_at_random(:,fixnum) < thresh(ii))/len;
-            TP(3,ii) = sum(I_at_fixations(:,fixnum) < thresh(ii))/len;
-            FA(3,ii) = sum(I_at_random(:,fixnum) < thresh(ii))/len;
+        
+        salience_at_fixations = [salience_at_fixations;isalience_at_fixations];
+        salience_at_random = [salience_at_random;isalience_at_random];
+        BCRW_at_fixations = [BCRW_at_fixations;iBCRW_at_fixations];
+        BCRW_at_random = [BCRW_at_random;iBCRW_at_random];
+        I_at_fixations = [I_at_fixations;iI_at_fixations];
+        I_at_random = [I_at_random;iI_at_random];
+        
+        nans = find(isnan(nanmean(isalience_at_fixations)));
+        isalience_at_fixations(:,nans) = [];
+        isalience_at_random(:,nans) = [];
+        iBCRW_at_fixations(:,nans) = [];
+        iBCRW_at_random(:,nans) = [];
+        iI_at_fixations(:,nans) = [];
+        iI_at_random(:,nans) = [];
+        
+        medianlen = median(sum(~isnan(salience_at_fixations),2));
+        thresh = 0:1:numel(BCRWorder);
+        TP = NaN(3,length(thresh)); %True positive
+        FA = NaN(3,length(thresh)); %False alarm
+        for fixnum = 1:size(isalience_at_fixations,2);
+            for ii = 1:length(thresh)
+                len = sum(~isnan(isalience_at_fixations(:,fixnum)));
+                TP(1,ii) = sum(isalience_at_fixations(:,fixnum) < thresh(ii))/len;
+                FA(1,ii) = sum(isalience_at_random(:,fixnum) < thresh(ii))/len;
+                TP(2,ii) = sum(iBCRW_at_fixations(:,fixnum) < thresh(ii))/len;
+                FA(2,ii) = sum(iBCRW_at_random(:,fixnum) < thresh(ii))/len;
+                TP(3,ii) = sum(iI_at_fixations(:,fixnum) < thresh(ii))/len;
+                FA(3,ii) = sum(iI_at_random(:,fixnum) < thresh(ii))/len;
+            end
+            plot(FA(1,:),TP(1,:),'b')
+            plot(FA(2,:),TP(2,:),'g')
+            plot(FA(3,:),TP(3,:),'r')
+            ROC{imset}(1,fixnum) = trapz(FA(1,:),TP(1,:));
+            ROC{imset}(2,fixnum) = trapz(FA(2,:),TP(2,:));
+            ROC{imset}(3,fixnum) = trapz(FA(3,:),TP(3,:));
         end
-        plot(FA(1,:),TP(1,:),'b')
-        plot(FA(2,:),TP(2,:),'g')
-        plot(FA(3,:),TP(3,:),'r')
-        ROC(1,fixnum) = trapz(FA(1,:),TP(1,:));
-        ROC(2,fixnum) = trapz(FA(2,:),TP(2,:));
-        ROC(3,fixnum) = trapz(FA(3,:),TP(3,:));
     end
     plot(thresh/max(thresh),thresh/max(thresh),'k--','linewidth',3)
     hold off
     legend('Salience','BCRW','Image Intensity','location','Northeastoutside')
     xlabel('False Alarm Rate (FP)')
     ylabel('True Positive (TP)')
-    
+
+    combinedROC = cell(1,3);
+    for i = 1:3
+        for ii = 1:length(image_sets)
+        combinedROC{i} = [combinedROC{i}; ROC{ii}(i,1:medianlen)];
+        end
+    end
+
     figure
     hold on
-    plot(1:fixnum,ROC(1,:),'b')
-    plot(1:fixnum,ROC(2,:),'g')
-    plot(1:fixnum,ROC(3,:),'r')
+    plot(1:medianlen,mean(combinedROC{1}),'b')
+    plot(1:medianlen,mean(combinedROC{2}),'g')
+    plot(1:medianlen,mean(combinedROC{3}),'r')
     hold off
     xlabel('Fixation Number')
     ylabel('AUC ROC (a.u.)')
     legend('Salience','BCRW','Image Intensity','location','Northeastoutside')
     xlim([0 medianlen])
     
+    nans = find(isnan(nanmean(salience_at_fixations)));
+    salience_at_fixations(:,nans) = [];
+    BCRW_at_fixations(:,nans) = [];
+    I_at_fixations(:,nans) = [];
+    
+    len = sum(~isnan(salience_at_fixations),1);
     figure
     hold on
-    errorbar(1:fixnum,nanmean(salience_at_fixations),nanstd(salience_at_fixations)/sqrt(len),'b')
-    errorbar(1:fixnum,nanmean(BCRW_at_fixations),nanstd(BCRW_at_fixations)/sqrt(len),'g')
-    errorbar(1:fixnum,nanmean(I_at_fixations),nanstd(I_at_fixations)/sqrt(len),'r')
+    errorbar(1:length(len),nanmean(salience_at_fixations),nanstd(salience_at_fixations)./sqrt(len),'b')
+    errorbar(1:length(len),nanmean(BCRW_at_fixations),nanstd(BCRW_at_fixations)./sqrt(len),'g')
+    errorbar(1:length(len),nanmean(I_at_fixations),nanstd(I_at_fixations)./sqrt(len),'r')
     hold off
     xlabel('Fixation Number')
     ylabel('Difference in Predicted and Actual fixation number')
     legend('Salience','BCRW','Image Intensity','location','Northeastoutside')
     xlim([0 medianlen])
-    
+
     pvalues = NaN(3,fixnum);
     for ii = 1:fixnum
         [~,p] = kstest2(salience_at_fixations(:,ii),BCRW_at_fixations(:,ii));
@@ -1932,67 +1818,74 @@ for pk = 1:length(parkhurst);
         mean(nanmean(I_at_fixations))   median(nanmedian(I_at_fixations))];
     
     if strcmpi(parkhurst{pk},'on')
-        save(['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
+        save(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\'...
             'SCM Image Sets\Combined-FixationOrder-parkhurst-Corrected-ImageI'],...
             'ROC','pvalues','I_at_fixations','BCRW_at_fixations',...
             'salience_at_fixations','mean_medians')
     elseif strcmpi(parkhurst{pk},'rand')
-        save(['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
+        save(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\'...
             'SCM Image Sets\Combined-FixationOrder-randparkhurst-Corrected-ImageI'],...
             'ROC','pvalues','I_at_fixations','BCRW_at_fixations',...
             'salience_at_fixations','mean_medians')
     elseif strcmpi(parkhurst{pk},'off')
-        save(['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
+        save(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\'...
             'SCM Image Sets\Combined-FixationOrder-IOR-Corrected-ImageI'],...
             'ROC','pvalues','I_at_fixations','BCRW_at_fixations',...
             'salience_at_fixations','mean_medians')
     else
-        save(['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
+        save(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\'...
             'SCM Image Sets\Combined-FixationOrder-WTA-Corrected-ImageI'],...
             'ROC','pvalues','I_at_fixations','BCRW_at_fixations',...
             'salience_at_fixations','mean_medians')
     end
 end
-
-load(['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
+%%
+ROCS = cell(4,3);
+values = cell(4,3);
+medianlen = median(medianlen);
+load(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\'...
     'SCM Image Sets\Combined-FixationOrder-parkhurst-Corrected-ImageI']);
 values{1,1} = salience_at_fixations(~isnan(salience_at_fixations));
 values{1,2} = BCRW_at_fixations(~isnan(BCRW_at_fixations));
 values{1,3} = I_at_fixations(~isnan(I_at_fixations));
-ROCS{1,1} = ROC(1,:);
-ROCS{1,2} = ROC(2,:);
-ROCS{1,3} = ROC(3,:);
-medianlen(1) = median(sum(~isnan(salience_at_fixations),2));
+for ii = 1:length(image_sets)
+    for i = 1:3;
+        ROCS{1,i} = [ROCS{1,i}; ROC{ii}(i,1:medianlen)];
+    end
+end
 
-load(['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
+load(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\'...
     'SCM Image Sets\Combined-FixationOrder-randparkhurst-Corrected-ImageI']);
 values{2,1} = salience_at_fixations(~isnan(salience_at_fixations));
 values{2,2} = BCRW_at_fixations(~isnan(BCRW_at_fixations));
 values{2,3} = I_at_fixations(~isnan(I_at_fixations));
-ROCS{2,1} = ROC(1,:);
-ROCS{2,2} = ROC(2,:);
-ROCS{2,3} = ROC(3,:);
-medianlen(2) = median(sum(~isnan(salience_at_fixations),2));
+for ii = 1:length(image_sets)
+    for i = 1:3;
+        ROCS{2,i} = [ROCS{2,i}; ROC{ii}(i,1:medianlen)];
+    end
+end
 
-load(['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
+load(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\'...
     'SCM Image Sets\Combined-FixationOrder-IOR-Corrected-ImageI']);
 values{3,1} = salience_at_fixations(~isnan(salience_at_fixations));
 values{3,2} = BCRW_at_fixations(~isnan(BCRW_at_fixations));
 values{3,3} = I_at_fixations(~isnan(I_at_fixations));
-ROCS{3,1} = ROC(1,:);
-ROCS{3,2} = ROC(2,:);
-ROCS{3,3} = ROC(3,:);
-medianlen(3) = median(sum(~isnan(salience_at_fixations),2));
+for ii = 1:length(image_sets)
+    for i = 1:3;
+        ROCS{3,i} = [ROCS{3,i}; ROC{ii}(i,1:medianlen)];
+    end
+end
 
-load(['C:\Users\GOD-OF-ChAOS\Documents\MATLAB\Buffalo Lab-Salience Model\'...
+load(['C:\Users\skoenig\Documents\MATLAB\BCRW Salience Model\'...
     'SCM Image Sets\Combined-FixationOrder-WTA-Corrected-ImageI']);
 values{4,1} = salience_at_fixations(~isnan(salience_at_fixations));
 values{4,2} = BCRW_at_fixations(~isnan(BCRW_at_fixations));
 values{4,3} = I_at_fixations(~isnan(I_at_fixations));
-ROCS{4,1} = ROC(1,:);
-ROCS{4,2} = ROC(2,:);
-ROCS{4,3} = ROC(3,:);
-medianlen(4) = median(sum(~isnan(salience_at_fixations),2));
+for ii = 1:length(image_sets)
+    for i = 1:3;
+        ROCS{4,i} = [ROCS{4,i}; ROC{ii}(i,1:medianlen)];
+    end
+end
 
 means = cellfun(@mean,values);
 stds = cellfun(@std,values);
@@ -2021,6 +1914,7 @@ for i = 1:size(values,1) %row method
         end
     end
 end
+
 method_sal_pvalue = anova1([values{1,1},values{2,1},values{3,1},values{4,1}]);
 method_BCRW_pvalue = anova1([values{1,2},values{2,2},values{3,2},values{4,2}]);
 method_I_pvalue = anova1([values{1,3},values{2,3},values{3,3},values{4,3}]);
@@ -2030,15 +1924,15 @@ meanROCS = zeros(size(ROCS));
 stdROCS = zeros(size(ROCS));
 for i = 1:size(ROCS,1)
     for ii = 1:size(ROCS,2);
-        meanROCS(i,ii) = mean(ROCS{i,ii}(1:median(medianlen)));
-        stdROCS(i,ii) = std(ROCS{i,ii}(1:median(medianlen)));
+        meanROCS(i,ii) = mean2(ROCS{i,ii});
+        stdROCS(i,ii) = std2(ROCS{i,ii});
     end
 end
 
-type_pvalues = NaN(1,3); 
-best(1) = find(means(:,1) == min(means(:,1)));
-best(2) = find(means(:,2) == min(means(:,2)));
-best(3) = find(means(:,3) == min(means(:,3)));
+type_pvalues = NaN(1,3);
+best(1) = find(meanROCS(:,1) == max(meanROCS(:,1)));
+best(2) = find(meanROCS(:,2) == max(meanROCS(:,2)));
+best(3) = find(meanROCS(:,3) == max(meanROCS(:,3)));
 [~,p] = kstest2(values{best(1),1},values{best(2),2});
 type_pvalues(1) = p;
 [~,p] = kstest2(values{best(2),2},values{best(3),3});
@@ -2046,25 +1940,17 @@ type_pvalues(2) = p;
 [~,p] = kstest2(values{best(1),1},values{best(3),3});
 type_pvalues(3) = p;
 
-ROC_pvalues = NaN(1,3); 
-[~,p] = kstest2(ROCS{best(1),1}(1:median(medianlen)),ROCS{best(2),2}(1:median(medianlen)));
-ROC_pvalues(1) = p; 
-[~,p] = kstest2(ROCS{best(2),2}(1:median(medianlen)),ROCS{best(3),3}(1:median(medianlen)));
-ROC_pvalues(2) = p; 
-[~,p] = kstest2(ROCS{best(1),1}(1:median(medianlen)),ROCS{best(3),3}(1:median(medianlen)));
-ROC_pvalues(3) = p; 
+ROC_pvalues = NaN(1,3);
+[~,p] = kstest2(ROCS{best(1),1}(1:end),ROCS{best(2),2}(1:end));
+ROC_pvalues(1) = p;
+[~,p] = kstest2(ROCS{best(2),2}(1:end),ROCS{best(3),3}(1:end));
+ROC_pvalues(2) = p;
+[~,p] = kstest2(ROCS{best(1),1}(1:end),ROCS{best(3),3}(1:end));
+ROC_pvalues(3) = p;
 
 figure
 hold on
 h = bar(means');
-set(h,'BarWidth',1); % The bars will now touch each other
-set(get(gca,'YLabel'),'String','U')
-set(gca,'XTick',[1 2 3])
-set(gca,'XTickLabel',{'Salience','BCRW','Image Intensity'})
-ylabel('Difference between actual and predicted fixation order')
-legend('Parkhurst 5 dva','2 dva IOR Area','Parkhurst 3-10 dva','Winner Take All',...
-    'Location','NortheastOutside')
-hold on;
 numgroups = size(means, 2);
 numbars = size(means, 1);
 groupwidth = min(0.8, numbars/(numbars+1.5));
@@ -2077,7 +1963,7 @@ end
 
 for i = 1:size(method_pvalues,2);
     if mp(i) < 0.05
-        plot(i,median(means(:,i))+10,'*r','markersize',10)
+        hh = plot(i,median(means(:,i))+10,'*r','markersize',10);
     end
 end
 
@@ -2095,8 +1981,14 @@ text(2,450,['p = ' num2str(type_pvalues(3))],'HorizontalAlignment','center')
 plot([1 1],[425 440],'k')
 plot([2.95  2.95],[425 440],'k')
 plot([1 2.95],[440 440],'k')
-
+set(h,'BarWidth',1); % The bars will now touch each other
+set(get(gca,'YLabel'),'String','U')
+set(gca,'XTick',[1 2 3])
+set(gca,'XTickLabel',{'Salience','BCRW','Image Intensity'})
+ylabel('Difference between actual and predicted fixation order')
 ylim([0 460])
+legend([h hh],'Parkhurst 5 dva','2 dva IOR Area','Parkhurst 1-10 dva','Winner Take All',...
+    'Location','NortheastOutside','Method ANOVA p < 0.05')
 hold off
 
 clr = 'bgr';
@@ -2104,12 +1996,12 @@ fixnum = size(ROCS{1,1},2);
 style = {'--','-.','-',':'};
 legendlabels = {};
 type = {'Salience','BCRW','Image Intensity'};
-method = {'Parkhurst 5 dva','2 dva IOR Area','Parkhurst 3-10 dva','Winner Take All'};
+method = {'Parkhurst 5 dva','2 dva IOR Area','Parkhurst 1-10 dva','Winner Take All'};
 figure
 hold on
 for i = 1:size(ROCS,1) %method
     for ii = 1:size(ROCS,2) %type
-        p(i,ii) = plot(1:fixnum,ROCS{i,ii},[clr(ii) style{i}]);
+        p(i,ii) = plot(1:fixnum,mean(ROCS{i,ii}),[clr(ii) style{i}]);
         legendlabels{ii,i} = [type{ii} ' ' method{i}];
     end
 end
@@ -2118,6 +2010,7 @@ xlim([0 median(medianlen)])
 legend(legendlabels{1:end},'location','northeastoutside')
 xlabel('Fixation Number')
 ylabel('AUC ROC (a.u.)')
+ylim([0.5 0.85])
 
 figure
 hold on
@@ -2127,7 +2020,7 @@ set(get(gca,'YLabel'),'String','U')
 set(gca,'XTick',[1 2 3])
 set(gca,'XTickLabel',{'Salience','BCRW','Image Intensity'})
 ylabel('Difference between actual and predicted fixation order')
-legend('Parkhurst 5 dva','2 dva IOR Area','Parkhurst 3-10 dva','Winner Take All',...
+legend('Parkhurst 5 dva','2 dva IOR Area','Parkhurst 1-10 dva','Winner Take All',...
     'Location','NortheastOutside')
 hold on;
 numgroups = size(meanROCS, 2);
@@ -2141,17 +2034,17 @@ for i = 1:numbars
 end
 ylim([0 .85])
 
-text(1.45,0.725,['p = ' num2str(ROC_pvalues(1))],'HorizontalAlignment','center')
-plot([1 1],[0.65 0.7],'k')
-plot([1.9 1.9],[0.65  0.7],'k')
-plot([1 1.9],[0.7 0.7],'k')
+text(1.45,0.77,['p = ' num2str(ROC_pvalues(1))],'HorizontalAlignment','center')
+plot([1 1],[0.72 0.75],'k')
+plot([1.9 1.9],[0.72  0.75],'k')
+plot([1 1.9],[0.75 0.75],'k')
 
-text(2.55,0.725,['p = ' num2str(ROC_pvalues(2))],'HorizontalAlignment','center')
-plot([2.1 2.1],[0.65 0.7],'k')
-plot([3 3],[0.65  0.7],'k')
-plot([2.1 3],[0.7 0.7],'k')
+text(2.55,0.77,['p = ' num2str(ROC_pvalues(2))],'HorizontalAlignment','center')
+plot([2.1 2.1],[0.72 0.75],'k')
+plot([3 3],[0.72  0.75],'k')
+plot([2.1 3],[0.75 0.75],'k')
 
 text(2,0.825,['p = ' num2str(ROC_pvalues(3))],'HorizontalAlignment','center')
-plot([1 1],[0.75 0.8],'k')
-plot([3 3],[0.75  0.8],'k')
+plot([1 1],[0.77 0.8],'k')
+plot([3 3],[0.77  0.8],'k')
 plot([1 3],[0.8 0.8],'k')

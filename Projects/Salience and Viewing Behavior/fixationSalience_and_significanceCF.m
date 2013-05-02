@@ -31,22 +31,24 @@ elseif nargin < 4
     PLOTOPTIONS = 'none';
 end
 
-load(FIXATIONFILE);
+load(FIXATIONFILE,'fixationstats');
 
 RF = receptivefield(imageY,imageX);%"receptive field" to calclulate salience contrast
 
 matfiles = what;
 saliencemapfiles = [NaN;NaN];
 for i = 1:length(matfiles.mat);
-    str = strfind(matfiles.mat{i},'saliencemap');
+    str = strfind(matfiles.mat{i},'saliencemap.mat');
     if ~isempty(str)
         dash = strfind(matfiles.mat{i},'-');
-        saliencemapfiles = [saliencemapfiles [i;str2num(matfiles.mat{i}(1:dash(1)-1))]];
+        if ~isempty(str2num(matfiles.mat{i}(dash(1)-1)))
+            saliencemapfiles = [saliencemapfiles [i;str2num(matfiles.mat{i}(1:dash(1)-1))]];
+        end
     end
 end
 saliencemapfiles(:,1) = [];
 [~,si] = sort(saliencemapfiles(2,:));
-saliencemapfiles = si;
+saliencemapfiles = saliencemapfiles(1,si);
 
 maxfixs = 0;
 numtrials = round(length(fixationstats)/2);
@@ -56,63 +58,67 @@ for s = 1:length(shuffunshuff)
     for cndlop=1:2:length(fixationstats)
         reindexed = (cndlop+1)/2;
         [saliencemap exe img] = getMaps(matfiles.mat{saliencemapfiles(reindexed)},RF);
-       
+        
         fixationtimes = fixationstats{cndlop}.fixationtimes;
-        fixations = fixationstats{cndlop}.fixations;
-        xy = fixationstats{cndlop}.XY;
-        if fixations(1,1) > imageX/2-100 && fixations(1,1) < imageX/2+100 &&...
-                fixations(2,1) < imageY/2+100 && fixations(2,1) > imageY/2-100
-            fixations(:,1) = [];
-            fixationtimes(:,1) = [];
-        end
-        
-        numfixs = size(fixations,2);
-        maxfixs = max(maxfixs,numfixs);
-        for i = 1:size(corrs,2)
-            for ii = 1:size(corrs,3)
-                corrs{reindexed,i,ii} = NaN(1,numfixs);
+        if ~isempty(fixationtimes)
+            fixations = fixationstats{cndlop}.fixations;
+            xy = fixationstats{cndlop}.XY;
+            if fixations(1,1) > imageX/2-100 && fixations(1,1) < imageX/2+100 &&...
+                    fixations(2,1) < imageY/2+100 && fixations(2,1) > imageY/2-100
+                fixations(:,1) = [];
+                fixationtimes(:,1) = [];
             end
-        end
-        
-        for i = 1:numfixs
-            if s == 1; %shuffled points
-                L = diff(fixationtimes(:,i));
-                spot = [ceil(imageX*rand) ceil(imageY*rand)]; %fake x,y data
-                spots = [ceil(imageX*rand(1,L));ceil(imageY*rand(1,L))];
-                spots = sub2ind([imageY imageX],spots(2,:),spots(1,:));
-            else %unshuffled
-                spot = ceil(fixations(:,i));
-                spot(2) = imageY-spot(2); 
-                spot(spot < 1) = 1;
-                spot(1,spot(1) > imageX) = imageX;
-                spot(2,spot(2) > imageY) = imageY;
-                spots = [xy(1,fixationtimes(1,i):fixationtimes(2,i));...
-                    xy(2,fixationtimes(1,i):fixationtimes(2,i))];
-                spots(2,:) = imageY-spots(2,:);
-                spots = round(spots);
-                spots(spots < 1) = 1;
-                spots(1,spots(1,:) > imageX) = imageX;
-                spots(2,spots(2,:) > imageY) = imageY;
-                spots = sub2ind([imageY imageX],spots(2,:),spots(1,:));
+            
+            numfixs = size(fixations,2);
+            maxfixs = max(maxfixs,numfixs);
+            for i = 1:size(corrs,2)
+                for ii = 1:size(corrs,3)
+                    corrs{reindexed,i,ii} = NaN(1,numfixs);
+                end
             end
-            corrs{reindexed,1,1}(i) = saliencemap(spot(2),spot(1));
-            corrs{reindexed,1,2}(i) = mean(saliencemap(spots));
-            corrs{reindexed,2,1}(i) = exe(spot(2),spot(1));
-            corrs{reindexed,2,2}(i) = mean(exe(spots));
-            corrs{reindexed,3,1}(i) = img(spot(2),spot(1));
-            corrs{reindexed,3,2}(i) = mean(img(spots));
+            
+            for i = 1:numfixs
+                if s == 1; %shuffled points
+                    L = diff(fixationtimes(:,i));
+                    spot = [ceil(imageX*rand) ceil(imageY*rand)]; %fake x,y data
+                    spots = [ceil(imageX*rand(1,L));ceil(imageY*rand(1,L))];
+                    spots = sub2ind([imageY imageX],spots(2,:),spots(1,:));
+                else %unshuffled
+                    spot = ceil(fixations(:,i));
+                    spot(2) = imageY-spot(2);
+                    spot(spot < 1) = 1;
+                    spot(1,spot(1) > imageX) = imageX;
+                    spot(2,spot(2) > imageY) = imageY;
+                    spots = [xy(1,fixationtimes(1,i):fixationtimes(2,i));...
+                        xy(2,fixationtimes(1,i):fixationtimes(2,i))];
+                    spots(2,:) = imageY-spots(2,:);
+                    spots = round(spots);
+                    spots(spots < 1) = 1;
+                    spots(1,spots(1,:) > imageX) = imageX;
+                    spots(2,spots(2,:) > imageY) = imageY;
+                    spots = sub2ind([imageY imageX],spots(2,:),spots(1,:));
+                end
+                corrs{reindexed,1,1}(i) = saliencemap(spot(2),spot(1));
+                corrs{reindexed,1,2}(i) = mean(saliencemap(spots));
+                corrs{reindexed,2,1}(i) = exe(spot(2),spot(1));
+                corrs{reindexed,2,2}(i) = mean(exe(spots));
+                corrs{reindexed,3,1}(i) = img(spot(2),spot(1));
+                corrs{reindexed,3,2}(i) = mean(img(spots));
+            end
         end
     end
     shuffunshuff{s} = corrs;
 end
 
-for s = 1:length(shuffunshuff)    
+for s = 1:length(shuffunshuff)
     combineddata = NaN(numtrials,3,2,maxfixs);
     for i = 1:size(combineddata,1)
         for ii = 1:size(combineddata,2)
             for iii = 1:size(combineddata,3)
-                combineddata(i,ii,iii,1:length(shuffunshuff{s}{i,ii,iii}))= ...
-                    shuffunshuff{s}{i,ii,iii};
+                if ~isempty(shuffunshuff{s}{i,ii,iii})
+                    combineddata(i,ii,iii,1:length(shuffunshuff{s}{i,ii,iii}))= ...
+                        shuffunshuff{s}{i,ii,iii};
+                end
             end
         end
     end
@@ -146,14 +152,14 @@ for i = 1:size(meanvals,1)
         shuffleddata =  shuffunshuffdata{1}{3}(:,i,ii,:);
         shuffleddata(isnan(shuffleddata)) = [];
         for iii = 1:size(meanvals,3)
-              [~,p,ci] = ztest(shuffleddata,meanvals(i,ii,iii),std(shuffleddata),...
-                  0.05,'left');
-              zp(i,ii,iii) = p;
-              cI(i,ii,iii) = ci(2);
+            [~,p,ci] = ztest(shuffleddata,meanvals(i,ii,iii),std(shuffleddata),...
+                0.05,'left');
+            zp(i,ii,iii) = p;
+            cI(i,ii,iii) = ci(2);
         end
     end
 end
-              
+
 statistics.meanvalues = meanvals;
 statistics.stdvalues = stdvals;
 statistics.numbervalues = numvals;
