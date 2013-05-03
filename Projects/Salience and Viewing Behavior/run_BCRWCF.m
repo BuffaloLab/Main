@@ -83,10 +83,10 @@ saliencemap = imfilter(saliencemap,filt);
 [fx fy] = gradient(saliencemap);
 
 %---Parameters determined using a Parameter Sweep---%
-IOR_tau = 0; %recovery time of IOR
+IOR_tau = 1/35; %recovery time of IOR
 IOR_area = 48; % area of visual space affected by IOR
-border_buffer = 50;
-border_sacdist = 100;
+border_buffer = 24;
+border_sacdist = 48;
 
 nn = 100;%1000
 trialtime = 10;
@@ -335,7 +335,6 @@ end
         end
         x(x > imageX) = imageX;
         y(y > imageY) = imageY;
-        dhn = dh-sqrt((xx(1)-x)^2+(yy(1)-y)^2);
         [dhn angn] = border1(dh,x,y,imageX,imageY,dt,tmr,sacdur,...
             border_sacdist,border_buffer);
         xn = round(x + dhn*cos(angn*pi/180));

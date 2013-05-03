@@ -14,6 +14,13 @@ function getSalienceMap(imagefile)
 %saved as a cell array, respectively.
 
 rgb = imread(imagefile);
+if size(rgb,3) == 1;
+    getSalienceMapgray(imagefile);
+    return
+elseif all(all(rgb(:,:,1) == rgb(:,:,2))) && all(all(rgb(:,:,2) == rgb(:,:,3)))
+    getSalienceMapgray(imagefile);
+    return
+end
 intensity = mean(double(rgb),3);
 
 filtimg = cell(1,9);
