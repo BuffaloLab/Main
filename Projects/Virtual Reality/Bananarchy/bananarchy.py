@@ -11,79 +11,80 @@ from numpy import *
 import ctypes
 import smtplib
 
-from PyDAQmx.DAQmxConstants import *
-from PyDAQmx.DAQmxTypes import *
-from PyDAQmx.DAQmxFunctions import *
-from PyDAQmx.DAQmxCallBack import *
-
 #Remove Cursor, set Window title
 props = WindowProperties()
 props.setCursorHidden(True)
 props.setTitle('Bananarchy')
 base.win.requestProperties(props)
 
-class MyList(list):
-    pass
+exp = Experiment.getInstance() #Get experiment instance.        
+vr = Vr.getInstance() #Get VR environment object.
 
-earliest = MyList()
-earliest.extend([0])
-id_a = create_callbackdata_id(earliest)
+# Set Session# to +1 the # of sessions the subject has data for so far. 
+if not os.access(exp.getExpDirectory(), os.F_OK):
+        exp.setSessionNum(0)
+else:
+        i = 0
+        while os.access(exp.getExpDirectory() + '/session_' + str(i), os.F_OK):
+                i = i + 1
+        exp.setSessionNum(i) 
 
-def EveryNCallback_py(taskHandle, everyNsamplesEventType, nSamples, callbackData_ptr):
-    latest = mstime()
-    read = int32()
-    eogData = zeros(2)
-    DAQmxReadAnalogF64(eogTaskHandle,1,10.0,DAQmx_Val_GroupByScanNumber,eogData,2,byref(read),None)
-    callbackdata = get_callbackdata_from_id(callbackData_ptr)
-    Log.getInstance().writeLine([callbackdata[0], latest-callbackdata[0]], "EyeData",  [((eogData[0] * 231) + 30), ((eogData[1] * 176) - 43)])
-    callbackdata[0] = latest
-    #callbackdata = latest
-    #print(callbackdata)
-    return 0
+config = Conf.getInstance().getConfig() #Get configuration dictionary.
 
-def DoneCallback_py(taskHandle, status, callbackData):
-    print "Status",status.value
-    return 0 # The function should return an integer
+if config['nidaq'] == 1:
 
-eogSampRate = 240
-eogSampsPerChanToAcquire = 1
-eogTaskHandle = TaskHandle(1)
+    from PyDAQmx.DAQmxConstants import *
+    from PyDAQmx.DAQmxTypes import *
+    from PyDAQmx.DAQmxFunctions import *
+    from PyDAQmx.DAQmxCallBack import *
 
-DAQmxResetDevice('Dev1')    #Reset Device
+    class MyList(list):
+        pass
 
-DAQmxCreateTask("",byref(eogTaskHandle))
-DAQmxCreateAIVoltageChan(eogTaskHandle,"Dev1/ai3","",DAQmx_Val_RSE,-5.0,5.0,DAQmx_Val_Volts,None)
-DAQmxCreateAIVoltageChan(eogTaskHandle,"Dev1/ai4","",DAQmx_Val_RSE,-5.0,5.0,DAQmx_Val_Volts,None)
-DAQmxCfgSampClkTiming(eogTaskHandle,"",eogSampRate,DAQmx_Val_Rising,DAQmx_Val_ContSamps,eogSampsPerChanToAcquire)
+    earliest = MyList()
+    earliest.extend([0])
+    id_a = create_callbackdata_id(earliest)
 
-#Callback
-EveryNCallback = DAQmxEveryNSamplesEventCallbackPtr(EveryNCallback_py)
-DoneCallback = DAQmxDoneEventCallbackPtr(DoneCallback_py)
-DAQmxRegisterEveryNSamplesEvent(eogTaskHandle,DAQmx_Val_Acquired_Into_Buffer,1,0,EveryNCallback,id_a)
-DAQmxRegisterDoneEvent(eogTaskHandle,0,DoneCallback,None)
+    def EveryNCallback_py(taskHandle, everyNsamplesEventType, nSamples, callbackData_ptr):
+        latest = mstime()
+        read = int32()
+        eogData = zeros(2)
+        DAQmxReadAnalogF64(eogTaskHandle,1,10.0,DAQmx_Val_GroupByScanNumber,eogData,2,byref(read),None)
+        callbackdata = get_callbackdata_from_id(callbackData_ptr)
+        Log.getInstance().writeLine([callbackdata[0], latest-callbackdata[0]], "EyeData",  [((eogData[0] * 231) + 30), ((eogData[1] * 176) - 43)])
+        callbackdata[0] = latest
+        #callbackdata = latest
+        #print(callbackdata)
+        return 0
 
+    def DoneCallback_py(taskHandle, status, callbackData):
+        print "Status",status.value
+        return 0 # The function should return an integer
+
+    eogSampRate = 240
+    eogSampsPerChanToAcquire = 1
+    eogTaskHandle = TaskHandle(1)
+
+    DAQmxResetDevice('Dev1')    #Reset Device
+
+    DAQmxCreateTask("",byref(eogTaskHandle))
+    DAQmxCreateAIVoltageChan(eogTaskHandle,"Dev1/ai3","",DAQmx_Val_RSE,-5.0,5.0,DAQmx_Val_Volts,None)
+    DAQmxCreateAIVoltageChan(eogTaskHandle,"Dev1/ai4","",DAQmx_Val_RSE,-5.0,5.0,DAQmx_Val_Volts,None)
+    DAQmxCfgSampClkTiming(eogTaskHandle,"",eogSampRate,DAQmx_Val_Rising,DAQmx_Val_ContSamps,eogSampsPerChanToAcquire)
+
+    #Callback
+    EveryNCallback = DAQmxEveryNSamplesEventCallbackPtr(EveryNCallback_py)
+    DoneCallback = DAQmxDoneEventCallbackPtr(DoneCallback_py)
+    DAQmxRegisterEveryNSamplesEvent(eogTaskHandle,DAQmx_Val_Acquired_Into_Buffer,1,0,EveryNCallback,id_a)
+    DAQmxRegisterDoneEvent(eogTaskHandle,0,DoneCallback,None)
 
 
 class bananarchy:
     def __init__(self):
         """
         Initialize the experiment.
-        """
+        """        
 
-        
-        exp = Experiment.getInstance() #Get experiment instance.        
-        vr = Vr.getInstance() #Get VR environment object.
-
-        # Set Session# to +1 the # of sessions the subject has data for so far. 
-	if not os.access(exp.getExpDirectory(), os.F_OK):
-	        exp.setSessionNum(0)
-	else:
-		i = 0
-		while os.access(exp.getExpDirectory() + '/session_' + str(i), os.F_OK):
-			i = i + 1
-		exp.setSessionNum(i) 
-
-        config = Conf.getInstance().getConfig() #Get configuration dictionary.
         avatar = Avatar.getInstance()
 
         # Register Custom Log Entries
@@ -246,7 +247,7 @@ class bananarchy:
             #Pump output parameters.
             outRate = 115
             outSamps = 15
-            outMinV = 7.0
+            outMinV = 5.0
             outMaxV = 10.0
             self.outPumpData = zeros(outSamps, dtype = float64)
             
@@ -345,9 +346,9 @@ class bananarchy:
             self.streetlightModel.setScale(config['strtLightScale'])
 
             # Load Windmill
-            self.windmillModel = Model("windmill", config['windmillModel'], config['windmillLoc'])
-            self.windmillModel.setScale(config['windmillScale'])
-            self.windmillModel.setH(config['windmillH'])
+##            self.windmillModel = Model("windmill", config['windmillModel'], config['windmillLoc'])
+##            self.windmillModel.setScale(config['windmillScale'])
+##            self.windmillModel.setH(config['windmillH'])
 
 
         # Load bananas.
@@ -587,8 +588,7 @@ class bananarchy:
         # Log collision.
         VLQ.getInstance().writeLine("YUMMY", [banana])
             
-        # Upon touching banana, repel movement.  Banana disappears.
-        
+        # Upon touching banana, repel movement.  Banana disappears.     
 	
         
 
