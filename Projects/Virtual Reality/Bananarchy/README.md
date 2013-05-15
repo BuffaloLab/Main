@@ -112,3 +112,6 @@ Version 0.4.0
 * Automatic OS detection for font directory selection
 * fixed skyscraper textures
 
+05/15/2013
+* Hopefully fixed the controls freezing bug.
+
