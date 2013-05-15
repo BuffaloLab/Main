@@ -32,25 +32,22 @@ Change the 'training' variable at the top of the config file to set the task to 
 ### To Do
 
 Structural additions and improvements:
+* Eyetracker and sync-pulsing interface!!!!!!
+* Work on the logging!
+* Make eye calibration task
+* Remove backface culling for the Bananas??  Would that do anything? Is there texture on the inside??
+* Create experimenter display that shows eyetrace, and possibly various stats of interest.
 * Set emails to send out one message (constructed throughout a trial) only between trials.
 * Add other 3D objects/models to the environment.
 * A separate nidaq class should be made, akin to the EEG class.
 * Get a higher quality banana
 * Setup to use the rays as much as possible and maybe avoid having to do the whole clunky trig calculations for the training steps < 4.0
 * Make a GUI!
-* OS detection for font directory.
 * Real stereo 3D.
-* Eyetracker and sync-pulsing interface!!!!!!
-* Work on the logging!
 * Perhaps some of the tasks don't need the inputEvent argument??
-* Remove backface culling for the Bananas??  Would that do anything? Is there texture on the inside??
 * Use Intervals (perhaps for banana rotation) and event handling where appropriate.
-* Make eye calibration task
-* Create experimenter display that shows eyetrace, and possibly various stats of interest.
 
-Bugs:
-* Solve possible bug where the maximum turning speed suddenly gets stuck at 0 or fails to be set to actual full speed.
-* Very rarely, it's still possible to get a banana without actually seeing it displayed on the screen.  Probably from bieng inside the banana.
+
 
 Make code prettier:
 * Figure out what to do with the window sizes for each training step, the speeds, distances, etc.  
@@ -114,4 +111,4 @@ Version 0.4.0
 
 05/15/2013
 * Hopefully fixed the controls freezing bug.
-
+* Hopefully fixed the bug that allowed occasionally for the banana to be eaten and collided with without actually being displayed on the screen.

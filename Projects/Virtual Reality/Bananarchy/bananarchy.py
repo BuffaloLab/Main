@@ -363,6 +363,7 @@ class bananarchy:
             bananaModel.setScale(config['bananaScale'])
             self.bananaModels.append(bananaModel)
             self.bananaModels[i].setH(random.randint(0, 361))
+            #self.bananaModels[i].retrNodePath().getChild(0).getChild(0).getChild(0).node().modifySolid(0).setRadius(.34)
             if config['training'] > 0:
                 self.bananaModels[i].setStashed(1)
 
@@ -595,7 +596,9 @@ class bananarchy:
         # Reward
 
         #self.reward = 1
-        if (self.cross.getColor()[0] != 1) and (self.collided.retrNodePath().getName() == self.targetRayColQueue.getEntry(3).getIntoNodePath().getName()) and Camera.getDefaultCamera().retrNodePath().node().isInView(self.collided.retrNodePath().getPos(Camera.getDefaultCamera().retrNodePath())):
+        #Make sure enough of banana is visible on screen to avoid rewards without actually seeing the banana on the screen.
+        camNodePath = Camera.getDefaultCamera().retrNodePath()
+        if (self.cross.getColor()[0] != 1) and (self.collided.retrNodePath().getName() == self.targetRayColQueue.getEntry(3).getIntoNodePath().getName()) and camNodePath.node().isInView(self.collided.retrNodePath().getPos(camNodePath)) and (camNodePath.node().isInView(self.collided.retrNodePath().getPos(camNodePath) + (0, .1, 0)) or camNodePath.node().isInView(self.collided.retrNodePath().getPos(camNodePath) + (0, -.1, 0))) and (camNodePath.node().isInView(self.collided.retrNodePath().getPos(camNodePath) + (.1, 0, 0)) or camNodePath.node().isInView(self.collided.retrNodePath().getPos(camNodePath) + (-.1, 0, 0))):
             MovingObject.handleRepelCollision(collisionInfoList)
             if config['training'] < 3.1:
                 self.targetHeader = float('nan')
@@ -670,6 +673,7 @@ class bananarchy:
         Monitor the header between every frame and perform the relevant
         header-dependent functions.
         """
+        
         self.collTrav.traverse(render)
         self.targetRayColQueue.sortEntries()
 
